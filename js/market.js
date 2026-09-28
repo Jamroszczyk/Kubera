@@ -266,6 +266,8 @@ export class Market {
         delayed,
         nativePrice: q.nativePrice,
         nativeCurrency: q.nativeCurrency,
+        sessionStart: q.sessionStart ?? null,
+        sessionEnd: q.sessionEnd ?? null,
       },
     });
     if (q.name && !this.store.state.names[symbol] && q.name !== meta.display) this.store.setName(symbol, q.name);
@@ -321,6 +323,8 @@ export class Market {
       const s = await this.provider.marketStatus();
       this.marketOpen = s.isOpen;
       this.session = s.session;
+      this.store.usMarket = { open: !!s.isOpen, session: s.session || '' };
+      this.store.emit('quotes');
       for (const fn of this.listeners) fn(this.status, this);
     } catch { /* optional */ }
   }

@@ -224,6 +224,8 @@ async function quote(symbol) {
     usListing,
     delayed: equity && !usListing,
     source: 'yahoo',
+    sessionStart: meta.currentTradingPeriod?.regular?.start ? meta.currentTradingPeriod.regular.start * 1000 : null,
+    sessionEnd: meta.currentTradingPeriod?.regular?.end ? meta.currentTradingPeriod.regular.end * 1000 : null,
   };
   cache.set(key, { ts: Date.now(), body });
   return { status: 200, body };

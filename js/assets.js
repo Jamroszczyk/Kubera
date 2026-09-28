@@ -122,8 +122,8 @@ export function assetBadge(meta) {
   return 'US';
 }
 
-/** Forex trades Sunday 17:00 through Friday 17:00 New York time. */
-export function forexOpen(now = new Date()) {
+/** Weekday clock in America/New_York: { weekday, mins } with mins since midnight. */
+function newYorkClock(now) {
   const parts = new Intl.DateTimeFormat('en-US', {
     timeZone: 'America/New_York',
     weekday: 'short',
@@ -132,8 +132,47 @@ export function forexOpen(now = new Date()) {
     hourCycle: 'h23',
   }).formatToParts(now);
   const map = Object.fromEntries(parts.map((p) => [p.type, p.value]));
-  const wd = map.weekday;
-  const mins = Number(map.hour) * 60 + Number(map.minute);
+  return { weekday: map.weekday, mins: Number(map.hour) * 60 + Number(map.minute) };
+}
+
+/** NYSE/Nasdaq regular session, 9:30–16:00 New York, Monday to Friday. */
+export function nyseRegularOpen(now = new Date()) {
+  const { weekday, mins } = newYorkClock(now);
+  if (weekday === 'Sat' || weekday === 'Sun') return false;
+  return mins >= 9 * 60 + 30 && mins < 16 * 60;
+}
+
+/**
+ * Whether a simulated order is allowed right now.
+ * Crypto is always open. Forex uses the Sunday–Friday session. US stocks require
+ * the regular New York session and a live "open" reading (so holidays and early
+ * closes stay shut). International names use the exchange's own regular window.
+ */
+export function tradeSession(meta, { usOpen = null, usSession = null, quote = null, now = new Date() } = {}) {
+  const asset = meta?.asset || 'stock';
+  if (asset === 'crypto') return { open: true, reason: '' };
+  if (asset === 'forex') {
+    const open = forexOpen(now);
+    return { open, reason: open ? '' : 'The forex market is closed.' };
+  }
+  if (asset === 'intl' || meta?.delayed) {
+    const start = quote?.sessionStart;
+    const end = quote?.sessionEnd;
+    const where = meta?.exchange || 'This exchange';
+    if (start == null || end == null) return { open: false, reason: 'Waiting for ' + where + ' market hours.' };
+    const t = now.getTime();
+    const open = t >= start && t < end;
+    return { open, reason: open ? '' : where + ' is closed.' };
+  }
+  const session = String(usSession || '').toLowerCase();
+  const reportedClosed = usOpen === false || (session !== '' && session !== 'regular');
+  const open = !reportedClosed && nyseRegularOpen(now);
+  return { open, reason: open ? '' : 'The US market is closed.' };
+}
+
+/** Forex trades Sunday 17:00 through Friday 17:00 New York time. */
+export function forexOpen(now = new Date()) {
+  const { weekday: wd, mins } = newYorkClock(now);
   const close = 17 * 60;
   if (wd === 'Sat') return false;
   if (wd === 'Fri' && mins >= close) return false;

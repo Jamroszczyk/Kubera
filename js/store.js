@@ -6,7 +6,7 @@
 //   midas.equity.v1   recorded account snapshots          [[ts, equity, cash], ...]
 
 import { round } from './format.js';
-import { inferAsset } from './assets.js';
+import { inferAsset, tradeSession } from './assets.js';
 
 export const KEYS = {
   state: 'midas.state.v1',
@@ -73,6 +73,7 @@ export class Store {
     this.history = load(KEYS.history, {});
     this.equity = load(KEYS.equity, []);
     this.listeners = new Set();
+    this.usMarket = { open: null, session: null }; // filled by the feed; not persisted
     this._timers = {};
     this._dirty = new Set();
 
@@ -151,6 +152,7 @@ export class Store {
   // ── trading (market orders, filled instantly at the given price) ──
   buy(symbol, qty, price, name) {
     symbol = symbol.toUpperCase();
+    this._assertSession(symbol);
     qty = round(Number(qty), 6);
     if (!(qty > 0)) throw new Error('Quantity must be positive.');
     if (!(price > 0)) throw new Error('No price available for ' + symbol + '.');
@@ -174,6 +176,7 @@ export class Store {
 
   sell(symbol, qty, price) {
     symbol = symbol.toUpperCase();
+    this._assertSession(symbol);
     qty = round(Number(qty), 6);
     const pos = this.state.positions[symbol];
     if (!pos) throw new Error('No position in ' + symbol + '.');
@@ -195,6 +198,15 @@ export class Store {
     this.recordEquity(true);
     this.commit();
     return tx;
+  }
+
+  _assertSession(symbol) {
+    const gate = tradeSession(this.assetOf(symbol), {
+      usOpen: this.usMarket?.open ?? null,
+      usSession: this.usMarket?.session ?? null,
+      quote: this.state.quotes[symbol],
+    });
+    if (!gate.open) throw new Error(gate.reason);
   }
 
   _addTx(tx) {

@@ -2,7 +2,7 @@ import { h, clear, replace, setText, segmented, toast, debounce } from '../ui.js
 import { fmtMoney, fmtPct, fmtPrice, fmtQty, fmtDateTime, fmtNative, signClass, relTime, round } from '../format.js';
 import { createChart } from '../chart.js';
 import { fetchHistory, HISTORY_RANGES } from '../providers/history.js';
-import { assetBadge, historySymbol, knownName, pricedInUsd, rememberAsset, symbolLabel, tradePath } from '../assets.js';
+import { assetBadge, historySymbol, knownName, pricedInUsd, rememberAsset, symbolLabel, tradePath, tradeSession } from '../assets.js';
 
 export function renderTrade(root, { store, market, navigate, params }) {
   const symbol = params.symbol ? params.symbol.toUpperCase() : null;
@@ -262,7 +262,10 @@ function renderSymbol(root, symbol, { store, market, navigate }) {
       if (!p) msg = 'You do not hold ' + shown() + '.';
       else if (qty > p.qty + 1e-9) msg = `You only hold ${fmtQty(p.qty)} ${unitSingular}.`;
     }
-    if (q && !pricedInUsd(meta.quoteCurrency)) {
+    const gate = tradeSession(meta, { usOpen: market.marketOpen, usSession: market.session, quote: q });
+    if (q && !gate.open) {
+      msg = gate.reason;
+    } else if (q && !pricedInUsd(meta.quoteCurrency)) {
       msg = `Quoted in ${meta.quoteCurrency}. Pick a USD pair to trade against this account.`;
     } else if (!q) {
       if (market.noData.has(symbol)) msg = `No data for ${shown()} — check the ticker.`;
@@ -296,8 +299,11 @@ function renderSymbol(root, symbol, { store, market, navigate }) {
     const q = quote();
     const meta = store.assetOf(symbol);
     setText(tickerEl, shown());
-    badge.textContent = assetBadge(meta);
-    badge.className = 'tag' + (meta.delayed ? ' accent' : '');
+    const gate = tradeSession(meta, { usOpen: market.marketOpen, usSession: market.session, quote: q });
+    const hoursKnown = (meta.asset !== 'intl' && !meta.delayed) || (q?.sessionStart != null && q?.sessionEnd != null);
+    const closedLabel = meta.asset === 'forex' ? 'Forex · Closed' : meta.asset === 'intl' || meta.delayed ? 'Intl · Closed' : 'US · Closed';
+    badge.textContent = !gate.open && meta.asset !== 'crypto' && hoursKnown ? closedLabel : assetBadge(meta);
+    badge.className = 'tag' + (meta.delayed && gate.open ? ' accent' : '');
     const exchange = meta.exchange && meta.exchange !== 'US' ? meta.exchange : '';
     setText(nameEl, [store.state.names[symbol] || '', exchange].filter(Boolean).join(' · '));
     if (!q) {
@@ -400,7 +406,7 @@ function renderSymbol(root, symbol, { store, market, navigate }) {
   const unsub = store.subscribe(() => updateAll());
   updateAll();
   updateChart();
-  const tick = setInterval(updateHeader, 15_000);
+  const tick = setInterval(() => { updateHeader(); updateTicket(); }, 15_000);
 
   return () => {
     unsub();
