@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Failed-break fade — sealed window</title>
+  <style>
+    :root { color-scheme: dark; }
+    body { margin: 0; font: 16px/1.5 Segoe UI, Arial, sans-serif; background: #111; color: #e8e8e8; }
+    main { max-width: 840px; margin: 0 auto; padding: 32px 20px 64px; }
+    h1 { font-size: 26px; margin: 0 0 8px; }
+    h2 { font-size: 18px; margin: 28px 0 10px; }
+    p, li { color: #c8c8c8; }
+    .sub { color: #888; margin: 0 0 20px; }
+    .warn, .info { padding: 12px 14px; border-radius: 8px; margin: 16px 0; }
+    .warn { background: #3a2a10; border: 1px solid #6a4a18; }
+    .info { background: #142434; border: 1px solid #24506a; }
+    .warn strong, .info strong { display: block; margin-bottom: 4px; color: #fff; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 12px 0; }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #2a2a2a; }
+    th { color: #888; }
+    .neg { color: #e07070; }
+    a { color: #8ec8f0; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Failed-break fade: rejected</h1>
+  <p class="sub">One shot on the sealed window only. Aug 28 – Oct 9 2026. 30 sessions. First half not scored. Live IOVA book not changed.</p>
+
+  <div class="warn">
+    <strong>REJECT. Do not promote. Do not retune on this window.</strong>
+    19 fade trades. Net −$62.10. No-trade is $0. Six of 19 reached the range midpoint before the stop. That is not an edge, and it is not “too few to tell.”
+  </div>
+
+  <h2>Economics vs prediction</h2>
+  <table>
+    <thead><tr><th></th><th>Fade</th><th>No trade</th></tr></thead>
+    <tbody>
+      <tr><td>Sessions / trades</td><td>30 / 19</td><td>30 / 0</td></tr>
+      <tr><td>Net</td><td class="neg">−$62.10</td><td>$0</td></tr>
+      <tr><td>Net per session (zeros in)</td><td class="neg">−$2.07</td><td>$0</td></tr>
+      <tr><td>Net per trade</td><td class="neg">−$3.27 · −0.51R</td><td>—</td></tr>
+      <tr><td>Reached midpoint before stop</td><td>6 / 19 (32%)</td><td>—</td></tr>
+      <tr><td>Mean MFE / MAE</td><td>0.34R / 0.75R</td><td>—</td></tr>
+      <tr><td>Max drawdown</td><td>$65</td><td>$0</td></tr>
+      <tr><td>Net after dropping the best day</td><td class="neg">−$65.75</td><td>$0</td></tr>
+      <tr><td>Net after dropping the two best days</td><td class="neg">−$68.91</td><td>$0</td></tr>
+    </tbody>
+  </table>
+
+  <h2>What the days did</h2>
+  <table>
+    <thead><tr><th>Outcome</th><th>Days</th></tr></thead>
+    <tbody>
+      <tr><td>Fade taken</td><td>19</td></tr>
+      <tr><td>Break held (no fade — MFE reached +1R or never came back by 14:00)</td><td>6</td></tr>
+      <tr><td>Failure printed, fade fill dead or stop too tight</td><td>5</td></tr>
+      <tr><td>No break by 13:00 / dead break / breakout stopped</td><td>0</td></tr>
+    </tbody>
+  </table>
+  <p>Almost every sealed morning produced a first break. Most of those breaks then came back. Fading them still lost: MAE was larger than MFE. The reversal often existed; it did not pay after the stop, the midpoint target, and the frozen costs.</p>
+
+  <h2>What this does not do</h2>
+  <ul>
+    <li>Does not turn the live IOVA sides on.</li>
+    <li>Does not rewrite the midpoint, the 14:00 cutoff, or the universe to rescue this file.</li>
+    <li>Does not reuse Jul 17 – Aug 27.</li>
+    <li>Does not buy a longer tape yet. Two rejected families (continuation ORB with relvol, and this fade) on 60 days is not a reason to spend money until a third, pre-specified hypothesis needs history we do not have.</li>
+  </ul>
+
+  <div class="info">
+    <strong>Baseline unchanged</strong>
+    Audited IOVA book still −$34.33. Both candidates tested after that audit lost on unused or sealed data. Sit out.
+  </div>
+  <p><a href="/research/fade-protocol.html">Registered protocol</a> · <a href="/research/fade-sealed.json">Trade JSON</a> · <a href="/research/live-book-audit.html">Live-book audit</a></p>
+</main>
+</body>
+</html>

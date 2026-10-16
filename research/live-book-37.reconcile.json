@@ -1,0 +1,20 @@
+{
+  "file": "C:\\Users\\jojam\\OneDrive\\Dokumente\\Code\\midas\\research\\live-book-37.csv",
+  "trades": 37,
+  "flats": 28,
+  "stops": 8,
+  "targets": 1,
+  "sumNet": -34.32571795701854,
+  "bookPnl": -34.32571795701854,
+  "matchBook": true,
+  "matchExpected": true,
+  "mismatches": [],
+  "vsReported": {
+    "pnl": true,
+    "trades": true,
+    "flats": true,
+    "stops": true,
+    "targets": true
+  },
+  "pass": true
+}

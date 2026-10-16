@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ledger · Midas</title>
+  <style>
+    :root { color-scheme: dark; }
+    body { margin: 0; font: 16px/1.5 Segoe UI, Arial, sans-serif; background: #111; color: #e8e8e8; }
+    main { max-width: 840px; margin: 0 auto; padding: 32px 20px 64px; }
+    h1 { font-size: 26px; margin: 0 0 8px; }
+    h2 { font-size: 18px; margin: 28px 0 10px; }
+    p, li { color: #c8c8c8; }
+    .sub { color: #888; margin: 0 0 20px; }
+    .warn { padding: 12px 14px; border-radius: 8px; margin: 16px 0; background: #1a2a1a; border: 1px solid #2a4a2a; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin: 16px 0; }
+    .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 12px 14px; }
+    .label { color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+    .value { font-size: 22px; margin-top: 4px; }
+    .pos { color: #6ecf8e; }
+    .neg { color: #e07070; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 12px 0; }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #2a2a2a; }
+    th { color: #888; }
+    .r { text-align: right; }
+    code { font-size: 13px; color: #ddd; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>What we are doing</h1>
+  <p class="sub" id="saved">Loading…</p>
+  <div class="warn" id="waiting"></div>
+  <p id="recipe"></p>
+  <div class="grid" id="stats"></div>
+  <h2>By month</h2>
+  <table><thead><tr><th>Month</th><th class="r">Days</th><th class="r">Trades</th><th class="r">P/L</th></tr></thead><tbody id="months"></tbody></table>
+  <h2>The tape on disk</h2>
+  <p id="tape"></p>
+  <h2>What we watch</h2>
+  <ul>
+    <li>Net after fees on the $1,000 book.</li>
+    <li>First half vs last half of the tape (if only the recent half pays, we do not trust it yet).</li>
+    <li>August-style months: a choppy stretch that takes $20–$30 off.</li>
+    <li>How we left: flats vs stops vs targets. Most days we should sit until 15:45 or sit out.</li>
+    <li>New mornings after the sealed date. Those unused days decide if we change anything.</li>
+  </ul>
+  <p class="sub">Files: <code>research/ledger.json</code> · <code>research/ledger-trades.csv</code> · <code>data/tape/</code> (5-minute bars, kept even after Yahoo forgets them)</p>
+</main>
+<script>
+function money(n) {
+  if (n == null || !Number.isFinite(n)) return '—';
+  const s = Math.abs(n).toFixed(2);
+  return (n >= 0 ? '+$' : '−$') + s;
+}
+function cls(n) { return n < 0 ? 'neg' : 'pos'; }
+function when(ts) {
+  if (!ts) return '—';
+  return new Date(ts).toLocaleString('en-US', { timeZone: 'America/New_York' });
+}
+fetch('/research/ledger.json').then((r) => r.ok ? r.json() : null).then((j) => {
+  if (!j || !j.metrics) {
+    document.getElementById('saved').textContent = 'No book saved yet. Run the book on the Bot page.';
+    return;
+  }
+  const m = j.metrics, rec = j.recipe || {};
+  document.getElementById('saved').textContent = 'Saved ' + (j.saved || '') + '. This is the live recipe, not a chat memory.';
+  document.getElementById('waiting').textContent = j.waiting || '';
+  document.getElementById('recipe').textContent =
+    'One trade a day. Names in play: morning volume ≥ ' + rec.minRelvol + '× usual, yesterday’s close ≥ $' + rec.minPrice
+    + '. Sit out if fewer than ' + rec.minPlay + ' names. 1% of $' + (rec.cash || 1000) + ' to the stop. Target ' + rec.targetR
+    + 'R. Flat 15:45. ' + (rec.names || []).length + ' names on the list.';
+  document.getElementById('stats').innerHTML = [
+    ['Net after fees', money(m.pnl), cls(m.pnl)],
+    ['First half', money(m.first30), cls(m.first30)],
+    ['Last half', money(m.last30), cls(m.last30)],
+    ['Trades', String(m.rounds || 0), ''],
+    ['Max dip', money(-(Math.abs(m.maxDD) || 0)), 'neg'],
+    ['Win rate', m.winRate != null ? (m.winRate * 100).toFixed(0) + '%' : '—', ''],
+  ].map(([l, v, c]) => '<div class="card"><div class="label">' + l + '</div><div class="value ' + c + '">' + v + '</div></div>').join('');
+  document.getElementById('months').innerHTML = (m.byMonth || []).map((row) =>
+    '<tr><td>' + row.month + '</td><td class="r">' + row.days + '</td><td class="r">' + row.trades + '</td><td class="r ' + cls(row.pnl) + '">' + money(row.pnl) + '</td></tr>'
+  ).join('') || '<tr><td colspan="4">None</td></tr>';
+  const t = j.tape || {};
+  document.getElementById('tape').textContent = t.symbols
+    ? (t.symbols + ' names on disk, ' + t.bars + ' five-minute bars, from ' + when(t.from) + ' to ' + when(t.to) + '.')
+    : 'Tape is empty until you run the book once.';
+}).catch(() => {
+  document.getElementById('saved').textContent = 'Could not load research/ledger.json. Run the book.';
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pilot: morning relative volume</title>
+  <style>
+    :root { color-scheme: dark; }
+    body { margin: 0; font: 16px/1.5 Segoe UI, Arial, sans-serif; background: #111; color: #e8e8e8; }
+    main { max-width: 880px; margin: 0 auto; padding: 32px 20px 64px; }
+    h1 { font-size: 26px; margin: 0 0 8px; }
+    h2 { font-size: 18px; margin: 32px 0 10px; }
+    p, li { color: #c8c8c8; }
+    .sub { color: #888; margin: 0 0 20px; }
+    .warn, .ok, .info { padding: 12px 14px; border-radius: 8px; margin: 16px 0; }
+    .warn { background: #3a2a10; border: 1px solid #6a4a18; }
+    .ok { background: #14301c; border: 1px solid #2a6040; }
+    .info { background: #142434; border: 1px solid #24506a; }
+    .warn strong, .ok strong, .info strong { display: block; margin-bottom: 4px; color: #fff; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+    .stat { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 12px; }
+    .stat b { display: block; font-size: 20px; }
+    .stat span { color: #888; font-size: 13px; }
+    .neg { color: #e07070; }
+    .pos { color: #6ecf8e; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 12px 0; }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #2a2a2a; }
+    th { color: #888; }
+    a { color: #8ec8f0; }
+    @media (max-width: 720px) { .stats { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Morning relative volume did not help</h1>
+  <p class="sub">Pilot only. Jul 17 – Aug 27 2026. 30 sessions. Last 30 days remain sealed. Live IOVA book stays off.</p>
+
+  <div class="warn">
+    <strong>Verdict: NOT SUPPORTED</strong>
+    Ranking by opening-half-hour relative volume and taking the first top-3 breakout lost $32.62. IOVA every day, same fills, made $23.97. No trade is $0. Continuation was worse on the selected names (3 of 23 reached +1R before −1R, versus 7 of 27 on IOVA). This is a pilot, not proof of an IOVA edge. The later half stays unread.
+  </div>
+
+  <h2>1. Live-book CSV first</h2>
+  <div class="ok">
+    <strong>Reconciliation PASS</strong>
+    37 trades. 28 flats, 8 stops, 1 target. Sum of independently recomputed net P&amp;L = −$34.33. Matches the live book total to the cent. File: <a href="/research/live-book-37.csv">research/live-book-37.csv</a>.
+  </div>
+
+  <h2>2. Frozen rules (written before the run)</h2>
+  <ul>
+    <li>Relative volume = opening-half-hour volume / mean of that same half-hour over the prior 10 sessions (need 5). Raw volume is not the rank.</li>
+    <li>Eligible by 10:00 only: prior close ≥ $5, prior-day dollar volume ≥ $20M, at least 3 opening bars. Missing data means skip that name that day.</li>
+    <li>Watch the top 3. Trade the highest-ranked of those that later breaks. If none break, stand aside. One trade a day.</li>
+    <li>Same fills as the live book: next open ± 2¢, 0.05% fee, 1% risk, 2.5R target, flat 15:45. No 15-trade cutoff.</li>
+    <li>Continuation = +1R excursion before −1R excursion. Same-bar conflict counts as not continued.</li>
+    <li>Compare selected vs IOVA every day vs no trade. Last 30 sessions sealed.</li>
+  </ul>
+
+  <h2>3. Pilot scores</h2>
+  <div class="stats">
+    <div class="stat"><b class="neg">−$32.62</b><span>Selected top-3 relvol · 23 trades · SE $0.95/trade</span></div>
+    <div class="stat"><b class="pos">+$23.97</b><span>IOVA every day · 27 trades · SE $1.61/trade</span></div>
+    <div class="stat"><b>$0</b><span>No trade</span></div>
+  </div>
+  <table>
+    <thead>
+      <tr><th></th><th>Selected</th><th>IOVA</th><th>No trade</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Trades / sessions with a trade</td><td>23 / 23</td><td>27 / 27</td><td>0 / 0</td></tr>
+      <tr><td>Flat / stop / target</td><td>20 / 3 / 0</td><td>23 / 3 / 1</td><td>—</td></tr>
+      <tr><td>Expectancy</td><td>−$1.42 · −0.16R</td><td>+$0.89 · +0.09R</td><td>$0</td></tr>
+      <tr><td>Profit factor</td><td>0.46</td><td>1.35</td><td>—</td></tr>
+      <tr><td>Max drawdown</td><td>$38</td><td>$31</td><td>$0</td></tr>
+      <tr><td>+1R before −1R</td><td>3 / 23 (13%)</td><td>7 / 27 (26%)</td><td>—</td></tr>
+      <tr><td>Mean MFE / MAE</td><td>0.51R / 0.59R</td><td>0.65R / 0.57R</td><td>—</td></tr>
+      <tr><td>Mean hold to 15:45, in R</td><td>−0.12R</td><td>+0.22R</td><td>—</td></tr>
+    </tbody>
+  </table>
+  <p class="sub">Pilot window 2026-07-17 to 2026-08-27. Sealed window 2026-08-28 to 2026-10-09. First five pilot days had no eligible names (need five prior opening half-hours). After that, 42–43 names cleared the $5 / $20M screen most mornings. Fallback to rank 2 and rank 3 was used. Sixteen different names were traded, including IOVA once.</p>
+
+  <h2>4. What this does and does not say</h2>
+  <p>It says that, on this 30-session tape, picking the most unusually active large names at 10:00 did not produce more follow-through than trading IOVA every day. It also lost to sitting out.</p>
+  <p>It does not say IOVA is a working system. The +$24 is on the first half, which earlier work already showed was the better half. The live book over all 60 sessions, cutoff on, is still −$34.33. Opening the sealed half now would not be an independent test.</p>
+  <p>Limitations: 23 trades is a small sample (standard error about $0.95 per trade). The universe is mostly mega-caps already in the file, not a true “in play” scanner. Yahoo 5-minute volume is not official exchange volume. Early days cannot rank because the baseline is not ready.</p>
+
+  <h2>5. Next decision</h2>
+  <div class="info">
+    <strong>Stay out. Do not open the last 30 days. Do not change a stop or target.</strong>
+    The live IOVA sides stay off. The hypothesis “morning relative volume improves opening-range selection” is not supported here. If we continue later, the next question needs a different unused tape and a different definition of “in play,” not another indicator on this window.
+  </div>
+  <p><a href="/edge-research-plan.html">Research plan</a> · <a href="/research/live-book-37.csv">37-trade CSV</a> · <a href="/research/pilot-morning-universe.json">Pilot JSON</a></p>
+</main>
+</body>
+</html>

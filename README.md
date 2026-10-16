@@ -6,7 +6,7 @@ The work is to apply signal processing, inference, and machine learning to tradi
 
 ## Three layers
 
-The desk is what exists now, and it stays that way: the place you open to find a name and trade it by hand. The other two layers are the research program. Each is its own surface, a tab or a window, and neither is built yet.
+The desk is the place you open to find a name and trade it by hand. Analytics and Bot are the research program. Each is its own tab.
 
 ### 1. Desk
 
@@ -29,11 +29,13 @@ A workshop for systems that look for trades with a high chance of gain and a low
 
 The order of work stays the same throughout. Start with the classic simple models on single names. Add complexity only after those are in place, until the system is optimizing itself for profit.
 
-### 3. Testing
+### 3. Bot
 
-Run the pieces from the analytics layer and see what the virtual portfolio actually does on real prices. Two ways in: names we choose by hand, and names the analytics layer has already flagged. This is the benchmark field.
+Stacked suggestions on top of Analytics. Five gates: lead-lag forecast, recent residual, worse-case miss, market hours, and cost. **Take** needs all five. **Watch** means the forecast agrees with the last bars but the predicted move is smaller than the cost. **Skip** means do not buy.
 
-When a system holds up here, the later step is a very small live account with play money, to see whether it behaves the same way in the market. Those live results come back into the system and update it.
+Cost is always 0.05% of the dollars you buy and then sell. One position or a hundred — same cost if the dollars are the same. A round trip is one buy plus the matching sell. Research target: +0.05% net per day. Stretch: +0.10%.
+
+The Bot tab scores the last 5-minute bar we have, and replays Take-only on the hold-out window. Paper buy writes the same desk account. It does not trade by itself.
 
 ## What the desk does today
 
@@ -103,6 +105,8 @@ js/store.js           state, persistence, trading logic, portfolio math
 js/market.js          feed manager (stream + polling, symbol tracking)
 js/providers/         finnhub.js (REST + WebSocket), yahoo.js, history.js
 js/chart.js           canvas line chart / sparklines
-js/views/             dashboard, trade, activity, settings
+js/analytics/         proxy analysis, GPU permutations, hold-out book
+js/bot/               cost model, stacked gates, suggestions
+js/views/             dashboard, trade, analytics, bot, activity, settings
 server.js             static server, .env loader, /api/config, /api/quote, /api/search, /api/history
 ```

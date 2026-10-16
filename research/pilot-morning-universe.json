@@ -1,0 +1,1234 @@
+{
+  "rulesFrozen": true,
+  "loaded": [
+    "AAPL",
+    "MSFT",
+    "NVDA",
+    "AMZN",
+    "GOOGL",
+    "META",
+    "TSLA",
+    "AVGO",
+    "AMD",
+    "NFLX",
+    "COST",
+    "CRM",
+    "ORCL",
+    "ADBE",
+    "INTU",
+    "NOW",
+    "QCOM",
+    "INTC",
+    "MU",
+    "AMAT",
+    "LRCX",
+    "IOVA",
+    "AMGN",
+    "LLY",
+    "UNH",
+    "JNJ",
+    "JPM",
+    "GS",
+    "BAC",
+    "WFC",
+    "V",
+    "MA",
+    "XOM",
+    "CVX",
+    "WMT",
+    "HD",
+    "DIS",
+    "BA",
+    "CAT",
+    "GE",
+    "PLTR",
+    "COIN",
+    "UBER"
+  ],
+  "missing": [],
+  "sessions": {
+    "total": 60,
+    "pilot": [
+      "2026-07-17",
+      "2026-08-27"
+    ],
+    "pilotDays": 30,
+    "sealed": [
+      "2026-08-28",
+      "2026-10-09"
+    ],
+    "sealedDays": 30
+  },
+  "groups": {
+    "selected": {
+      "label": "selected",
+      "nDays": 30,
+      "trades": 23,
+      "sessionsWithTrade": 23,
+      "flats": 20,
+      "stops": 3,
+      "targets": 0,
+      "net": -32.621715702294864,
+      "expect": -1.418335465317168,
+      "avgR": -0.1615401178927817,
+      "profitFactor": 0.4583466048516801,
+      "maxDD": 37.96172532601315,
+      "winRate": 0.34782608695652173,
+      "continuation": 0.13043478260869565,
+      "continued": 3,
+      "meanMfe": 0.5111446647886094,
+      "meanMae": 0.5893117847902577,
+      "meanRet1545": -0.12115076472414989,
+      "seNet": 0.9450810484389831,
+      "top2AbsDay": 18.2592520951845,
+      "reconcile": true,
+      "names": [
+        "ORCL",
+        "UBER",
+        "AMGN",
+        "V",
+        "MA",
+        "COIN",
+        "AMZN",
+        "PLTR",
+        "IOVA",
+        "DIS",
+        "INTC",
+        "NFLX",
+        "CVX",
+        "HD",
+        "WMT",
+        "XOM"
+      ]
+    },
+    "iova": {
+      "label": "IOVA every day",
+      "nDays": 30,
+      "trades": 27,
+      "sessionsWithTrade": 27,
+      "flats": 23,
+      "stops": 3,
+      "targets": 1,
+      "net": 23.966291170740988,
+      "expect": 0.8876404137311477,
+      "avgR": 0.09433500510762555,
+      "profitFactor": 1.3534073607901995,
+      "maxDD": 30.690042602748463,
+      "winRate": 0.4444444444444444,
+      "continuation": 0.25925925925925924,
+      "continued": 7,
+      "meanMfe": 0.6496255463054993,
+      "meanMae": 0.5658710759455217,
+      "meanRet1545": 0.21713193007733564,
+      "seNet": 1.6052079307233762,
+      "top2AbsDay": 41.592430728683496,
+      "reconcile": true,
+      "names": [
+        "IOVA"
+      ]
+    },
+    "noTrade": {
+      "label": "no trade",
+      "nDays": 30,
+      "trades": 0,
+      "sessionsWithTrade": 0,
+      "flats": 0,
+      "stops": 0,
+      "targets": 0,
+      "net": 0,
+      "expect": 0,
+      "avgR": 0,
+      "profitFactor": 0,
+      "maxDD": 0,
+      "winRate": 0,
+      "continuation": 0,
+      "continued": 0,
+      "meanMfe": 0,
+      "meanMae": 0,
+      "meanRet1545": 0,
+      "seNet": 0,
+      "top2AbsDay": 0,
+      "reconcile": true,
+      "names": []
+    }
+  },
+  "verdict": "NOT_SUPPORTED",
+  "next": "Sealed window stays closed. Live IOVA book stays off. Do not add indicators.",
+  "dailyPicks": [
+    {
+      "date": "2026-07-17",
+      "eligible": 0,
+      "top": []
+    },
+    {
+      "date": "2026-07-20",
+      "eligible": 0,
+      "top": []
+    },
+    {
+      "date": "2026-07-21",
+      "eligible": 0,
+      "top": []
+    },
+    {
+      "date": "2026-07-22",
+      "eligible": 0,
+      "top": []
+    },
+    {
+      "date": "2026-07-23",
+      "eligible": 0,
+      "top": []
+    },
+    {
+      "date": "2026-07-24",
+      "eligible": 43,
+      "top": [
+        {
+          "symbol": "INTC",
+          "relvol": 2.0750530514907415
+        },
+        {
+          "symbol": "ORCL",
+          "relvol": 1.730433149389772
+        },
+        {
+          "symbol": "MSFT",
+          "relvol": 1.4857768162125136
+        }
+      ]
+    },
+    {
+      "date": "2026-07-27",
+      "eligible": 42,
+      "top": [
+        {
+          "symbol": "UBER",
+          "relvol": 2.2347523740052306
+        },
+        {
+          "symbol": "CAT",
+          "relvol": 1.5385660571843558
+        },
+        {
+          "symbol": "CVX",
+          "relvol": 1.340245827142074
+        }
+      ]
+    },
+    {
+      "date": "2026-07-28",
+      "eligible": 42,
+      "top": [
+        {
+          "symbol": "COST",
+          "relvol": 3.3012099249843954
+        },
+        {
+          "symbol": "AMGN",
+          "relvol": 3.2917200230523957
+        },
+        {
+          "symbol": "LRCX",
+          "relvol": 3.1007436149381764
+        }
+      ]
+    },
+    {
+      "date": "2026-07-29",
+      "eligible": 42,
+      "top": [
+        {
+          "symbol": "V",
+          "relvol": 3.0321487886102263
+        },
+        {
+          "symbol": "GS",
+          "relvol": 1.782086226530671
+        },
+        {
+          "symbol": "ADBE",
+          "relvol": 1.7021283696404883
+        }
+      ]
+    },
+    {
+      "date": "2026-07-30",
+      "eligible": 42,
+      "top": [
+        {
+          "symbol": "MSFT",
+          "relvol": 6.846622952140816
+        },
+        {
+          "symbol": "META",
+          "relvol": 6.021567176478898
+        },
+        {
+          "symbol": "MA",
+          "relvol": 3.407969731945136
+        }
+      ]
+    },
+    {
+      "date": "2026-07-31",
+      "eligible": 42,
+      "top": [
+        {
+          "symbol": "AMZN",
+          "relvol": 4.77241330619065
+        },
+        {
+          "symbol": "AAPL",
+          "relvol": 4.062113853828752
+        },
+        {
+          "symbol": "COIN",
+          "relvol": 3.547825552316898
+        }
+      ]
+    },
+    {
+      "date": "2026-08-03",
+      "eligible": 42,
+      "top": [
+        {
+          "symbol": "AMZN",
+          "relvol": 3.204615113930496
+        },
+        {
+          "symbol": "META",
+          "relvol": 2.608338072173666
+        },
+        {
+          "symbol": "LLY",
+          "relvol": 2.2926438797569038
+        }
+      ]
+    },
+    {
+      "date": "2026-08-04",
+      "eligible": 42,
+      "top": [
+        {
+          "symbol": "PLTR",
+          "relvol": 6.2333102808433685
+        },
+        {
+          "symbol": "JPM",
+          "relvol": 3.179098531808883
+        },
+        {
+          "symbol": "CAT",
+          "relvol": 2.534205289979895
+        }
+      ]
+    },
+    {
+      "date": "2026-08-05",
+      "eligible": 42,
+      "top": [
+        {
+          "symbol": "UBER",
+          "relvol": 4.78577680303635
+        },
+        {
+          "symbol": "LLY",
+          "relvol": 3.354313528499764
+        },
+        {
+          "symbol": "AMGN",
+          "relvol": 3.06856770379314
+        }
+      ]
+    },
+    {
+      "date": "2026-08-06",
+      "eligible": 42,
+      "top": [
+        {
+          "symbol": "UBER",
+          "relvol": 1.5087542868023964
+        },
+        {
+          "symbol": "LLY",
+          "relvol": 1.3546280363151049
+        },
+        {
+          "symbol": "NVDA",
+          "relvol": 1.1094122209583546
+        }
+      ]
+    },
+    {
+      "date": "2026-08-07",
+      "eligible": 43,
+      "top": [
+        {
+          "symbol": "UBER",
+          "relvol": 2.6046679713144223
+        },
+        {
+          "symbol": "PLTR",
+          "relvol": 1.6357624317629587
+        },
+        {
+          "symbol": "IOVA",
+          "relvol": 1.4852030919923873
+        }
+      ]
+    },
+    {
+      "date": "2026-08-10",
+      "eligible": 43,
+      "top": [
+        {
+          "symbol": "JNJ",
+          "relvol": 1.444806016895042
+        },
+        {
+          "symbol": "DIS",
+          "relvol": 1.3674766090571
+        },
+        {
+          "symbol": "PLTR",
+          "relvol": 1.2783834484930605
+        }
+      ]
+    },
+    {
+      "date": "2026-08-11",
+      "eligible": 43,
+      "top": [
+        {
+          "symbol": "INTC",
+          "relvol": 1.6070867868677525
+        },
+        {
+          "symbol": "ORCL",
+          "relvol": 1.2083807657785042
+        },
+        {
+          "symbol": "GOOGL",
+          "relvol": 1.0591098950919067
+        }
+      ]
+    },
+    {
+      "date": "2026-08-12",
+      "eligible": 43,
+      "top": [
+        {
+          "symbol": "INTC",
+          "relvol": 1.561612765415296
+        },
+        {
+          "symbol": "ORCL",
+          "relvol": 1.3923751711079024
+        },
+        {
+          "symbol": "HD",
+          "relvol": 1.3201353821578186
+        }
+      ]
+    },
+    {
+      "date": "2026-08-13",
+      "eligible": 43,
+      "top": [
+        {
+          "symbol": "NFLX",
+          "relvol": 1.8960688271817958
+        },
+        {
+          "symbol": "JPM",
+          "relvol": 1.2827596664965613
+        },
+        {
+          "symbol": "INTC",
+          "relvol": 1.1911434478994565
+        }
+      ]
+    },
+    {
+      "date": "2026-08-14",
+      "eligible": 43,
+      "top": [
+        {
+          "symbol": "AMAT",
+          "relvol": 3.49096065745622
+        },
+        {
+          "symbol": "AVGO",
+          "relvol": 2.197077903487487
+        },
+        {
+          "symbol": "CVX",
+          "relvol": 1.9613420480778416
+        }
+      ]
+    },
+    {
+      "date": "2026-08-17",
+      "eligible": 43,
+      "top": [
+        {
+          "symbol": "AMAT",
+          "relvol": 1.7144919149287963
+        },
+        {
+          "symbol": "GE",
+          "relvol": 1.4492971394758474
+        },
+        {
+          "symbol": "MA",
+          "relvol": 1.3992478775504635
+        }
+      ]
+    },
+    {
+      "date": "2026-08-18",
+      "eligible": 43,
+      "top": [
+        {
+          "symbol": "HD",
+          "relvol": 3.960249648716512
+        },
+        {
+          "symbol": "META",
+          "relvol": 2.774031194159122
+        },
+        {
+          "symbol": "JNJ",
+          "relvol": 1.9830893185825793
+        }
+      ]
+    },
+    {
+      "date": "2026-08-19",
+      "eligible": 43,
+      "top": [
+        {
+          "symbol": "AVGO",
+          "relvol": 2.8224889532505273
+        },
+        {
+          "symbol": "LLY",
+          "relvol": 2.6342829722881445
+        },
+        {
+          "symbol": "CVX",
+          "relvol": 2.417458227207974
+        }
+      ]
+    },
+    {
+      "date": "2026-08-20",
+      "eligible": 43,
+      "top": [
+        {
+          "symbol": "WMT",
+          "relvol": 6.1454742752915905
+        },
+        {
+          "symbol": "COIN",
+          "relvol": 3.0605763499798098
+        },
+        {
+          "symbol": "COST",
+          "relvol": 1.7610626751382699
+        }
+      ]
+    },
+    {
+      "date": "2026-08-21",
+      "eligible": 43,
+      "top": [
+        {
+          "symbol": "COIN",
+          "relvol": 4.628841330773519
+        },
+        {
+          "symbol": "WMT",
+          "relvol": 2.473800990391845
+        },
+        {
+          "symbol": "AMZN",
+          "relvol": 1.5290355134797444
+        }
+      ]
+    },
+    {
+      "date": "2026-08-24",
+      "eligible": 43,
+      "top": [
+        {
+          "symbol": "DIS",
+          "relvol": 3.169672705353216
+        },
+        {
+          "symbol": "MA",
+          "relvol": 2.4295537696928826
+        },
+        {
+          "symbol": "V",
+          "relvol": 2.1119811872152363
+        }
+      ]
+    },
+    {
+      "date": "2026-08-25",
+      "eligible": 43,
+      "top": [
+        {
+          "symbol": "BA",
+          "relvol": 1.40626660965427
+        },
+        {
+          "symbol": "NVDA",
+          "relvol": 1.3944974845386628
+        },
+        {
+          "symbol": "XOM",
+          "relvol": 1.3700672937778444
+        }
+      ]
+    },
+    {
+      "date": "2026-08-26",
+      "eligible": 43,
+      "top": [
+        {
+          "symbol": "INTU",
+          "relvol": 7.160462130937099
+        },
+        {
+          "symbol": "META",
+          "relvol": 4.622099760573129
+        },
+        {
+          "symbol": "LLY",
+          "relvol": 2.557897640966446
+        }
+      ]
+    },
+    {
+      "date": "2026-08-27",
+      "eligible": 43,
+      "top": [
+        {
+          "symbol": "CRM",
+          "relvol": 10.542261096284891
+        },
+        {
+          "symbol": "NVDA",
+          "relvol": 3.822530278833702
+        },
+        {
+          "symbol": "NOW",
+          "relvol": 3.1133558293332078
+        }
+      ]
+    }
+  ],
+  "selectedTrades": [
+    {
+      "date": "2026-07-24",
+      "symbol": "ORCL",
+      "side": "short",
+      "rank": 2,
+      "relvol": 1.730433149389772,
+      "net": 0.9218342721557696,
+      "r": 0.1501358077842766,
+      "reason": "flat",
+      "mfe": 0.23127065247596684,
+      "mae": 0.4902274458175302,
+      "continued": null
+    },
+    {
+      "date": "2026-07-27",
+      "symbol": "UBER",
+      "side": "long",
+      "rank": 1,
+      "relvol": 2.2347523740052306,
+      "net": 4.418175351562548,
+      "r": 0.45175600175691916,
+      "reason": "flat",
+      "mfe": 0.6564392252956593,
+      "mae": 0.0441729608367856,
+      "continued": null
+    },
+    {
+      "date": "2026-07-28",
+      "symbol": "AMGN",
+      "side": "long",
+      "rank": 2,
+      "relvol": 3.2917200230523957,
+      "net": -3.307874822387659,
+      "r": -0.49187827913733007,
+      "reason": "flat",
+      "mfe": 0.33680419102254466,
+      "mae": 0.8736093259363715,
+      "continued": null
+    },
+    {
+      "date": "2026-07-29",
+      "symbol": "V",
+      "side": "long",
+      "rank": 1,
+      "relvol": 3.0321487886102263,
+      "net": -1.2503069207763309,
+      "r": -0.21687794642862254,
+      "reason": "flat",
+      "mfe": 0.5906283872243714,
+      "mae": 0.7328704775161874,
+      "continued": null
+    },
+    {
+      "date": "2026-07-30",
+      "symbol": "MA",
+      "side": "short",
+      "rank": 3,
+      "relvol": 3.407969731945136,
+      "net": -6.37649381469723,
+      "r": -0.6705004667142598,
+      "reason": "flat",
+      "mfe": 0.19347796341093906,
+      "mae": 0.9295436032548826,
+      "continued": null
+    },
+    {
+      "date": "2026-07-31",
+      "symbol": "COIN",
+      "side": "short",
+      "rank": 3,
+      "relvol": 3.547825552316898,
+      "net": -6.76627214263918,
+      "r": -1.0136437916552654,
+      "reason": "stop",
+      "mfe": 0.4554168952941022,
+      "mae": 1.081615537784309,
+      "continued": false
+    },
+    {
+      "date": "2026-08-03",
+      "symbol": "AMZN",
+      "side": "short",
+      "rank": 1,
+      "relvol": 3.204615113930496,
+      "net": -4.363723011474536,
+      "r": -0.6027079136857965,
+      "reason": "flat",
+      "mfe": 0.31029841002649716,
+      "mae": 0.5635429648932533,
+      "continued": null
+    },
+    {
+      "date": "2026-08-04",
+      "symbol": "PLTR",
+      "side": "long",
+      "rank": 1,
+      "relvol": 6.2333102808433685,
+      "net": 7.632640001525859,
+      "r": 1.5378491758727169,
+      "reason": "flat",
+      "mfe": 1.9725206054876825,
+      "mae": 0.1914076195449107,
+      "continued": true
+    },
+    {
+      "date": "2026-08-05",
+      "symbol": "UBER",
+      "side": "short",
+      "rank": 1,
+      "relvol": 4.78577680303635,
+      "net": -2.543540852966261,
+      "r": -0.2700157398269702,
+      "reason": "flat",
+      "mfe": 0.7101945141674911,
+      "mae": 0.3471308824990104,
+      "continued": null
+    },
+    {
+      "date": "2026-08-06",
+      "symbol": "UBER",
+      "side": "long",
+      "rank": 1,
+      "relvol": 1.5087542868023964,
+      "net": 8.10225877395637,
+      "r": 0.8554807792915197,
+      "reason": "flat",
+      "mfe": 1.781758821629075,
+      "mae": 0.7934698571986191,
+      "continued": true
+    },
+    {
+      "date": "2026-08-07",
+      "symbol": "IOVA",
+      "side": "short",
+      "rank": 3,
+      "relvol": 1.4852030919923873,
+      "net": 0.7833145978450988,
+      "r": 0.08033998232816747,
+      "reason": "flat",
+      "mfe": 1.1666667644794482,
+      "mae": 0.19230730858063494,
+      "continued": true
+    },
+    {
+      "date": "2026-08-10",
+      "symbol": "DIS",
+      "side": "short",
+      "rank": 2,
+      "relvol": 1.3674766090571,
+      "net": -0.7295784429931162,
+      "r": -0.07505922780268517,
+      "reason": "flat",
+      "mfe": 0.23345181141865817,
+      "mae": 0.15432247840983465,
+      "continued": null
+    },
+    {
+      "date": "2026-08-11",
+      "symbol": "INTC",
+      "side": "long",
+      "rank": 1,
+      "relvol": 1.6070867868677525,
+      "net": -2.5945015228271084,
+      "r": -0.29994253131272364,
+      "reason": "flat",
+      "mfe": 0.22543576213987537,
+      "mae": 0.6647386485574431,
+      "continued": null
+    },
+    {
+      "date": "2026-08-12",
+      "symbol": "ORCL",
+      "side": "short",
+      "rank": 2,
+      "relvol": 1.3923751711079024,
+      "net": -5.194016832580587,
+      "r": -1.0184343074062088,
+      "reason": "stop",
+      "mfe": 0.027451688596827725,
+      "mae": 1.1235273329094382,
+      "continued": false
+    },
+    {
+      "date": "2026-08-13",
+      "symbol": "NFLX",
+      "side": "long",
+      "rank": 1,
+      "relvol": 1.8960688271817958,
+      "net": 3.0372102941895007,
+      "r": 0.3539881958534031,
+      "reason": "flat",
+      "mfe": 0.4475562501347192,
+      "mae": 0.7762233688042469,
+      "continued": null
+    },
+    {
+      "date": "2026-08-14",
+      "symbol": "CVX",
+      "side": "long",
+      "rank": 3,
+      "relvol": 1.9613420480778416,
+      "net": -3.7017346411133634,
+      "r": -0.3956380256280261,
+      "reason": "flat",
+      "mfe": 0.3291912467696155,
+      "mae": 0.4830937425633469,
+      "continued": null
+    },
+    {
+      "date": "2026-08-17",
+      "symbol": "MA",
+      "side": "short",
+      "rank": 3,
+      "relvol": 1.3992478775504635,
+      "net": 1.4478885095215208,
+      "r": 0.2822369234847437,
+      "reason": "flat",
+      "mfe": 0.5613793963356449,
+      "mae": 0.30214722831510454,
+      "continued": null
+    },
+    {
+      "date": "2026-08-18",
+      "symbol": "HD",
+      "side": "long",
+      "rank": 1,
+      "relvol": 3.960249648716512,
+      "net": -1.7906015679931278,
+      "r": -0.18555447274253184,
+      "reason": "flat",
+      "mfe": 0.3430067787570972,
+      "mae": 0.35958341281603423,
+      "continued": null
+    },
+    {
+      "date": "2026-08-19",
+      "symbol": "CVX",
+      "side": "long",
+      "rank": 3,
+      "relvol": 2.417458227207974,
+      "net": -6.536125985412659,
+      "r": -0.6983026922124422,
+      "reason": "flat",
+      "mfe": 0.08653614037119119,
+      "mae": 0.6826911677997936,
+      "continued": null
+    },
+    {
+      "date": "2026-08-20",
+      "symbol": "WMT",
+      "side": "short",
+      "rank": 1,
+      "relvol": 6.1454742752915905,
+      "net": -0.6069607476806322,
+      "r": -0.06457024199511235,
+      "reason": "flat",
+      "mfe": 0.2638293219415004,
+      "mae": 0.41702056207880805,
+      "continued": null
+    },
+    {
+      "date": "2026-08-21",
+      "symbol": "AMZN",
+      "side": "long",
+      "rank": 3,
+      "relvol": 1.5290355134797444,
+      "net": 1.261144026489367,
+      "r": 0.19151876083764205,
+      "reason": "flat",
+      "mfe": 0.7311279359602931,
+      "mae": 0.5512570253384861,
+      "continued": null
+    },
+    {
+      "date": "2026-08-24",
+      "symbol": "DIS",
+      "side": "long",
+      "rank": 1,
+      "relvol": 3.169672705353216,
+      "net": -4.307456902770972,
+      "r": -0.5630665313440787,
+      "reason": "flat",
+      "mfe": 0.09411852985147318,
+      "mae": 0.768628776342666,
+      "continued": null
+    },
+    {
+      "date": "2026-08-25",
+      "symbol": "XOM",
+      "side": "long",
+      "rank": 3,
+      "relvol": 1.3700672937778444,
+      "net": -10.15699332122813,
+      "r": -1.0525361708513143,
+      "reason": "stop",
+      "mfe": 0.007765997347342226,
+      "mae": 1.0310393223782286,
+      "continued": false
+    }
+  ],
+  "iovaTrades": [
+    {
+      "date": "2026-07-17",
+      "symbol": "IOVA",
+      "side": "long",
+      "net": 1.7409545056915487,
+      "r": 0.1813493757917306,
+      "reason": "flat",
+      "mfe": 0.36249980092054485,
+      "mae": 0.3247499013662613,
+      "continued": null
+    },
+    {
+      "date": "2026-07-20",
+      "symbol": "IOVA",
+      "side": "long",
+      "net": -1.948427194032634,
+      "r": -0.1980106733918613,
+      "reason": "flat",
+      "mfe": 0.18750002980229133,
+      "mae": 0.2708333498901594,
+      "continued": null
+    },
+    {
+      "date": "2026-07-21",
+      "symbol": "IOVA",
+      "side": "long",
+      "net": -1.0177619085502394,
+      "r": -0.10187809518300822,
+      "reason": "flat",
+      "mfe": 0.08108161747948474,
+      "mae": 0.7972977605504628,
+      "continued": null
+    },
+    {
+      "date": "2026-07-22",
+      "symbol": "IOVA",
+      "side": "short",
+      "net": 3.7556767199707304,
+      "r": 0.3784742358552431,
+      "reason": "flat",
+      "mfe": 0.5478873521851427,
+      "mae": 0.32279918731350826,
+      "continued": null
+    },
+    {
+      "date": "2026-07-23",
+      "symbol": "IOVA",
+      "side": "long",
+      "net": -5.039927674179045,
+      "r": -0.5101145861240534,
+      "reason": "flat",
+      "mfe": 0.057693605593409227,
+      "mae": 0.5769221909644994,
+      "continued": null
+    },
+    {
+      "date": "2026-07-24",
+      "symbol": "IOVA",
+      "side": "long",
+      "net": -9.663506409225416,
+      "r": -0.9860709003688347,
+      "reason": "flat",
+      "mfe": 0.14285740755010795,
+      "mae": 0.971427951735636,
+      "continued": null
+    },
+    {
+      "date": "2026-07-28",
+      "symbol": "IOVA",
+      "side": "short",
+      "net": -1.049510892419775,
+      "r": -0.10633339477718655,
+      "reason": "flat",
+      "mfe": 0.09523788763558175,
+      "mae": 0.9047620215383196,
+      "continued": null
+    },
+    {
+      "date": "2026-07-29",
+      "symbol": "IOVA",
+      "side": "short",
+      "net": -10.922841764888718,
+      "r": -1.1237501053810992,
+      "reason": "stop",
+      "mfe": 0.30555740403697346,
+      "mae": 1,
+      "continued": false
+    },
+    {
+      "date": "2026-07-30",
+      "symbol": "IOVA",
+      "side": "long",
+      "net": -2.1322176472663497,
+      "r": -0.2203845657661804,
+      "reason": "flat",
+      "mfe": 0.3483731978634853,
+      "mae": 0.30232636537967333,
+      "continued": null
+    },
+    {
+      "date": "2026-07-31",
+      "symbol": "IOVA",
+      "side": "short",
+      "net": 7.491326491794625,
+      "r": 0.7754994255249192,
+      "reason": "flat",
+      "mfe": 1.2857137537328438,
+      "mae": 0.2857140262111396,
+      "continued": true
+    },
+    {
+      "date": "2026-08-03",
+      "symbol": "IOVA",
+      "side": "long",
+      "net": 0.12705335861209804,
+      "r": 0.0129487688025639,
+      "reason": "flat",
+      "mfe": 0.6053819203590703,
+      "mae": 0.29103103366460614,
+      "continued": null
+    },
+    {
+      "date": "2026-08-04",
+      "symbol": "IOVA",
+      "side": "short",
+      "net": -5.401889323520601,
+      "r": -0.5512136468590122,
+      "reason": "flat",
+      "mfe": 0.357144375237912,
+      "mae": 0.9285697353115641,
+      "continued": null
+    },
+    {
+      "date": "2026-08-07",
+      "symbol": "IOVA",
+      "side": "short",
+      "net": 0.7833145978450988,
+      "r": 0.08033998232816747,
+      "reason": "flat",
+      "mfe": 1.1666667644794482,
+      "mae": 0.19230730858063494,
+      "continued": true
+    },
+    {
+      "date": "2026-08-10",
+      "symbol": "IOVA",
+      "side": "long",
+      "net": -0.5471971395492298,
+      "r": -0.05699966806192851,
+      "reason": "flat",
+      "mfe": 0.40625005587932306,
+      "mae": 0.43749938160217827,
+      "continued": null
+    },
+    {
+      "date": "2026-08-11",
+      "symbol": "IOVA",
+      "side": "long",
+      "net": -3.3043981707763397,
+      "r": -0.34192854524087646,
+      "reason": "flat",
+      "mfe": 0,
+      "mae": 0.6125825235998021,
+      "continued": null
+    },
+    {
+      "date": "2026-08-12",
+      "symbol": "IOVA",
+      "side": "long",
+      "net": -1.030248029174767,
+      "r": -0.10638225251949963,
+      "reason": "flat",
+      "mfe": 0.11313231959302707,
+      "mae": 0.8636973316870565,
+      "continued": null
+    },
+    {
+      "date": "2026-08-13",
+      "symbol": "IOVA",
+      "side": "short",
+      "net": 4.15789501849178,
+      "r": 0.4341267325752107,
+      "reason": "flat",
+      "mfe": 0.6464036867978934,
+      "mae": 0.27825356223243114,
+      "continued": null
+    },
+    {
+      "date": "2026-08-14",
+      "symbol": "IOVA",
+      "side": "long",
+      "net": 17.945415434150735,
+      "r": 1.862524176767174,
+      "reason": "flat",
+      "mfe": 1.9760973793859904,
+      "mae": 0.39024373224129866,
+      "continued": true
+    },
+    {
+      "date": "2026-08-17",
+      "symbol": "IOVA",
+      "side": "long",
+      "net": 10.26052605218892,
+      "r": 1.0364176515305075,
+      "reason": "flat",
+      "mfe": 1.999446020716374,
+      "mae": 0.6666667019879668,
+      "continued": true
+    },
+    {
+      "date": "2026-08-18",
+      "symbol": "IOVA",
+      "side": "short",
+      "net": -1.5666299969100645,
+      "r": -0.15824538837971278,
+      "reason": "flat",
+      "mfe": 0.37818019041019013,
+      "mae": 0.34545544206566087,
+      "continued": null
+    },
+    {
+      "date": "2026-08-19",
+      "symbol": "IOVA",
+      "side": "long",
+      "net": 4.899627804517768,
+      "r": 0.5025260761288625,
+      "reason": "flat",
+      "mfe": 0.5769241754358285,
+      "mae": 0.9230775851941969,
+      "continued": null
+    },
+    {
+      "date": "2026-08-20",
+      "symbol": "IOVA",
+      "side": "long",
+      "net": 23.647015294532757,
+      "r": 2.4328194723894456,
+      "reason": "target",
+      "mfe": 2.5555533067689273,
+      "mae": 0.33333425168598874,
+      "continued": true
+    },
+    {
+      "date": "2026-08-21",
+      "symbol": "IOVA",
+      "side": "short",
+      "net": 12.652935403823873,
+      "r": 1.2496719262364213,
+      "reason": "flat",
+      "mfe": 1.530861825338206,
+      "mae": 0.2839511161421124,
+      "continued": true
+    },
+    {
+      "date": "2026-08-24",
+      "symbol": "IOVA",
+      "side": "long",
+      "net": -1.6399901894759774,
+      "r": -0.1593771455636851,
+      "reason": "flat",
+      "mfe": 1.0816324512841597,
+      "mae": 0.38775447446646855,
+      "continued": true
+    },
+    {
+      "date": "2026-08-25",
+      "symbol": "IOVA",
+      "side": "long",
+      "net": -10.926890838432286,
+      "r": -1.0712647692308026,
+      "reason": "stop",
+      "mfe": 0.05882347001331239,
+      "mae": 1.1764691758720633,
+      "continued": false
+    },
+    {
+      "date": "2026-08-26",
+      "symbol": "IOVA",
+      "side": "short",
+      "net": 4.319468427314791,
+      "r": 0.4258194553443439,
+      "reason": "flat",
+      "mfe": 0.6724358911369223,
+      "mae": 0.07727851978546606,
+      "continued": null
+    },
+    {
+      "date": "2026-08-27",
+      "symbol": "IOVA",
+      "side": "short",
+      "net": -11.62348075979228,
+      "r": -1.1335184045209594,
+      "reason": "stop",
+      "mfe": 0.00055386061203107,
+      "mae": 1.3335144194599315,
+      "continued": false
+    }
+  ]
+}

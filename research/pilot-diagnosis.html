@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pilot diagnosis</title>
+  <style>
+    :root { color-scheme: dark; }
+    body { margin: 0; font: 16px/1.5 Segoe UI, Arial, sans-serif; background: #111; color: #e8e8e8; }
+    main { max-width: 880px; margin: 0 auto; padding: 32px 20px 64px; }
+    h1 { font-size: 26px; margin: 0 0 8px; }
+    h2 { font-size: 18px; margin: 28px 0 10px; }
+    p, li { color: #c8c8c8; }
+    .sub { color: #888; margin: 0 0 20px; }
+    .ok, .info, .warn { padding: 12px 14px; border-radius: 8px; margin: 16px 0; }
+    .ok { background: #14301c; border: 1px solid #2a6040; }
+    .info { background: #142434; border: 1px solid #24506a; }
+    .warn { background: #3a2a10; border: 1px solid #6a4a18; }
+    .ok strong, .info strong, .warn strong { display: block; margin-bottom: 4px; color: #fff; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 12px 0; }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #2a2a2a; vertical-align: top; }
+    th { color: #888; }
+    .neg { color: #e07070; }
+    .pos { color: #6ecf8e; }
+    a { color: #8ec8f0; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Why the selected trades failed</h1>
+  <p class="sub">Diagnosis only. Pilot Jul 17 – Aug 27. Sealed Aug 28 – Oct 9 unread. Live book unchanged. No rule was tuned on these dates.</p>
+
+  <div class="warn">
+    <strong>Supported: this relative-volume rule did not help. Not supported: that IOVA has an edge, or that sitting out is always better.</strong>
+    On the 20 sessions both books traded, the selected names lost $42.60 and IOVA made $33.78. The gap is a selection result on the same mornings, not a few extra IOVA days.
+  </div>
+
+  <h2>1. Same sessions</h2>
+  <table>
+    <thead><tr><th>Session type</th><th>Days</th><th>Selected net</th><th>IOVA net</th></tr></thead>
+    <tbody>
+      <tr><td>Both traded</td><td>20</td><td class="neg">−$42.60</td><td class="pos">+$33.78</td></tr>
+      <tr><td>Selected only</td><td>3</td><td class="pos">+$9.98</td><td>$0</td></tr>
+      <tr><td>IOVA only</td><td>7</td><td>$0</td><td class="neg">−$9.81</td></tr>
+      <tr><td>Neither</td><td>0</td><td>—</td><td>—</td></tr>
+    </tbody>
+  </table>
+  <p>IOVA’s extra seven days lost money. Selected’s three unique days made money. The headline +$24 vs −$33 is almost entirely the 20 overlapping mornings, when the bot picked a different name.</p>
+
+  <h2>2. What happened after entry</h2>
+  <table>
+    <thead><tr><th>Path</th><th>Selected (23)</th><th>IOVA (27)</th></tr></thead>
+    <tbody>
+      <tr><td>Little travel (MFE &lt; 0.5R and never −1R first)</td><td>8</td><td>6</td></tr>
+      <tr><td>Immediate reverse (MAE ≥ 0.5R, MFE &lt; 0.3R)</td><td>6</td><td>8</td></tr>
+      <tr><td>Favorable, short of +1R</td><td>5</td><td>5</td></tr>
+      <tr><td>Adverse first after some travel</td><td>1</td><td>1</td></tr>
+      <tr><td>Reached +1R before −1R</td><td>3</td><td>7</td></tr>
+    </tbody>
+  </table>
+  <p>Selected names mostly did not continue. Eight barely moved. Six reversed. Five reached at least +0.5R and died before +1R. That last group is the only place an exit change could have mattered, and it is 5 of 23 trades. The 2.5R target is not the main leak.</p>
+  <p>Median time to MFE was 75 minutes on selected names, 140 on IOVA. Median time to MAE was 120 vs 65. Delay to the next open cost 0.01R on selected names and 0.08R on IOVA. Late fill is not why the selected book lost.</p>
+
+  <h2>3. Selection vs execution</h2>
+  <table>
+    <thead><tr><th></th><th>Selected mean</th><th>IOVA mean</th></tr></thead>
+    <tbody>
+      <tr><td>Opening-range width / price</td><td>2.0%</td><td>3.5%</td></tr>
+      <tr><td>Stop distance / price</td><td>2.3%</td><td>4.4%</td></tr>
+      <tr><td>Stop distance, dollars</td><td>$3.79</td><td>$0.27</td></tr>
+      <tr><td>Signal time (NY)</td><td>10:28</td><td>10:31</td></tr>
+      <tr><td>MFE / MAE</td><td>0.51R / 0.59R</td><td>0.65R / 0.57R</td></tr>
+    </tbody>
+  </table>
+  <p>The selected names are expensive large caps. Their ranges are tighter as a percent of price, so +1R is a <em>smaller</em> percent move than on IOVA. They still did not get there. Spreads are not in the Yahoo file; the model already takes 2¢ each way. Breakout clock is about the same.</p>
+
+  <h2>4. Continuation check</h2>
+  <p>Each selected path was walked again from the fill bar. All 23 agree with the stored flag. No bar in this sample first crossed both +1R and −1R. Rule: if both happen on the same bar, it does not count as continuation, and the stop is the exit.</p>
+
+  <h2>5. What remains uncertain</h2>
+  <ul>
+    <li>23 and 27 trades cannot pin down a $2.31 gap in expectancy as a persistent advantage.</li>
+    <li>This test is one universe (liquid names we already load), one cutoff (top 3), and one execution stack. It does not isolate “relative volume” from those choices.</li>
+    <li>IOVA’s +$24 is the better half of a book that is −$34.33 over the full audited sample. It is not an edge.</li>
+    <li>Yahoo 5-minute volume is not official exchange volume.</li>
+  </ul>
+
+  <h2>What to test next — not yet run</h2>
+  <p>Do not add another filter to this opening-range rule on these dates. Ranked by information gain, using only unused data or a new tape:</p>
+  <table>
+    <thead><tr><th>#</th><th>Hypothesis</th><th>Why</th><th>Data</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Failed morning breaks revert</td>
+        <td>14 of 23 selected trades were reverse or little travel. That is a different family: fade a break that does not go, not another continuation filter.</td>
+        <td>Existing 5-minute OHLC. Can specify on paper now. Must not fit on this pilot. Needs a later unused window or a new tape.</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>“In play” is gap + range expansion, not mega-cap relvol</td>
+        <td>This universe is names that are usually busy. Relvol here mostly picked expensive stocks with tight percent ranges.</td>
+        <td>Needs a broader list and longer history than 60 Yahoo days.</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Keep ORB, change only the exit on names that already reach +0.5R</td>
+        <td>Only 5 selected trades. Low information. Easy to fool yourself.</td>
+        <td>Existing data, but this window is spent. Reject unless a new sample is reserved first.</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="info">
+    <strong>Next experiment is not chosen yet</strong>
+    Write the hypothesis, baseline, metric and reject rule before any code runs. Keep Aug 28 – Oct 9 sealed until that design is frozen. Live IOVA stays off.
+  </div>
+  <p><a href="/research/pilot-diagnosis.json">Full JSON</a> · <a href="/research/live-book-audit.html">Audited live book</a></p>
+</main>
+</body>
+</html>

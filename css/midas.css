@@ -354,11 +354,22 @@ p { margin: 0; }
 .table tbody tr:last-child td { border-bottom: none; }
 .table tbody tr.clickable { cursor: pointer; }
 .table tbody tr.clickable:hover td { background: var(--surface-2); }
+.table tbody tr.is-selected td { background: var(--accent-soft); }
 .table .r { text-align: right; }
 .table .sym { font-weight: 600; }
 .table .name { color: var(--muted); font-size: 12px; margin-top: -2px; max-width: 220px; overflow: hidden; text-overflow: ellipsis; }
 .table .sub { color: var(--muted); font-size: 12px; }
 .table-scroll { overflow-x: auto; }
+.table td .btn { margin: 8px 0; }
+.bot-notes {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--text-2);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.bot-notes li { padding-left: 2px; }
 .spark { width: 96px; height: 28px; display: block; }
 
 .empty {
@@ -384,7 +395,41 @@ p { margin: 0; }
   pointer-events: none;
 }
 .chart.sm { height: 180px; }
+.chart.lg { height: 340px; }
 
+.run-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  padding: 10px 20px 14px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.run-legend i {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 6px;
+  vertical-align: 1px;
+}
+.run-legend .tri-up {
+  width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent;
+  border-bottom: 8px solid var(--up); background: none;
+}
+.run-legend .tri-down {
+  width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent;
+  border-top: 8px solid var(--down); background: none;
+}
+.run-legend .dot { border-radius: 50%; background: var(--text-2); }
+.run-legend .dot.win { background: var(--up); }
+.run-legend .dot.loss { background: var(--down); }
+.run-legend .line { width: 14px; height: 0; border-top: 1px dashed var(--muted); vertical-align: 3px; }
+.run-readout {
+  padding: 0 20px 14px;
+  color: var(--text-2);
+  font-size: 13px;
+  min-height: 1.4em;
+}
 .range-bar {
   position: relative;
   height: 3px;
@@ -526,3 +571,30 @@ p { margin: 0; }
 .alloc span.cash { background: var(--border-strong); opacity: 1; }
 .legend { display: flex; flex-wrap: wrap; gap: 10px 16px; margin-top: 10px; font-size: 12px; color: var(--muted); }
 code { font-family: var(--mono); font-size: 12px; background: var(--surface-2); padding: 1px 5px; border-radius: 4px; }
+
+.bar-track {
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+.bar-fill {
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  transition: width .2s;
+}
+
+.network {
+  position: relative;
+  width: 100%;
+  height: 480px;
+}
+.network canvas { width: 100%; height: 100%; display: block; }
+.network .chart-empty {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted); font-size: 12.5px; text-align: center; padding: 0 20px;
+  pointer-events: none;
+}

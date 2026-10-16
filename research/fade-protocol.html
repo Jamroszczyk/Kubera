@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Failed-break fade — registered, not run</title>
+  <style>
+    :root { color-scheme: dark; }
+    body { margin: 0; font: 16px/1.5 Segoe UI, Arial, sans-serif; background: #111; color: #e8e8e8; }
+    main { max-width: 880px; margin: 0 auto; padding: 32px 20px 64px; }
+    h1 { font-size: 26px; margin: 0 0 8px; }
+    h2 { font-size: 18px; margin: 28px 0 10px; }
+    p, li { color: #c8c8c8; }
+    .sub { color: #888; margin: 0 0 20px; }
+    .ok, .info, .warn { padding: 12px 14px; border-radius: 8px; margin: 16px 0; }
+    .ok { background: #14301c; border: 1px solid #2a6040; }
+    .info { background: #142434; border: 1px solid #24506a; }
+    .warn { background: #3a2a10; border: 1px solid #6a4a18; }
+    .ok strong, .info strong, .warn strong { display: block; margin-bottom: 4px; color: #fff; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 12px 0; }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #2a2a2a; vertical-align: top; }
+    th { color: #888; }
+    a { color: #8ec8f0; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Failed-break fade</h1>
+  <p class="sub">Registered before the run. Executed once on Aug 28 – Oct 9. Verdict: REJECT (−$62.10, 19 trades). Not wired to the live book. <a href="/research/fade-sealed.html">Open the result</a>.</p>
+
+  <div class="warn">
+    <strong>Still no edge to deploy</strong>
+    Relative-volume selection is rejected. IOVA’s first-half profit is fragile (one day → $0.32, two days → −$17.63). The audited live book is −$34.33. Both IOVA sides stay off. This page only states the next hypothesis so it cannot be rewritten after seeing its P&amp;L.
+  </div>
+
+  <h2>Hypothesis</h2>
+  <p>When the first valid opening-range break of the day fails to hold, the reversal back into the range is tradable after the frozen costs. A failed break is not assumed to be a profitable fade.</p>
+
+  <h2>Universe, known by 10:00</h2>
+  <p>Same common stocks as the last pilot (no sector ETFs). Prior close ≥ $5. Prior-day dollar volume ≥ $20M. At least 3 opening bars. Missing data skips that name. No relative-volume rank. That rule was tested and rejected.</p>
+
+  <h2>Break, then failure</h2>
+  <ol>
+    <li><strong>Candidate.</strong> After 10:00, the first eligible name that prints a valid opening-range break in clock order is the only candidate that day. Same break rule as the live book: close beyond the actual 9:30–10:00 high or low, and the name leads or lags SPY from that name’s range open. If two names break on the same bar, take the one with the larger range as a percent of price. If none break by 13:00, no trade.</li>
+    <li><strong>Do not buy the break.</strong> Record a theoretical next-open fill only so we can measure the break’s MFE.</li>
+    <li><strong>Failure</strong> (all must hold, and all are known on the signal close):
+      <ul>
+        <li>A later bar closes back inside the range (up-break: close &lt; range high; down-break: close &gt; range low).</li>
+        <li>That close is at or before 14:00 New York.</li>
+        <li>From the theoretical breakout fill, MFE never reached +1R before this close.</li>
+      </ul>
+      If the breakout would have hit its opposite-range stop first, that is a different event and not a fade signal.
+    </li>
+    <li><strong>Signal time</strong> is the close of the first bar that satisfies failure. No waiting to see whether the fade would have worked.</li>
+  </ol>
+
+  <h2>Fade trade</h2>
+  <table>
+    <thead><tr><th>Item</th><th>Rule</th></tr></thead>
+    <tbody>
+      <tr><td>Direction</td><td>Opposite the failed break.</td></tr>
+      <tr><td>Entry</td><td>Next bar open ± $0.02 (adverse). If that fill is already through the stop, skip. No second name.</td></tr>
+      <tr><td>Invalidation / stop</td><td>The extreme of the failed break: highest high after an up-break, or lowest low after a down-break, from the breakout bar through the signal bar. Known at the signal close.</td></tr>
+      <tr><td>Target</td><td>Midpoint of the opening range. Not 2.5R. The claim is “back into the range,” not a new trend.</td></tr>
+      <tr><td>If stop and target print on the same bar</td><td>Stop wins.</td></tr>
+      <tr><td>Size, halt, flat, cost</td><td>1% of equity to the stop, day halt −3%, flat 15:45, 0.05% of entry notional once, $0.02 slip each side. Same frozen live-book accounting.</td></tr>
+      <tr><td>One trade</td><td>After a fill, a skip, or a day with no failure, stand aside. No switch.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>What we will measure</h2>
+  <p>Prediction: fraction of fades that reach the midpoint before the stop (continuation of the fade). Economics: net per session (zeros in), net per trade, drawdown, MFE/MAE, trade count. Sensitivity: net after dropping the one and two best days. Compare to no trade on the same dates. Do not pass on continuation alone.</p>
+
+  <h2>Sample</h2>
+  <ul>
+    <li>Jul 17 – Aug 27: spent. We already saw that many breaks did not continue. Using it to judge this fade would be fitting.</li>
+    <li>Aug 28 – Oct 9: still sealed. If this protocol is accepted, the first authorized run is <em>one</em> shot on that window only.</li>
+    <li>A pass there does not go live. It only justifies buying a longer unused tape for a second test.</li>
+    <li>Too few if fewer than 8 fade trades. Then stop and wait for more history. Do not widen the definition to create trades.</li>
+  </ul>
+
+  <h2>Reject / do not promote</h2>
+  <p>Reject if net ≤ 0, if net is worse than no trade, if fewer than 8 trades, or if the two best days account for more than half of a positive net. Do not then change the midpoint, the 14:00 cutoff, or the universe and call the same window a new test.</p>
+
+  <div class="info">
+    <strong>Research stays out of the live book</strong>
+    <code>js/bot/daytrade.js</code> still trades only the frozen IOVA opening-range rule, and both sides stay off. Any fade code, when written, lives under <code>scripts/</code> and cannot change <code>BOOK</code>. Promotion is a written switch after a second unused sample, not an edit after a green file.
+  </div>
+  <p><a href="/research/pilot-protocol.html">Completed relvol protocol</a> · <a href="/research/live-book-audit.html">Audited −$34.33 baseline</a></p>
+</main>
+</body>
+</html>

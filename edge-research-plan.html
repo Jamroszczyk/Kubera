@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Where the edge might be</title>
+  <style>
+    :root { color-scheme: dark; }
+    body { margin: 0; font: 16px/1.5 system-ui, sans-serif; background: #111; color: #e8e8e8; }
+    main { max-width: 880px; margin: 0 auto; padding: 32px 20px 64px; }
+    h1 { font-size: 28px; margin: 0 0 8px; }
+    h2 { font-size: 20px; margin: 36px 0 12px; }
+    h3 { font-size: 15px; margin: 16px 0 8px; }
+    p, li { color: #c8c8c8; }
+    .sub { color: #888; margin: 0 0 24px; }
+    .warn, .info { padding: 12px 14px; border-radius: 8px; margin: 16px 0; }
+    .warn { background: #3a2a10; border: 1px solid #6a4a18; }
+    .info { background: #142434; border: 1px solid #24506a; }
+    .warn strong, .info strong { display: block; margin-bottom: 4px; color: #fff; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 20px 0; }
+    .stat { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 12px; }
+    .stat b { display: block; font-size: 22px; }
+    .stat span { color: #888; font-size: 13px; }
+    .neg { color: #e07070; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 12px 0 8px; }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #2a2a2a; vertical-align: top; }
+    th { color: #888; font-weight: 600; }
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 14px; }
+    .card h3 { margin-top: 0; }
+    @media (max-width: 720px) { .stats, .two { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Where the edge might be</h1>
+  <p class="sub">Consultation after the IOVA opening-range book. Jul 17 – Oct 9 2026. Yahoo 5-minute OHLC. $1,000. 1% risk. Next-open fill. 2¢ slip. 0.05% fee.</p>
+
+  <div class="warn">
+    <strong>Do not mix the two books</strong>
+    28 flats and 39 flats are different samples. The live book cut both sides after 15 losing-R trades, so October is mostly zeros. The research replay left the cutoff off and got 51 trades. MFE numbers belong only to the 51. P/L −$34 belongs only to the 37.
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b class="neg">−$34</b><span>Live book, 37 trades</span></div>
+    <div class="stat"><b>28 / 8 / 1</b><span>Live flats / stops / targets</span></div>
+    <div class="stat"><b>0.6R</b><span>Avg MFE on research flats</span></div>
+    <div class="stat"><b>0.06R</b><span>Cost of waiting for next open</span></div>
+  </div>
+
+  <h2>1. What the numbers establish</h2>
+  <div class="two">
+    <div>
+      <h3>They do establish</h3>
+      <p>Under these fills, the frozen IOVA opening-range rule did not pay for 60 sessions. The kinder +$56 used the signal close as the fill and a close-only range. That number is not a live ticket.</p>
+      <p>Favorable travel after entry is small. Most time exits never reached +1R. The wait for the next open is not the hole.</p>
+      <p>Every IOVA variant we already tried lost on Aug 28–Oct 9. Pullback and fade lost the first half too.</p>
+    </div>
+    <div>
+      <h3>They do not establish</h3>
+      <p>That opening-range breakouts cannot work. Holmberg, Lönnbark and Lundström (Finance Research Letters, 2013) found ORB profits in oil futures, then watched them fail in quieter subperiods. Zarattini, Barbon and Aziz (SSRN 4729284) report a 5-minute ORB that pays after commissions on stocks in play, not on one name every morning.</p>
+      <p>That the 15-trade cutoff learned anything. It stopped the tape. It did not test whether October would have recovered.</p>
+      <p>That AAPL is the next book. Its +$22 is on the same later window used to judge the others.</p>
+    </div>
+  </div>
+
+  <h2>Two samples, not one</h2>
+  <table>
+    <thead><tr><th>Sample</th><th>Trades</th><th>Flat</th><th>Stop</th><th>Target</th><th>Net</th><th>Rule</th></tr></thead>
+    <tbody>
+      <tr><td>Live book</td><td>37</td><td>28</td><td>8</td><td>1</td><td>−34.33</td><td>Cutoff on after 15 trades. Target 2.5R. This is the deployed engine.</td></tr>
+      <tr><td>Research replay</td><td>51</td><td>39</td><td>12</td><td>0</td><td>−54.66</td><td>Cutoff off so October stays in. Same idea, separate script. Do not mix with the 37.</td></tr>
+    </tbody>
+  </table>
+  <p class="sub">Source: live engine in the Bot tab (cutoff on) and the research replay (cutoff off). Same dates, different trade lists. Current code does not move the stop to breakeven. That rule was removed.</p>
+
+  <h2>Already-run variants (do not add another)</h2>
+  <table>
+    <thead><tr><th>Candidate</th><th>Jul 17–Aug 27</th><th>Aug 28–Oct 9</th><th>Test $ / trade</th></tr></thead>
+    <tbody>
+      <tr><td>ORB 2.5R</td><td>+44</td><td>−99</td><td>−3.67</td></tr>
+      <tr><td>ORB 1R</td><td>+30</td><td>−84</td><td>−3.11</td></tr>
+      <tr><td>VWAP pullback</td><td>−90</td><td>−92</td><td>−3.18</td></tr>
+      <tr><td>Fade 2% open</td><td>−100</td><td>−18</td><td>−0.76</td></tr>
+      <tr><td>ORB RS &gt; 0.4%</td><td>+30</td><td>−84</td><td>−3.11</td></tr>
+      <tr><td>ORB vol 1.5x</td><td>−7</td><td>−39</td><td>−2.99</td></tr>
+      <tr><td>ORB before 11:00</td><td>+33</td><td>−54</td><td>−2.84</td></tr>
+      <tr><td>ORB 1R AAPL</td><td>−6</td><td>+22</td><td>+0.87</td></tr>
+      <tr><td>ORB 1R QQQ</td><td>−22</td><td>−23</td><td>−0.87</td></tr>
+    </tbody>
+  </table>
+  <p class="sub">Bailey, Borwein, López de Prado and Zhu: after enough trials a winning backtest appears by chance, and under memory that winner tends to lose later. These nine rows already used the later window. It is spent for selection.</p>
+
+  <h2>2. Ranked questions</h2>
+  <table>
+    <thead><tr><th>#</th><th>Question</th><th>Why this first</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Wrong universe</td><td>Published 5-minute ORB work that survives costs does it on names that are already in play that morning, not on one biotech every day. IOVA-every-day may have no continuation to find.</td></tr>
+      <tr><td>2</td><td>Weak signal, not late fill</td><td>Next-open cost 0.06R. Flats average 0.6R MFE. That points at the break, not the queue.</td></tr>
+      <tr><td>3</td><td>Wrong payoff, second</td><td>2.5R is almost never seen. That is a target problem only after a break that actually continues.</td></tr>
+      <tr><td>4</td><td>Period and sample are thin</td><td>60 sessions, one name, about 10 variants already compared. Holmberg’s oil ORB also died when the sample was split. Bailey et al.: more trials make a lucky winner expected.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>3. First experiment (the only one to run next)</h2>
+  <div class="card">
+    <h3>Continuation by morning participation, not by ticker</h3>
+    <p>Question: does a 10:00 opening-range break continue more often on names that are already in play that morning than on IOVA every day?</p>
+    <p>Universe, known by 10:00 only: US names we already load, prior-day price ≥ $5, prior-day dollar volume ≥ $20M. Rank that morning by relative volume from 9:30–10:00 versus the same half-hour over the previous 10 sessions. Take the top 3. Do not rank by later P/L.</p>
+    <p>Signal, frozen: same ORB we already have. High/low range 9:30–10:00. Next-open fill. 2¢ slip. 0.05% fee. 1% risk. Flat 15:45. One name per day: the highest-ranked name that actually breaks. No 15-trade cutoff. No new thresholds.</p>
+    <p>Outcome, not a new target hunt: from the fill, store MFE in R, MAE in R, and close-to-close return to 15:45. Compare three groups on the first 30 sessions only: (1) IOVA every day, (2) the morning top-3 pick, (3) no trade. Hold the last 30 sessions untouched until this comparison is written down.</p>
+    <p>Pass: group 2 has higher mean 15:45 return and higher fraction of MFE ≥ 1R than group 1 on the first 30 days, and the gap is not a handful of days. Fail: they match or group 2 is worse. Then stay out and the next question is a longer tape, not another IOVA filter.</p>
+  </div>
+
+  <h2>How to tell a weak break from a late one</h2>
+  <div class="two">
+    <div>
+      <h3>Measure at the signal close</h3>
+      <p>Range width / ATR. Distance of the close beyond the range, in ATR. Volume vs that clock’s 10-day mean. Close vs VWAP. IOVA−SPY and, if we add it, IOVA−XBI. Overnight gap. Time of the first break.</p>
+    </div>
+    <div>
+      <h3>Measure after the fill, several clocks</h3>
+      <p>Return and MFE at +15m, +30m, +60m, and 15:45. If MFE is already large before the next open and dead after it, the delay is the leak. We already measured that leak at 0.06R. If MFE stays small on both sides of the fill, the signal is weak. If it is large only on high relative-volume mornings, the universe is the leak.</p>
+    </div>
+  </div>
+
+  <h2>4. Data</h2>
+  <div class="two">
+    <div>
+      <h3>Have</h3>
+      <p>Yahoo 5-minute OHLC and volume, about 60 sessions, about 48 liquid names plus SPY. Live Finnhub last price. That is enough for the experiment above.</p>
+    </div>
+    <div>
+      <h3>Do not buy yet</h3>
+      <p>Two years of 5-minute bars (Massive/Polygon free or $29 Starter) only if this 60-day universe test is a pass and we need a second window. News timestamps and short-borrow are useful later, not for the first file.</p>
+    </div>
+  </div>
+
+  <h2>5. Architecture</h2>
+  <p>Keep five boxes apart. Research writes candidates and a registry of every trial, including failures. The numerical engine fills and sizes. Forecasts stay off until a feature survives the first 30 days. Risk/execution stays as it is (1%, next open, day halt). Promotion is a written switch, not a silent edit to BOOK.</p>
+  <p>Do not put a classifier on 37 IOVA trades. Bailey’s point stands: the trial count is already the story. Learn a table of experiments, not a 15-trade average R switch.</p>
+
+  <h2>6. Decision rules</h2>
+  <div class="two">
+    <div class="card">
+      <h3>Reject the current IOVA book</h3>
+      <p>Already done for live tickets. Both sides are off. Do not turn them on because a new target looks green on these same 60 days.</p>
+    </div>
+    <div class="card">
+      <h3>Promote a candidate</h3>
+      <p>Only after the first-30-day comparison is locked, then the last 30 days are opened once. Net expectancy after the stated fills beats no-trade and beats IOVA-every-day, and the gap is not two days.</p>
+    </div>
+    <div class="card">
+      <h3>Stay out</h3>
+      <p>If the morning-universe group fails on the first 30 days, or passes there and fails on the locked last 30. Then the next spend is longer history, not another indicator.</p>
+    </div>
+    <div class="card">
+      <h3>Collect more data</h3>
+      <p>Only after a pass on this window. Buy two years of 5-minute OHLC for the daily top-3 list plus SPY. Still no live money.</p>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Pilot finished — NOT SUPPORTED</strong>
+    Audited live book: exactly 37 trade rows, sum −$34.33, execution check passed. Commission is 0.05% of entry notional once, not 0.05% per ticket. Sealed window stays closed. <a href="/research/live-book-audit.html">Open the audit</a>.
+  </div>
+</main>
+</body>
+</html>

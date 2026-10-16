@@ -38,6 +38,7 @@ const MIME = {
   '.js': 'text/javascript; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
+  '.csv': 'text/csv; charset=utf-8',
   '.svg': 'image/svg+xml',
   '.png': 'image/png',
   '.ico': 'image/x-icon',
@@ -67,6 +68,112 @@ const MINOR = {
 const cache = new Map(); // key -> { ts, body }
 const fxCache = new Map(); // currency -> { ts, rate }
 const CACHE_MS = 60_000;
+const BAR_CACHE_MS = 20 * 60_000;
+const BAR_INTERVALS = new Set(['1m', '2m', '5m']);
+const BAR_RANGES = new Set(['5d', '7d', '1mo', '60d']);
+const TAPE_DIR = path.join(ROOT, 'data', 'tape');
+const LEDGER_JSON = path.join(ROOT, 'research', 'ledger.json');
+const LEDGER_HIST = path.join(ROOT, 'research', 'ledger-history.json');
+const LEDGER_CSV = path.join(ROOT, 'research', 'ledger-trades.csv');
+
+function tapeFile(symbol) {
+  return path.join(TAPE_DIR, symbol.replace(/[^A-Z0-9.=-]/gi, '_') + '.json');
+}
+
+function loadTape(symbol) {
+  try {
+    const raw = JSON.parse(fs.readFileSync(tapeFile(symbol), 'utf8'));
+    return Array.isArray(raw.points) ? raw.points : [];
+  } catch {
+    return [];
+  }
+}
+
+function mergePoints(a, b) {
+  const m = new Map();
+  for (const p of a || []) if (p && p[0]) m.set(p[0], p);
+  for (const p of b || []) if (p && p[0]) m.set(p[0], p);
+  return [...m.values()].sort((x, y) => x[0] - y[0]);
+}
+
+function saveTape(symbol, points) {
+  fs.mkdirSync(TAPE_DIR, { recursive: true });
+  const merged = mergePoints(loadTape(symbol), points);
+  fs.writeFileSync(tapeFile(symbol), JSON.stringify({ symbol, updated: Date.now(), points: merged }));
+  return merged;
+}
+
+function tapeStats() {
+  let symbols = 0, bars = 0, from = null, to = null;
+  try {
+    for (const name of fs.readdirSync(TAPE_DIR)) {
+      if (!name.endsWith('.json')) continue;
+      const pts = loadTape(name.replace(/\.json$/i, ''));
+      if (!pts.length) continue;
+      symbols++;
+      bars += pts.length;
+      const a = pts[0][0], b = pts[pts.length - 1][0];
+      if (from == null || a < from) from = a;
+      if (to == null || b > to) to = b;
+    }
+  } catch { /* no tape yet */ }
+  return { symbols, bars, from, to };
+}
+
+function readBody(req, max = 2_000_000) {
+  return new Promise((resolve, reject) => {
+    const chunks = [];
+    let n = 0;
+    req.on('data', (c) => {
+      n += c.length;
+      if (n > max) {
+        reject(new Error('too large'));
+        req.destroy();
+        return;
+      }
+      chunks.push(c);
+    });
+    req.on('end', () => resolve(Buffer.concat(chunks).toString('utf8')));
+    req.on('error', reject);
+  });
+}
+
+function tradesCsv(rows) {
+  if (!rows.length) return '';
+  const headers = Object.keys(rows[0]);
+  const line = (vals) => vals.map((v) => {
+    if (v == null || v === '') return '';
+    const s = typeof v === 'number' ? String(v) : String(v);
+    return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+  }).join(',');
+  return [line(headers), ...rows.map((r) => line(headers.map((h) => r[h])))].join('\n') + '\n';
+}
+
+function saveLedger(snap) {
+  fs.mkdirSync(path.dirname(LEDGER_JSON), { recursive: true });
+  snap.tape = tapeStats();
+  fs.writeFileSync(LEDGER_JSON, JSON.stringify(snap, null, 2));
+  if (Array.isArray(snap.trades) && snap.trades.length) {
+    fs.writeFileSync(LEDGER_CSV, tradesCsv(snap.trades));
+  }
+  let hist = [];
+  try { hist = JSON.parse(fs.readFileSync(LEDGER_HIST, 'utf8')); } catch { /* first save */ }
+  if (!Array.isArray(hist)) hist = [];
+  hist.push({
+    saved: snap.saved,
+    pnl: snap.metrics?.pnl,
+    equity: snap.metrics?.equity,
+    nDays: snap.metrics?.nDays,
+    rounds: snap.metrics?.rounds,
+    first30: snap.metrics?.first30,
+    last30: snap.metrics?.last30,
+    maxDD: snap.metrics?.maxDD,
+    from: snap.metrics?.from,
+    to: snap.metrics?.to,
+  });
+  fs.writeFileSync(LEDGER_HIST, JSON.stringify(hist, null, 2));
+  return snap;
+}
 
 function validSymbol(symbol) {
   return /^[A-Z0-9.=\-]{1,32}$/i.test(symbol);
@@ -269,6 +376,94 @@ async function search(q) {
   }
 }
 
+async function sleep(ms) {
+  return new Promise((r) => setTimeout(r, ms));
+}
+
+async function poolMap(items, limit, fn) {
+  const out = new Array(items.length);
+  let i = 0;
+  async function worker() {
+    while (i < items.length) {
+      const k = i++;
+      out[k] = await fn(items[k], k);
+    }
+  }
+  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, worker));
+  return out;
+}
+
+async function barsOne(symbol, range, interval) {
+  const key = 'b2:' + symbol + ':' + range + ':' + interval;
+  const hit = cache.get(key);
+  if (hit && Date.now() - hit.ts < BAR_CACHE_MS) return hit.body;
+
+  let lastErr = 'upstream';
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const result = await yahooChart(symbol, range, interval);
+      if (!result) { lastErr = 'upstream'; await sleep(400 * (attempt + 1)); continue; }
+      const ts = result.timestamp || [];
+      const q = result.indicators?.quote?.[0] || {};
+      const close = q.close || [];
+      const open = q.open || [];
+      const high = q.high || [];
+      const low = q.low || [];
+      const vol = q.volume || [];
+      let points = [];
+      for (let i = 0; i < ts.length; i++) {
+        if (close[i] == null) continue;
+        points.push([ts[i] * 1000, close[i], open[i] ?? close[i], high[i] ?? close[i], low[i] ?? close[i], vol[i] || 0]);
+      }
+      if (points.length < 8) { lastErr = 'short'; break; }
+      const sym = (result.meta?.symbol || symbol).toUpperCase();
+      if (interval === '5m') points = saveTape(sym, points);
+      if (!(range === '60d' && interval === '5m')) {
+        // Keep short-range calls short. The full tape is still on disk.
+        const yahooTs = new Set((result.timestamp || []).map((t) => t * 1000));
+        points = points.filter((p) => yahooTs.has(p[0]));
+      }
+      const body = {
+        symbol: sym,
+        name: cleanName(result.meta?.shortName || result.meta?.longName || ''),
+        points,
+      };
+      cache.set(key, { ts: Date.now(), body });
+      return body;
+    } catch {
+      lastErr = 'network';
+      await sleep(400 * (attempt + 1));
+    }
+  }
+  if (interval === '5m') {
+    const disk = loadTape(symbol);
+    if (disk.length >= 8) return { symbol, name: '', points: disk };
+  }
+  return { symbol, error: lastErr };
+}
+
+async function barsMany(rawSymbols, range, interval) {
+  if (!BAR_RANGES.has(range) || !BAR_INTERVALS.has(interval)) {
+    return { status: 400, body: { error: 'bad request' } };
+  }
+  const symbols = [...new Set(String(rawSymbols || '').split(',').map((s) => s.trim().toUpperCase()).filter(validSymbol))].slice(0, 60);
+  if (!symbols.length) return { status: 400, body: { error: 'bad request' } };
+
+  const rows = await poolMap(symbols, 4, (sym) => barsOne(sym, range, interval));
+  const bars = {};
+  const names = {};
+  const missing = [];
+  for (const row of rows) {
+    if (row?.points?.length) {
+      bars[row.symbol] = row.points;
+      if (row.name) names[row.symbol] = row.name;
+    } else {
+      missing.push(row?.symbol || '');
+    }
+  }
+  return { status: 200, body: { range, interval, bars, names, missing: missing.filter(Boolean) } };
+}
+
 function send(res, status, body, type = 'application/json; charset=utf-8') {
   res.writeHead(status, { 'Content-Type': type, 'Cache-Control': 'no-store' });
   res.end(typeof body === 'string' || Buffer.isBuffer(body) ? body : JSON.stringify(body));
@@ -295,6 +490,34 @@ http.createServer(async (req, res) => {
   if (url.pathname === '/api/search') {
     const out = await search(url.searchParams.get('q') || '');
     return send(res, out.status, out.body);
+  }
+
+  if (url.pathname === '/api/bars') {
+    const out = await barsMany(
+      url.searchParams.get('symbols') || url.searchParams.get('symbol') || '',
+      (url.searchParams.get('range') || '7d').toLowerCase(),
+      (url.searchParams.get('interval') || '5m').toLowerCase(),
+    );
+    return send(res, out.status, out.body);
+  }
+
+  if (url.pathname === '/api/ledger' && req.method === 'POST') {
+    try {
+      const snap = JSON.parse(await readBody(req));
+      if (!snap || typeof snap !== 'object') return send(res, 400, { error: 'bad request' });
+      snap.saved = snap.saved || new Date().toISOString();
+      return send(res, 200, saveLedger(snap));
+    } catch (e) {
+      return send(res, 400, { error: e.message || 'bad request' });
+    }
+  }
+
+  if (url.pathname === '/api/ledger' && req.method === 'GET') {
+    try {
+      return send(res, 200, JSON.parse(fs.readFileSync(LEDGER_JSON, 'utf8')));
+    } catch {
+      return send(res, 200, { empty: true, tape: tapeStats() });
+    }
   }
 
   let file = path.normalize(decodeURIComponent(url.pathname)).replace(/^(\.\.[/\\])+/, '');

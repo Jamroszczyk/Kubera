@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Frozen protocol and completed pilot</title>
+  <style>
+    :root { color-scheme: dark; }
+    body { margin: 0; font: 16px/1.5 Segoe UI, Arial, sans-serif; background: #111; color: #e8e8e8; }
+    main { max-width: 880px; margin: 0 auto; padding: 32px 20px 64px; }
+    h1 { font-size: 26px; margin: 0 0 8px; }
+    h2 { font-size: 18px; margin: 28px 0 10px; }
+    p, li { color: #c8c8c8; }
+    .sub { color: #888; margin: 0 0 20px; }
+    .ok, .info, .warn { padding: 12px 14px; border-radius: 8px; margin: 16px 0; }
+    .ok { background: #14301c; border: 1px solid #2a6040; }
+    .info { background: #142434; border: 1px solid #24506a; }
+    .warn { background: #3a2a10; border: 1px solid #6a4a18; }
+    .ok strong, .info strong, .warn strong { display: block; margin-bottom: 4px; color: #fff; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 12px 0; }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #2a2a2a; vertical-align: top; }
+    th { color: #888; }
+    .neg { color: #e07070; }
+    .pos { color: #6ecf8e; }
+    a { color: #8ec8f0; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Protocol as executed — not a new run</h1>
+  <p class="sub">The morning-participation pilot already ran on Jul 17 – Aug 27. These notes freeze what the code actually did and add the measurements the later review asked for. Rules were not changed after seeing results. Aug 28 – Oct 9 stays sealed.</p>
+
+  <div class="warn">
+    <strong>Two questions, two answers</strong>
+    Prediction: selected names continued less often (3/23 vs 7/27). Economics: they also lost money (−$32.62 vs IOVA +$23.97 vs no trade $0). A higher continuation rate would not have been enough to pass. The frozen rule already required selected net &gt; 0, selected net &gt; IOVA, more continuation, at least 8 trades, and not two days carrying the gap. Result: NOT SUPPORTED.
+  </div>
+
+  <h2>Event order (this is what ran)</h2>
+  <ul>
+    <li>At 10:00, rank eligible names by opening-half-hour volume / the mean of that same half-hour over the prior 10 sessions (need 5). Keep the top 3. Ranking uses only data available by 10:00.</li>
+    <li>Then walk later bars in clock order. The first of those 3 that prints a valid breakout on a completed 5-minute close becomes the pending trade. Fill is the next open ± $0.02.</li>
+    <li>If rank 2 breaks at 10:01 and rank 1 breaks at 10:05, rank 2 is taken. We do not wait to see whether a better-ranked name breaks later. That would be look-ahead.</li>
+    <li>If two of the top 3 break on the same bar, the better rank wins.</li>
+    <li>One trade per session. After a fill, skip, or failed fill (dead at the stop on the next open), the bot does not switch to another name that day.</li>
+    <li>A name that is already through its range before 10:00 is not filled at 10:00. It can signal only on a post-range bar whose close is still through the high or low and still leads or lags SPY.</li>
+    <li>Fewer than 3 opening bars, no prior session, or fewer than 5 prior half-hours: that name is skipped that day. Nothing is imputed.</li>
+    <li>No halt tape and no spread tape. Every name gets the same 2¢ slip. A missing Yahoo bar means the name cannot signal on that bar.</li>
+    <li>If none of the top 3 signal by 15:15, stand aside.</li>
+  </ul>
+  <p>The phrase “highest-ranked name that subsequently breaks” in the earlier plan is therefore first-in-time among the top 3, not “wait until the close and pick the best rank that broke.” The second reading would peek.</p>
+
+  <h2>Eligibility</h2>
+  <p>Common stocks already loaded (no QQQ, IWM, SMH, XLK, XLF, XLE). Prior close ≥ $5. Prior-day dollar volume ≥ $20M. First five pilot sessions had no eligible names (baseline not ready). After that, 42–43 names cleared most mornings. 25 sessions could have produced a selected trade. 23 did.</p>
+
+  <h2>Required measurements</h2>
+  <table>
+    <thead><tr><th></th><th>Selected</th><th>IOVA every day</th><th>No trade</th></tr></thead>
+    <tbody>
+      <tr><td>Pilot sessions</td><td>30</td><td>30</td><td>30</td></tr>
+      <tr><td>Sessions that could trade / did trade</td><td>25 / 23</td><td>30 / 27</td><td>0 / 0</td></tr>
+      <tr><td>Net, all sessions</td><td class="neg">−$32.62</td><td class="pos">+$23.97</td><td>$0</td></tr>
+      <tr><td>Net per session (zeros included)</td><td class="neg">−$1.09</td><td class="pos">+$0.80</td><td>$0</td></tr>
+      <tr><td>Net per trade</td><td class="neg">−$1.42 · −0.16R</td><td class="pos">+$0.89 · +0.09R</td><td>—</td></tr>
+      <tr><td>+1R before −1R</td><td>3 / 23 (13%)</td><td>7 / 27 (26%)</td><td>—</td></tr>
+      <tr><td>MFE p25 / p50 / p75 / p90</td><td>0.23 / 0.34 / 0.63 / 1.08</td><td>0.13 / 0.38 / 0.88 / 1.71</td><td>—</td></tr>
+      <tr><td>MAE p25 / p50 / p75</td><td>0.36 / 0.56 / 0.79</td><td>0.30 / 0.39 / 0.88</td><td>—</td></tr>
+      <tr><td>Max drawdown</td><td>$38</td><td>$31</td><td>$0</td></tr>
+      <tr><td>Net after dropping the best day</td><td class="neg">−$40.72</td><td>+$0.32</td><td>$0</td></tr>
+      <tr><td>Net after dropping the two best days</td><td class="neg">−$48.36</td><td class="neg">−$17.63</td><td>$0</td></tr>
+    </tbody>
+  </table>
+  <p>On the 20 mornings both traded: selected −$42.60, IOVA +$33.78. Per-session return (including the five days selected could not rank) is the fair comparison when the books skip different days.</p>
+
+  <div class="info">
+    <strong>Sensitivity is not a new pass rule</strong>
+    Dropping IOVA’s two best days turns its +$24 into −$18. That is why a greener mean is not enough to promote IOVA or to open the sealed half. Selected is negative even before that cut.
+  </div>
+
+  <h2>What this does not authorize</h2>
+  <ul>
+    <li>Do not re-run this pilot with a different “first break vs best rank” rule on the same 30 days.</li>
+    <li>Do not change the target, stop, size, $5 / $20M screen, or top-3 cutoff after seeing these numbers.</li>
+    <li>Do not open Aug 28 – Oct 9. That window is still unused.</li>
+    <li>Do not treat IOVA’s first-half +$24 as an edge. The audited full live book is −$34.33.</li>
+  </ul>
+  <p>If we test a new hypothesis later, write the protocol — including this event order — before any code runs, and keep a fresh unused window. The next spend, if any, is a longer tape or a different family (failed-break fade), not another filter on this opening-range rule.</p>
+  <p><a href="/research/pilot-diagnosis.html">Path diagnosis</a> · <a href="/research/live-book-audit.html">Audited live book</a></p>
+</main>
+</body>
+</html>

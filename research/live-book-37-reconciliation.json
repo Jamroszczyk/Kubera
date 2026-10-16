@@ -1,0 +1,45 @@
+{
+  "feeConvention": {
+    "name": "round_trip_on_entry_notional",
+    "commission": "0.05% of entry price × shares, once per closed trade",
+    "not": "0.05% per ticket on both entry and exit",
+    "slippage": "$0.02 per share on the entry fill and $0.02 per share on the exit, inside prices, not inside commission",
+    "frozen": true
+  },
+  "counts": {
+    "csvDataRows": 37,
+    "trades": 37,
+    "flats": 28,
+    "stops": 8,
+    "targets": 1,
+    "firstDate": "2026-07-17",
+    "lastDate": "2026-09-11"
+  },
+  "pnl": {
+    "sumGross": -29.007523498533864,
+    "sumCommission": 5.3181944584846494,
+    "sumNet": -34.32571795701854,
+    "bookPnl": -34.32571795701854,
+    "roundedNet": -34.33
+  },
+  "sensitivityIfBothLegsChargedAt5bps": {
+    "extraExitCommission": 5.331277997798921,
+    "net": -39.65699595481743,
+    "note": "Not the frozen model. Shown only so the 0.05%-per-ticket reading is quantified."
+  },
+  "arithmetic": {
+    "rowMismatches": [],
+    "rowIssueCount": 0,
+    "pass": true
+  },
+  "execution": {
+    "rule": "Fill = next open ± $0.02. Exit raw from stop/target/close, then ± $0.02 adverse. If stop and target print on the same bar, stop wins.",
+    "entrySlipOk": true,
+    "exitSlipOk": true,
+    "barReplayFail": [],
+    "gappedStops": 0,
+    "pass": true
+  },
+  "matchExpectedMinus34_33": true,
+  "pass": true
+}

@@ -8,7 +8,11 @@ import { renderDashboard } from './views/dashboard.js';
 import { renderTrade } from './views/trade.js';
 import { renderActivity } from './views/activity.js';
 import { renderSettings } from './views/settings.js';
+import { renderAnalytics } from './views/analytics.js';
+import { renderBot } from './views/bot.js';
 import { forexOpen } from './assets.js';
+import { runProxyAnalysis, getLastProxy } from './analytics/proxy.js';
+import { getLastDay, runDayTrader } from './bot/daytrade.js';
 
 const store = new Store();
 // A key entered in Settings wins; otherwise fall back to FINNHUB_API_KEY from .env (via server.js).
@@ -101,6 +105,8 @@ const view = document.getElementById('view');
 const routes = {
   dashboard: renderDashboard,
   trade: renderTrade,
+  analytics: renderAnalytics,
+  bot: renderBot,
   activity: renderActivity,
   settings: renderSettings,
 };
@@ -123,7 +129,11 @@ function render() {
   cleanup = null;
   clear(view);
   document.querySelectorAll('#nav a').forEach((a) => a.classList.toggle('active', a.dataset.route === (routes[name] ? name : 'dashboard')));
-  document.title = name === 'trade' && params.symbol ? `${params.symbol} · Midas` : 'Midas';
+  document.title = name === 'trade' && params.symbol
+    ? `${params.symbol} · Midas`
+    : name === 'analytics' ? 'Analytics · Midas'
+    : name === 'bot' ? 'Bot · Midas'
+    : 'Midas';
   try {
     cleanup = fn(view, { store, market, navigate, params, openDeposit, applyTheme }) || null;
   } catch (e) {
@@ -143,4 +153,8 @@ loadConfig().then(() => {
 });
 
 // Expose for experiments, bots and analysis from the browser console.
-window.midas = { store, market, provider, computePortfolio, navigate };
+window.midas = {
+  store, market, provider, computePortfolio, navigate,
+  proxy: { run: runProxyAnalysis, last: getLastProxy },
+  bot: { run: runDayTrader, last: getLastDay },
+};

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Live-book audit</title>
+  <style>
+    :root { color-scheme: dark; }
+    body { margin: 0; font: 16px/1.5 Segoe UI, Arial, sans-serif; background: #111; color: #e8e8e8; }
+    main { max-width: 840px; margin: 0 auto; padding: 32px 20px 64px; }
+    h1 { font-size: 26px; margin: 0 0 8px; }
+    h2 { font-size: 18px; margin: 28px 0 10px; }
+    p, li { color: #c8c8c8; }
+    .sub { color: #888; margin: 0 0 20px; }
+    .ok, .info, .warn { padding: 12px 14px; border-radius: 8px; margin: 16px 0; }
+    .ok { background: #14301c; border: 1px solid #2a6040; }
+    .info { background: #142434; border: 1px solid #24506a; }
+    .warn { background: #3a2a10; border: 1px solid #6a4a18; }
+    .ok strong, .info strong, .warn strong { display: block; margin-bottom: 4px; color: #fff; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 12px 0; }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #2a2a2a; }
+    th { color: #888; }
+    a { color: #8ec8f0; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Audited live-book baseline</h1>
+  <p class="sub">IOVA opening-range book. Cutoff on. Jul 17 – Sep 11 2026. Trading rules unchanged. Sealed window unread.</p>
+
+  <div class="ok">
+    <strong>Audit PASS</strong>
+    The CSV now has exactly 37 trade rows. Gross, commission, net and R recompute on every row. Sum of net P&amp;L is −$34.3257, which rounds to −$34.33. Stop, target and exit slippage match the documented fill rules on every trade.
+  </div>
+
+  <h2>Fee convention (frozen)</h2>
+  <p>Commission is <strong>0.05% of entry notional, once per round trip</strong>. It is not 0.05% on the entry ticket plus 0.05% on the exit ticket.</p>
+  <p>Slippage is separate: <strong>$0.02 per share on the entry</strong> and <strong>$0.02 per share on the exit</strong>. Those two cents are inside <code>fill_price</code> and <code>exit_price</code>. They do not appear in the commission column.</p>
+  <p>That is what <code>ROUND_TRIP = 0.0005</code> has meant in this book. Older forecast code split the same 0.05% across two legs (<code>rate / 2</code> each). Charging 0.05% on both notionals would be a different, twice-as-large commission model.</p>
+  <table>
+    <thead><tr><th>Item</th><th>Amount</th></tr></thead>
+    <tbody>
+      <tr><td>Gross P&amp;L</td><td>−$29.01</td></tr>
+      <tr><td>Commission (frozen: 5 bps × entry)</td><td>$5.32</td></tr>
+      <tr><td>Net P&amp;L (frozen baseline)</td><td>−$34.33</td></tr>
+      <tr><td>If 5 bps were also charged on the exit</td><td>extra $5.33 · net −$39.66</td></tr>
+    </tbody>
+  </table>
+  <div class="warn">
+    <strong>The −$39.66 figure is a sensitivity, not a correction</strong>
+    The book is not being rewritten to charge both legs. Doing that would change every later comparison. The frozen baseline stays −$34.33.
+  </div>
+
+  <h2>Execution check</h2>
+  <ul>
+    <li>Entry fill = next bar open + $0.02 long / − $0.02 short. All 37 match.</li>
+    <li>Exit raw comes from the stop price, the target price, or the 15:45 close. Then $0.02 is taken adversely. All 37 match.</li>
+    <li>If a bar prints both the stop and the target, the stop is used. No gapped stop through the open in this sample.</li>
+    <li>28 flats, 8 stops, 1 target.</li>
+  </ul>
+
+  <h2>Files</h2>
+  <p><a href="/research/live-book-37.csv">live-book-37.csv</a> — 37 trade rows, no summary record.</p>
+  <p><a href="/research/live-book-37-reconciliation.json">live-book-37-reconciliation.json</a> — counts, sums, fee convention, execution pass/fail.</p>
+
+  <div class="info">
+    <strong>What this freezes</strong>
+    The current IOVA book lost $34.33 after the documented round-trip commission and two-cent slips. That number is now an audited baseline. It does not choose the next strategy. The sealed half stays closed. The live sides stay off.
+  </div>
+</main>
+</body>
+</html>
