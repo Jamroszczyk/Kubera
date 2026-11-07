@@ -1,0 +1,52 @@
+S round (2026-10-31): do overnight headlines predict their OWN stock? Pre-registered before any score was looked at.
+Scores: gpt-5.4-mini per headline, +1 good / -1 bad / 0 unclear (lab/text/stock_score.py). Stock-day signal
+S = sum over that stock's headlines published before 09:25 ET. Universe: price >= $3, 20-day ADV >= $1M.
+Trade (cash account, long only): buy at the open of day d, sell at the close after k sessions (k = 1, 2, 5, 10).
+Costs per side by ADV: >= $100M 3 bp, $20-100M 8 bp, $5-20M 15 bp, below 30 bp (+ SEC fee 0.2 bp).
+Benchmark: equal-weight gross return of ALL stocks with a headline that morning (same entry/exit) -> 'excess'.
+Variants:  V1 good news (S >= 1), k = 1     V2 k = 2     V5 k = 5     V10 k = 10
+           V1L good news, k = 1, ADV >= $20M only
+           W  walk-forward 'stocks where news works': in year Y trade V1 only on stocks whose good-news trades in
+              Y-2..Y-1 (>= 8 of them) had a top-quintile mean excess; from 2017.
+Pass = net return > 0 AND net excess > 0 in all three periods 2015-18 / 2019-22 / 2023-26 (Hugging Face daily data,
+to 2026-03), full-period net-excess t > 2.64 (Bonferroni over 6 variants) AND net excess > 0 in the post-cutoff slice
+2025-07 -> 2026-10 (Alpaca split-adjusted bars). Info only: the bad-news side (a short leg we cannot trade), ADV buckets.
+Split guard (unadjusted data): trades with an overnight ratio outside 0.6-1.67 inside the holding window are dropped.
+headlines scored 819,740; good 52% bad 26% unclear 22%; batch year guessed exactly 93%
+
+== Hugging Face daily (unadjusted, split guard), to 2026-03: stock-days with news and a price 515,870; good 282,668, bad 125,548
+  V1                                               2015-18: net -0.180 ex -0.134 t -12.6 n 81,180  2019-22: net -0.208 ex -0.150 t -12.8 n 107,665  2023-26: net -0.155 ex -0.143 t -11.6 n 93,797  FULL: net -0.183 ex -0.142 t -21.3 n 282,642
+  V1L                                              2015-18: net -0.104 ex -0.058 t -4.0 n 47,929  2019-22: net -0.074 ex -0.016 t -0.9 n 64,920  2023-26: net -0.068 ex -0.056 t -3.5 n 61,095  FULL: net -0.083 ex -0.042 t -4.6 n 173,944
+  W                                                2015-18: net -0.189 ex -0.087 t -1.5 n 4,833  2019-22: net -0.032 ex +0.024 t +0.4 n 13,997  2023-26: net -0.079 ex -0.067 t -1.7 n 12,816  FULL: net -0.082 ex -0.032 t -1.0 n 31,646
+  info bad news k=1 (long return net; a short would earn minus this) 2015-18: net -0.485 ex -0.438 t -19.2 n 38,415  2019-22: net -0.436 ex -0.379 t -16.2 n 48,612  2023-26: net -0.369 ex -0.358 t -13.7 n 38,505  FULL: net -0.434 ex -0.394 t -28.4 n 125,532
+  V2                                               2015-18: net -0.163 ex -0.109 t -7.2 n 81,129  2019-22: net -0.152 ex -0.117 t -6.3 n 107,575  2023-26: net -0.120 ex -0.141 t -8.7 n 93,521  FULL: net -0.147 ex -0.121 t -12.4 n 282,225
+  info bad news k=2 (long return net; a short would earn minus this) 2015-18: net -0.539 ex -0.484 t -15.4 n 38,392  2019-22: net -0.444 ex -0.409 t -10.8 n 48,584  2023-26: net -0.348 ex -0.369 t -9.9 n 38,442  FULL: net -0.450 ex -0.424 t -20.6 n 125,418
+  V5                                               2015-18: net -0.104 ex -0.113 t -5.4 n 81,067  2019-22: net -0.078 ex -0.123 t -3.9 n 107,446  2023-26: net -0.070 ex -0.168 t -6.5 n 93,155  FULL: net -0.085 ex -0.132 t -8.5 n 281,668
+  info bad news k=5 (long return net; a short would earn minus this) 2015-18: net -0.508 ex -0.517 t -11.5 n 38,358  2019-22: net -0.288 ex -0.333 t -5.3 n 48,537  2023-26: net -0.291 ex -0.389 t -6.5 n 38,300  FULL: net -0.367 ex -0.415 t -12.6 n 125,195
+  V10                                              2015-18: net -0.029 ex -0.114 t -3.7 n 80,952  2019-22: net +0.100 ex -0.097 t -2.0 n 107,207  2023-26: net +0.091 ex -0.172 t -4.5 n 92,569  FULL: net +0.051 ex -0.125 t -5.3 n 280,728
+  info bad news k=10 (long return net; a short would earn minus this) 2015-18: net -0.480 ex -0.566 t -8.6 n 38,304  2019-22: net -0.129 ex -0.326 t -3.4 n 48,459  2023-26: net -0.163 ex -0.426 t -5.2 n 38,067  FULL: net -0.264 ex -0.440 t -9.2 n 124,830
+
+  by ADV bucket (V1, full period): net / excess %/trade
+    ADV $   1M+  good: net -0.472 ex -0.432 t -13.6 n 47,132   bad: net -1.250 ex -1.205 t -19.8
+    ADV $   5M+  good: net -0.278 ex -0.237 t -11.4 n 61,566   bad: net -0.620 ex -0.577 t -13.2
+    ADV $  20M+  good: net -0.137 ex -0.096 t -6.7 n 85,160   bad: net -0.233 ex -0.192 t -6.5
+    ADV $ 100M+  good: net -0.027 ex +0.014 t +1.1 n 88,784   bad: net -0.151 ex -0.111 t -5.8
+
+== Alpaca split-adjusted, post-cutoff slice 2025-07 -> 2026-10: stock-days with news and a price 79,874; good 44,044, bad 15,740
+  V1                                               2015-18: -  2019-22: -  2023-26: net -0.161 ex -0.111 t -3.6 n 24,024  FULL: net -0.199 ex -0.141 t -6.8 n 44,044
+  V1L                                              2015-18: -  2019-22: -  2023-26: net -0.097 ex -0.047 t -1.0 n 16,769  FULL: net -0.143 ex -0.085 t -2.8 n 31,029
+  info bad news k=1 (long return net; a short would earn minus this) 2015-18: -  2019-22: -  2023-26: net -0.444 ex -0.394 t -6.1 n 8,491  FULL: net -0.342 ex -0.284 t -6.3 n 15,740
+  V2                                               2015-18: -  2019-22: -  2023-26: net -0.119 ex -0.107 t -3.1 n 24,014  FULL: net -0.182 ex -0.150 t -6.1 n 43,641
+  info bad news k=2 (long return net; a short would earn minus this) 2015-18: -  2019-22: -  2023-26: net -0.412 ex -0.400 t -4.8 n 8,488  FULL: net -0.318 ex -0.286 t -4.8 n 15,566
+  V5                                               2015-18: -  2019-22: -  2023-26: net -0.133 ex -0.152 t -2.8 n 23,996  FULL: net -0.164 ex -0.187 t -4.4 n 42,464
+  info bad news k=5 (long return net; a short would earn minus this) 2015-18: -  2019-22: -  2023-26: net -0.326 ex -0.345 t -2.9 n 8,486  FULL: net -0.197 ex -0.220 t -2.5 n 15,173
+  V10                                              2015-18: -  2019-22: -  2023-26: net +0.247 ex -0.198 t -1.8 n 23,969  FULL: net +0.042 ex -0.249 t -3.0 n 40,809
+  info bad news k=10 (long return net; a short would earn minus this) 2015-18: -  2019-22: -  2023-26: net +0.419 ex -0.025 t -0.1 n 8,479  FULL: net +0.333 ex +0.042 t +0.2 n 14,650
+
+VERDICT
+  V1   all periods net>0 & excess>0: no   full t -21.3  post-cutoff excess -0.141%  -> fail
+  V2   all periods net>0 & excess>0: no   full t -12.4  post-cutoff excess -0.150%  -> fail
+  V5   all periods net>0 & excess>0: no   full t -8.5  post-cutoff excess -0.187%  -> fail
+  V10  all periods net>0 & excess>0: no   full t -5.3  post-cutoff excess -0.249%  -> fail
+  V1L  all periods net>0 & excess>0: no   full t -4.6  post-cutoff excess -0.085%  -> fail
+  W    all periods net>0 & excess>0: no   full t -1.0  post-cutoff excess +nan%  -> fail

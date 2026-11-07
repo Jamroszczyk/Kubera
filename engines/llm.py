@@ -1,0 +1,21 @@
+from openai import OpenAI
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+api_key = os.getenv("GPT54MINI_KEY")
+endpoint = os.getenv("GPT54MINI_ENDPOINT")
+deployment_name = "gpt-5.4-mini-2"
+
+client = OpenAI(
+    base_url=endpoint,
+    api_key=api_key,
+)
+
+response = client.responses.create(
+    model=deployment_name,
+    input="What is the capital of France?",
+)
+
+print(f"answer: {response.output[0]}")

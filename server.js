@@ -13,6 +13,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 loadEnv(path.join(__dirname, '.env'));
+const alpaca = require('./alpaca.js');
 
 const PORT = Number(process.env.PORT) || 3000;
 const ROOT = __dirname;
@@ -89,10 +90,13 @@ function loadTape(symbol) {
   }
 }
 
+// Yahoo appends the live tick off the 5-minute grid. Keep it off the tape.
+const onGrid = (p) => p && p[0] && p[0] % 300_000 === 0;
+
 function mergePoints(a, b) {
   const m = new Map();
-  for (const p of a || []) if (p && p[0]) m.set(p[0], p);
-  for (const p of b || []) if (p && p[0]) m.set(p[0], p);
+  for (const p of a || []) if (onGrid(p)) m.set(p[0], p);
+  for (const p of b || []) if (onGrid(p)) m.set(p[0], p);
   return [...m.values()].sort((x, y) => x[0] - y[0]);
 }
 
@@ -393,10 +397,10 @@ async function poolMap(items, limit, fn) {
   return out;
 }
 
-async function barsOne(symbol, range, interval) {
+async function barsOne(symbol, range, interval, maxAge = BAR_CACHE_MS) {
   const key = 'b2:' + symbol + ':' + range + ':' + interval;
   const hit = cache.get(key);
-  if (hit && Date.now() - hit.ts < BAR_CACHE_MS) return hit.body;
+  if (hit && Date.now() - hit.ts < maxAge) return hit.body;
 
   let lastErr = 'upstream';
   for (let attempt = 0; attempt < 3; attempt++) {
@@ -464,6 +468,151 @@ async function barsMany(rawSymbols, range, interval) {
   return { status: 200, body: { range, interval, bars, names, missing: missing.filter(Boolean) } };
 }
 
+// ── Q desk (js/bot/qdesk.js) runs here too, every 5 minutes, so the paper book trades without a browser open.
+// Live ledgers (research/live/<desk>.json) are append-only: each finished session is saved with the rule VERSION
+// that traded it, and the next run carries on from that saved state. New rules never rewrite past live days.
+const QDESK_JSON = path.join(ROOT, 'research', 'qdesk.json');
+const LIVE_DIR = path.join(ROOT, 'research', 'live');
+const QDESK_MS = 5 * 60_000;
+let qdeskLast = null;
+
+function readJson(file) {
+  try { return JSON.parse(fs.readFileSync(file, 'utf8')); } catch { return null; }
+}
+
+function writeJsonAtomic(file, obj) {
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  fs.writeFileSync(file + '.tmp', JSON.stringify(obj));
+  fs.renameSync(file + '.tmp', file);
+}
+
+async function qdeskRun(force = false) {
+  if (!force && qdeskLast && Date.now() - qdeskLast.ts < QDESK_MS - 10_000) return qdeskLast.body;
+  const { runQDesk, SYMBOLS, DESKS, VERSION } = await import(require('node:url').pathToFileURL(path.join(ROOT, 'js', 'bot', 'qdesk.js')).href);
+  // 5-minute bars: Alpaca IEX (real time, see alpaca.js), Yahoo as fallback
+  let bars = null, feed = 'yahoo';
+  const yahoo = {};
+  for (const sym of SYMBOLS) {
+    const out = await barsOne(sym, '60d', '5m', 60_000);
+    yahoo[sym] = (out.points || []).filter((p) => p[0] + 5 * 60_000 <= Date.now());   // finished bars only
+  }
+  if (alpaca.cfg()) {
+    try {
+      const b = await alpaca.bars5m(SYMBOLS, Date.now() - 60 * 86_400_000);
+      if (!SYMBOLS.every((s) => b[s].length >= 1000)) throw new Error('short history');
+      // IEX has no bar when no trade printed on IEX in those 5 minutes; fill such gaps from Yahoo
+      let filled = 0;
+      for (const sym of SYMBOLS) {
+        const have = new Set(b[sym].map((p) => p[0]));
+        const from = b[sym][0][0];
+        const add = yahoo[sym].filter((p) => p[0] >= from && !have.has(p[0]));
+        if (add.length) { b[sym] = b[sym].concat(add).sort((x, y) => x[0] - y[0]); filled += add.length; }
+      }
+      bars = b; feed = filled ? 'alpaca-iex+yahoo-gaps' : 'alpaca-iex';
+    } catch (e) { console.error('alpaca bars, using Yahoo:', e.message); }
+  }
+  if (!bars) {
+    for (const sym of SYMBOLS) if (!yahoo[sym].length) throw new Error(`no 5-minute bars for ${sym}`);
+    bars = yahoo;
+  }
+  const d = await yahooChart('QQQ', '2y', '1d');
+  const close = d?.indicators?.quote?.[0]?.close || [];
+  const daily = (d?.timestamp || []).map((t, i) => [t * 1000, close[i]]).filter((p) => p[1] != null);
+  if (daily.length < 220) throw new Error('QQQ daily history too short');
+
+  const replay = runQDesk(bars, daily);   // current rules over the whole tape: context only, never the live record
+  const desks = [];
+  for (const desk of DESKS) {
+    const file = path.join(LIVE_DIR, desk.id + '.json');
+    let L = readJson(file);
+    if (!L) {
+      // A new desk starts from where its rules stand after the last finished session.
+      const anchor = runQDesk(bars, daily, desk.opts).closed;
+      if (!anchor) continue;
+      L = { id: desk.id, created: new Date().toISOString(), anchor, days: [] };
+    }
+    const lastKey = L.days.length ? L.days[L.days.length - 1].key : L.anchor.key;
+    const start = L.days.length ? L.days[L.days.length - 1].state : L.anchor;
+    const r = runQDesk(bars, daily, { ...desk.opts, start });
+    let added = 0;
+    for (const day of r.days) {
+      if (day.today || day.key <= lastKey || !day.state) continue;
+      L.days.push({ key: day.key, version: VERSION, feed, equity: day.equity, pnl: day.pnl, trend: day.trend,
+        noise: day.noise, trades: day.trades, state: day.state });
+      added++;
+    }
+    if (added || !fs.existsSync(file)) writeJsonAtomic(file, L);
+    const today = r.days.find((x) => x.today) || null;
+    desks.push({
+      id: desk.id, label: desk.label, opts: desk.opts, created: L.created, anchor: L.anchor, days: L.days, today,
+      equity: r.equity, pnl: r.equity - L.anchor.equity, cash: r.cash, holding: r.holding, intraday: r.intraday,
+    });
+  }
+  const body = { saved: new Date().toISOString(), version: VERSION, feed, replay, desks };
+  writeJsonAtomic(QDESK_JSON, body);
+  qdeskLast = { ts: Date.now(), body, bars, daily };
+  return body;
+}
+
+/** D2: mirror the main desk into the Alpaca paper account (alpaca.js). Only from the scheduled tick. */
+async function brokerSync() {
+  if (!qdeskLast || !alpaca.cfg()) return;
+  const { trendSignal } = await import(require('node:url').pathToFileURL(path.join(ROOT, 'js', 'bot', 'qdesk.js')).href);
+  const main = qdeskLast.body.desks.find((d) => d.id === 'main');
+  if (!main) return;
+  const last = Object.fromEntries(Object.entries(qdeskLast.bars).map(([s, p]) => [s, p.length ? p[p.length - 1][1] : null]));
+  const st = await alpaca.mirror(ROOT, main, trendSignal(qdeskLast.bars, qdeskLast.daily), last);
+  if (st.lastError) console.error('alpaca:', st.lastError);
+}
+
+function marketHours(now = new Date()) {
+  const p = Object.fromEntries(new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/New_York', weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23',
+  }).formatToParts(now).map((x) => [x.type, x.value]));
+  const m = Number(p.hour) * 60 + Number(p.minute);
+  return p.weekday !== 'Sat' && p.weekday !== 'Sun' && m >= 9 * 60 + 25 && m <= 16 * 60 + 20;
+}
+
+const STARTED = Date.now();
+let qdeskError = null;   // { ts, message } of the last failed run, cleared on success
+function qdeskTick() {
+  return qdeskRun(true).then(() => { qdeskError = null; return brokerSync(); }).catch((e) => {
+    qdeskError = { ts: Date.now(), message: e.message };
+    console.error('qdesk:', e.message);
+  });
+}
+// run 20 s after each 5-minute bar closes, so decisions use the bar the model uses with minimal delay
+function scheduleTick() {
+  const wait = QDESK_MS - (Date.now() % QDESK_MS) + 20_000;
+  setTimeout(() => { if (marketHours()) qdeskTick(); scheduleTick(); }, wait);
+}
+scheduleTick();
+setTimeout(qdeskTick, 2_000);
+
+/** Small health + book summary for a status screen (GET /api/status). Never triggers a run. */
+function qdeskStatus() {
+  const b = qdeskLast?.body;
+  const m = b?.desks?.find((x) => x.id === 'main');
+  const today = m?.today || m?.days?.[m.days.length - 1];
+  return {
+    ok: !!m && !qdeskError,
+    now: new Date().toISOString(),
+    uptimeMin: Math.round((Date.now() - STARTED) / 60_000),
+    marketOpen: marketHours(),
+    lastRun: b ? new Date(qdeskLast.ts).toISOString() : null,
+    lastError: qdeskError && { at: new Date(qdeskError.ts).toISOString(), message: qdeskError.message },
+    version: b?.version || null,
+    equity: m ? Math.round(m.equity * 100) / 100 : null,
+    pnlLive: m ? Math.round(m.pnl * 100) / 100 : null,
+    liveDays: m ? m.days.length : 0,
+    day: today ? { date: today.key, pnl: Math.round(today.pnl * 100) / 100, inProgress: !!today.today } : null,
+    shadows: (b?.desks || []).filter((x) => x.id !== 'main').map((x) => ({ id: x.id, pnlLive: Math.round(x.pnl * 100) / 100 })),
+    holding: [m?.holding && `${m.holding.shares} TQQQ`, m?.intraday && `${m.intraday.shares} ${m.intraday.symbol}`].filter(Boolean),
+    feed: b?.feed || null,
+    broker: alpaca.status(),
+  };
+}
+
 function send(res, status, body, type = 'application/json; charset=utf-8') {
   res.writeHead(status, { 'Content-Type': type, 'Cache-Control': 'no-store' });
   res.end(typeof body === 'string' || Buffer.isBuffer(body) ? body : JSON.stringify(body));
@@ -499,6 +648,17 @@ http.createServer(async (req, res) => {
       (url.searchParams.get('interval') || '5m').toLowerCase(),
     );
     return send(res, out.status, out.body);
+  }
+
+  if (url.pathname === '/api/status') return send(res, 200, qdeskStatus());
+
+  if (url.pathname === '/api/qdesk') {
+    try {
+      return send(res, 200, await qdeskRun());
+    } catch (e) {
+      try { return send(res, 200, { ...JSON.parse(fs.readFileSync(QDESK_JSON, 'utf8')), stale: e.message }); }
+      catch { return send(res, 502, { error: e.message || 'qdesk failed' }); }
+    }
   }
 
   if (url.pathname === '/api/ledger' && req.method === 'POST') {

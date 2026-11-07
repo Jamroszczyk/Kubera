@@ -2,7 +2,7 @@ import { h, clear, setText, toast } from '../ui.js';
 import { fmtDateTime, fmtMoney, fmtPct, fmtPrice, signClass } from '../format.js';
 import { createChart } from '../chart.js';
 import { createRunChart } from '../bot/run-chart.js';
-import { BOOK_CASH, bookLedger, decisionFromSeries, getLastDay, liveBookCsv, loadBookSeries, reconcileLiveBook, runDayTrader } from '../bot/daytrade.js';
+import { BOOK_CASH, bookLedger, closedSeries, decisionFromSeries, getLastDay, liveBookCsv, loadBookSeries, reconcileLiveBook, runDayTrader } from '../bot/daytrade.js';
 import { nyDateTime } from '../bot/clock.js';
 
 function stat(label) {
@@ -323,13 +323,14 @@ export function renderBot(root) {
       const book = runDayTrader(proxy);
       paint(book);
       paintDecision(decisionFromSeries(proxy.series));
-      const rec = reconcileLiveBook(book);
+      const closed = runDayTrader({ series: closedSeries(proxy.series) }, { save: false });
+      const rec = reconcileLiveBook(closed);
       if (rec.pass) {
         try {
           const res = await fetch('/api/ledger', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(bookLedger(book)),
+            body: JSON.stringify(bookLedger(closed)),
           });
           if (!res.ok) toast('Book ran. Ledger did not save.', 'error');
         } catch {

@@ -1,0 +1,12 @@
+Follow-up to C4c (2026-10-31): intraday sleeve trades only in the direction of QQQ's overnight gap (gap up -> no
+short, gap down -> no long, flat -> both). One pre-registered variant. 1999-2014 is unseen by C4c (2015-26),
+so the 1999-2010 and 2011-17 columns are the real test; 2018-26 overlaps the C4c discovery period.
+                                              1999-2010    2011-17    2018-26       FULL   maxDD  Sharpe
+base (corrected desk)                            0.046      0.078      0.138      0.082   -69.9%   0.80
+intraday only in the gap's direction             0.046      0.088*     0.140*     0.086*  -73.0%   0.87
+                                               99    0    1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16   17   18   19   20   21   22   23   24   25   26
+base (corrected desk)                          -9  -45   80  106   71    3  -22  -11   34  -14   45    3   -2   28   55   41    3  -14   59   81   42   62   50    2   67   50   19   -9
+intraday only in the gap's direction           -6  -55   17  124   64   -9  -13    2   37    9   44   22    3   22   60   37   15   -5   57   66   46   81   56   -9   73   53   21   -9
+
+White reality check over 1 variants (full period): p = 0.399
+  intraday only in the gap's direction         wins all 3 periods: no   single p = 0.399

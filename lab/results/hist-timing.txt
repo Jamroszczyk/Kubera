@@ -1,0 +1,128 @@
+===== SPY
+SPY 1x hold                    99-12: CAGR   1.1%  0.004%/day Sharpe  0.16 maxDD -56.5% in-mkt  99%
+                               13-26: CAGR  12.2%  0.046%/day Sharpe  0.76 maxDD -34.2% in-mkt 100%
+                               all: CAGR   6.3%  0.024%/day Sharpe  0.42 maxDD -56.5% in-mkt 100%
+SPY 1x TREND                   99-12: CAGR   0.7%  0.003%/day Sharpe  0.12 maxDD -26.4% in-mkt  58%
+                               13-26: CAGR   7.8%  0.030%/day Sharpe  0.72 maxDD -21.3% in-mkt  84%
+                               all: CAGR   4.1%  0.016%/day Sharpe  0.42 maxDD -26.4% in-mkt  71%
+SPY 1x RSI2                    99-12: CAGR   2.2%  0.009%/day Sharpe  0.39 maxDD -14.9% in-mkt  10%
+                               13-26: CAGR   3.6%  0.014%/day Sharpe  0.64 maxDD -12.6% in-mkt  15%
+                               all: CAGR   2.9%  0.011%/day Sharpe  0.51 maxDD -14.9% in-mkt  13%
+SPY 1x TOM                     99-12: CAGR   2.7%  0.011%/day Sharpe  0.32 maxDD -23.9% in-mkt  28%
+                               13-26: CAGR   2.9%  0.011%/day Sharpe  0.40 maxDD -14.7% in-mkt  29%
+                               all: CAGR   2.8%  0.011%/day Sharpe  0.35 maxDD -23.9% in-mkt  28%
+SPY 1x TREND|RSI2              99-12: CAGR   1.5%  0.006%/day Sharpe  0.19 maxDD -22.6% in-mkt  59%
+                               13-26: CAGR   9.1%  0.035%/day Sharpe  0.81 maxDD -20.6% in-mkt  85%
+                               all: CAGR   5.1%  0.020%/day Sharpe  0.50 maxDD -22.6% in-mkt  71%
+SPY 1x TREND|TOM               99-12: CAGR   2.9%  0.011%/day Sharpe  0.28 maxDD -32.9% in-mkt  69%
+                               13-26: CAGR  11.3%  0.042%/day Sharpe  0.92 maxDD -14.6% in-mkt  89%
+                               all: CAGR   6.9%  0.027%/day Sharpe  0.58 maxDD -32.9% in-mkt  79%
+SPY 1x overnight               99-12: CAGR -17.6% -0.077%/day Sharpe -1.54 maxDD -94.7% in-mkt 100%
+                               13-26: CAGR -14.6% -0.062%/day Sharpe -1.38 maxDD -88.0% in-mkt 100%
+                               all: CAGR -16.1% -0.070%/day Sharpe -1.47 maxDD -99.4% in-mkt 100%
+SPY 2x hold                    99-12: CAGR  -6.1% -0.025%/day Sharpe  0.06 maxDD -90.9% in-mkt 100%
+                               13-26: CAGR  17.5%  0.064%/day Sharpe  0.65 maxDD -59.7% in-mkt 100%
+                               all: CAGR   4.7%  0.018%/day Sharpe  0.31 maxDD -90.9% in-mkt 100%
+SPY 2x TREND                   99-12: CAGR  -1.8% -0.007%/day Sharpe  0.02 maxDD -49.2% in-mkt  58%
+                               13-26: CAGR  11.1%  0.042%/day Sharpe  0.57 maxDD -42.2% in-mkt  85%
+                               all: CAGR   4.2%  0.016%/day Sharpe  0.30 maxDD -49.2% in-mkt  71%
+SPY 2x RSI2                    99-12: CAGR   3.7%  0.014%/day Sharpe  0.37 maxDD -28.7% in-mkt  11%
+                               13-26: CAGR   6.5%  0.025%/day Sharpe  0.60 maxDD -25.7% in-mkt  15%
+                               all: CAGR   5.1%  0.020%/day Sharpe  0.48 maxDD -28.7% in-mkt  13%
+SPY 2x TOM                     99-12: CAGR   3.4%  0.013%/day Sharpe  0.27 maxDD -46.0% in-mkt  29%
+                               13-26: CAGR   4.2%  0.016%/day Sharpe  0.34 maxDD -29.9% in-mkt  29%
+                               all: CAGR   3.8%  0.015%/day Sharpe  0.30 maxDD -46.0% in-mkt  29%
+SPY 2x TREND|RSI2              99-12: CAGR  -0.5% -0.002%/day Sharpe  0.09 maxDD -42.9% in-mkt  59%
+                               13-26: CAGR  13.6%  0.050%/day Sharpe  0.66 maxDD -38.4% in-mkt  85%
+                               all: CAGR   6.1%  0.023%/day Sharpe  0.37 maxDD -42.9% in-mkt  72%
+SPY 2x TREND|TOM               99-12: CAGR   1.2%  0.005%/day Sharpe  0.18 maxDD -58.4% in-mkt  70%
+                               13-26: CAGR  17.8%  0.065%/day Sharpe  0.78 maxDD -29.2% in-mkt  89%
+                               all: CAGR   9.0%  0.034%/day Sharpe  0.46 maxDD -58.4% in-mkt  79%
+SPY 2x overnight               99-12: CAGR -35.7% -0.175%/day Sharpe -1.70 maxDD -99.9% in-mkt 100%
+                               13-26: CAGR -30.7% -0.145%/day Sharpe -1.56 maxDD -99.3% in-mkt 100%
+                               all: CAGR -33.3% -0.161%/day Sharpe -1.64 maxDD -100.0% in-mkt 100%
+SPY 3x hold                    99-12: CAGR -15.7% -0.068%/day Sharpe  0.04 maxDD -98.7% in-mkt 100%
+                               13-26: CAGR  20.5%  0.074%/day Sharpe  0.63 maxDD -77.2% in-mkt 100%
+                               all: CAGR   0.3%  0.001%/day Sharpe  0.29 maxDD -98.7% in-mkt 100%
+SPY 3x TREND                   99-12: CAGR  -4.9% -0.020%/day Sharpe -0.00 maxDD -69.3% in-mkt  58%
+                               13-26: CAGR  13.7%  0.051%/day Sharpe  0.55 maxDD -59.7% in-mkt  85%
+                               all: CAGR   3.7%  0.015%/day Sharpe  0.28 maxDD -69.3% in-mkt  71%
+SPY 3x RSI2                    99-12: CAGR   4.9%  0.019%/day Sharpe  0.36 maxDD -41.1% in-mkt  11%
+                               13-26: CAGR   9.3%  0.035%/day Sharpe  0.59 maxDD -37.7% in-mkt  15%
+                               all: CAGR   7.0%  0.027%/day Sharpe  0.47 maxDD -41.1% in-mkt  13%
+SPY 3x TOM                     99-12: CAGR   3.3%  0.013%/day Sharpe  0.26 maxDD -63.4% in-mkt  29%
+                               13-26: CAGR   5.1%  0.020%/day Sharpe  0.33 maxDD -43.1% in-mkt  29%
+                               all: CAGR   4.2%  0.016%/day Sharpe  0.29 maxDD -63.4% in-mkt  29%
+SPY 3x TREND|RSI2              99-12: CAGR  -3.2% -0.013%/day Sharpe  0.07 maxDD -60.8% in-mkt  59%
+                               13-26: CAGR  17.5%  0.064%/day Sharpe  0.64 maxDD -52.6% in-mkt  85%
+                               all: CAGR   6.4%  0.025%/day Sharpe  0.35 maxDD -60.8% in-mkt  72%
+SPY 3x TREND|TOM               99-12: CAGR  -1.6% -0.007%/day Sharpe  0.17 maxDD -75.5% in-mkt  70%
+                               13-26: CAGR  23.7%  0.085%/day Sharpe  0.76 maxDD -42.6% in-mkt  89%
+                               all: CAGR  10.0%  0.038%/day Sharpe  0.44 maxDD -75.5% in-mkt  79%
+SPY 3x overnight               99-12: CAGR -50.3% -0.277%/day Sharpe -1.73 maxDD -100.0% in-mkt 100%
+                               13-26: CAGR -44.0% -0.230%/day Sharpe -1.59 maxDD -100.0% in-mkt 100%
+                               all: CAGR -47.3% -0.254%/day Sharpe -1.67 maxDD -100.0% in-mkt 100%
+===== QQQ
+QQQ 1x hold                    99-12: CAGR  -0.9% -0.004%/day Sharpe  0.16 maxDD -83.0% in-mkt  99%
+                               13-26: CAGR  17.9%  0.066%/day Sharpe  0.90 maxDD -35.6% in-mkt 100%
+                               all: CAGR  10.7%  0.040%/day Sharpe  0.51 maxDD -83.0% in-mkt  99%
+QQQ 1x TREND                   99-12: CAGR   3.1%  0.012%/day Sharpe  0.27 maxDD -30.4% in-mkt  46%
+                               13-26: CAGR  14.7%  0.054%/day Sharpe  0.96 maxDD -22.0% in-mkt  85%
+                               all: CAGR  10.4%  0.039%/day Sharpe  0.71 maxDD -30.4% in-mkt  71%
+QQQ 1x RSI2                    99-12: CAGR   6.0%  0.023%/day Sharpe  0.77 maxDD -14.2% in-mkt  10%
+                               13-26: CAGR   4.3%  0.017%/day Sharpe  0.58 maxDD -12.3% in-mkt  16%
+                               all: CAGR   4.9%  0.019%/day Sharpe  0.65 maxDD -14.2% in-mkt  14%
+QQQ 1x TOM                     99-12: CAGR   4.9%  0.019%/day Sharpe  0.35 maxDD -33.3% in-mkt  28%
+                               13-26: CAGR   4.0%  0.015%/day Sharpe  0.44 maxDD -17.4% in-mkt  29%
+                               all: CAGR   4.3%  0.017%/day Sharpe  0.37 maxDD -33.3% in-mkt  29%
+QQQ 1x TREND|RSI2              99-12: CAGR   3.8%  0.015%/day Sharpe  0.32 maxDD -30.4% in-mkt  47%
+                               13-26: CAGR  14.6%  0.054%/day Sharpe  0.94 maxDD -24.1% in-mkt  85%
+                               all: CAGR  10.6%  0.040%/day Sharpe  0.71 maxDD -30.4% in-mkt  71%
+QQQ 1x TREND|TOM               99-12: CAGR   5.4%  0.021%/day Sharpe  0.34 maxDD -45.3% in-mkt  61%
+                               13-26: CAGR  17.9%  0.065%/day Sharpe  1.08 maxDD -23.1% in-mkt  89%
+                               all: CAGR  13.2%  0.049%/day Sharpe  0.73 maxDD -45.3% in-mkt  79%
+QQQ 1x overnight               99-12: CAGR  -3.0% -0.012%/day Sharpe -0.08 maxDD -65.2% in-mkt 100%
+                               13-26: CAGR -11.1% -0.047%/day Sharpe -0.86 maxDD -80.1% in-mkt 100%
+                               all: CAGR  -8.3% -0.034%/day Sharpe -0.50 maxDD -92.9% in-mkt 100%
+QQQ 2x hold                    99-12: CAGR -17.7% -0.077%/day Sharpe  0.11 maxDD -98.7% in-mkt 100%
+                               13-26: CAGR  28.0%  0.098%/day Sharpe  0.80 maxDD -64.4% in-mkt 100%
+                               all: CAGR   9.1%  0.035%/day Sharpe  0.43 maxDD -98.7% in-mkt 100%
+QQQ 2x TREND                   99-12: CAGR   1.8%  0.007%/day Sharpe  0.22 maxDD -53.1% in-mkt  47%
+                               13-26: CAGR  24.1%  0.086%/day Sharpe  0.85 maxDD -41.0% in-mkt  85%
+                               all: CAGR  15.6%  0.057%/day Sharpe  0.62 maxDD -53.1% in-mkt  71%
+QQQ 2x RSI2                    99-12: CAGR  11.3%  0.042%/day Sharpe  0.75 maxDD -27.5% in-mkt  10%
+                               13-26: CAGR   7.6%  0.029%/day Sharpe  0.55 maxDD -27.0% in-mkt  16%
+                               all: CAGR   8.9%  0.034%/day Sharpe  0.62 maxDD -27.5% in-mkt  14%
+QQQ 2x TOM                     99-12: CAGR   5.3%  0.020%/day Sharpe  0.32 maxDD -59.8% in-mkt  29%
+                               13-26: CAGR   6.0%  0.023%/day Sharpe  0.39 maxDD -34.8% in-mkt  29%
+                               all: CAGR   5.7%  0.022%/day Sharpe  0.34 maxDD -59.8% in-mkt  29%
+QQQ 2x TREND|RSI2              99-12: CAGR   3.2%  0.013%/day Sharpe  0.26 maxDD -53.1% in-mkt  47%
+                               13-26: CAGR  23.9%  0.085%/day Sharpe  0.84 maxDD -44.3% in-mkt  86%
+                               all: CAGR  16.0%  0.059%/day Sharpe  0.63 maxDD -53.1% in-mkt  72%
+QQQ 2x TREND|TOM               99-12: CAGR   2.8%  0.011%/day Sharpe  0.29 maxDD -73.9% in-mkt  61%
+                               13-26: CAGR  30.5%  0.106%/day Sharpe  0.97 maxDD -42.3% in-mkt  89%
+                               all: CAGR  19.7%  0.071%/day Sharpe  0.66 maxDD -73.9% in-mkt  79%
+QQQ 2x overnight               99-12: CAGR -12.7% -0.054%/day Sharpe -0.18 maxDD -92.5% in-mkt 100%
+                               13-26: CAGR -25.4% -0.116%/day Sharpe -1.01 maxDD -98.1% in-mkt 100%
+                               all: CAGR -21.0% -0.094%/day Sharpe -0.63 maxDD -99.8% in-mkt 100%
+QQQ 3x hold                    99-12: CAGR -39.8% -0.201%/day Sharpe  0.10 maxDD -99.9% in-mkt 100%
+                               13-26: CAGR  34.0%  0.116%/day Sharpe  0.79 maxDD -82.2% in-mkt 100%
+                               all: CAGR   0.3%  0.001%/day Sharpe  0.42 maxDD -99.9% in-mkt 100%
+QQQ 3x TREND                   99-12: CAGR  -1.6% -0.006%/day Sharpe  0.21 maxDD -69.2% in-mkt  47%
+                               13-26: CAGR  32.2%  0.111%/day Sharpe  0.84 maxDD -56.1% in-mkt  85%
+                               all: CAGR  18.8%  0.068%/day Sharpe  0.60 maxDD -69.2% in-mkt  71%
+QQQ 3x RSI2                    99-12: CAGR  16.2%  0.060%/day Sharpe  0.75 maxDD -39.2% in-mkt  10%
+                               13-26: CAGR  10.5%  0.039%/day Sharpe  0.54 maxDD -40.9% in-mkt  16%
+                               all: CAGR  12.5%  0.047%/day Sharpe  0.62 maxDD -40.9% in-mkt  14%
+QQQ 3x TOM                     99-12: CAGR   2.2%  0.008%/day Sharpe  0.32 maxDD -78.9% in-mkt  29%
+                               13-26: CAGR   7.3%  0.028%/day Sharpe  0.39 maxDD -49.4% in-mkt  29%
+                               all: CAGR   5.4%  0.021%/day Sharpe  0.33 maxDD -78.9% in-mkt  29%
+QQQ 3x TREND|RSI2              99-12: CAGR   0.4%  0.002%/day Sharpe  0.25 maxDD -69.2% in-mkt  47%
+                               13-26: CAGR  31.6%  0.109%/day Sharpe  0.82 maxDD -59.9% in-mkt  86%
+                               all: CAGR  19.3%  0.070%/day Sharpe  0.61 maxDD -69.2% in-mkt  72%
+QQQ 3x TREND|TOM               99-12: CAGR  -4.7% -0.019%/day Sharpe  0.28 maxDD -89.3% in-mkt  61%
+                               13-26: CAGR  41.7%  0.138%/day Sharpe  0.95 maxDD -57.8% in-mkt  89%
+                               all: CAGR  22.7%  0.081%/day Sharpe  0.64 maxDD -89.3% in-mkt  79%
+QQQ 3x overnight               99-12: CAGR -23.2% -0.105%/day Sharpe -0.20 maxDD -98.6% in-mkt 100%
+                               13-26: CAGR -37.9% -0.189%/day Sharpe -1.04 maxDD -99.8% in-mkt 100%
+                               all: CAGR -32.9% -0.158%/day Sharpe -0.65 maxDD -100.0% in-mkt 100%

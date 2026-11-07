@@ -1,0 +1,23 @@
+QQQ base 1x: 0.041%/day Sharpe 1.29  maxDD $-89 of $1000
+   every 15m lookback 10 band 1.0: 0.034%/day Sharpe 1.07 maxDD $-84
+   every 15m lookback 10 band 1.25: 0.030%/day Sharpe 1.11 maxDD $-82
+   every 15m lookback 14 band 1.0: 0.034%/day Sharpe 1.06 maxDD $-70
+   every 15m lookback 14 band 1.25: 0.031%/day Sharpe 1.05 maxDD $-91
+   every 15m lookback 20 band 1.0: 0.032%/day Sharpe 0.99 maxDD $-115
+   every 15m lookback 20 band 1.25: 0.030%/day Sharpe 1.02 maxDD $-80
+   every 30m lookback 10 band 1.0: 0.038%/day Sharpe 1.20 maxDD $-96
+   every 30m lookback 10 band 1.25: 0.030%/day Sharpe 1.14 maxDD $-79
+   every 30m lookback 14 band 1.0: 0.041%/day Sharpe 1.29 maxDD $-89
+   every 30m lookback 14 band 1.25: 0.032%/day Sharpe 1.14 maxDD $-81
+   every 30m lookback 20 band 1.0: 0.040%/day Sharpe 1.24 maxDD $-113
+   every 30m lookback 20 band 1.25: 0.033%/day Sharpe 1.15 maxDD $-63
+   every 60m lookback 10 band 1.0: 0.041%/day Sharpe 1.39 maxDD $-70
+   every 60m lookback 10 band 1.25: 0.030%/day Sharpe 1.23 maxDD $-62
+   every 60m lookback 14 band 1.0: 0.042%/day Sharpe 1.41 maxDD $-62
+   every 60m lookback 14 band 1.25: 0.032%/day Sharpe 1.18 maxDD $-76
+   every 60m lookback 20 band 1.0: 0.040%/day Sharpe 1.33 maxDD $-78
+   every 60m lookback 20 band 1.25: 0.031%/day Sharpe 1.17 maxDD $-73
+   no VWAP stop: 0.041%/day Sharpe 1.29
+SPY base 1x: 0.024%/day Sharpe 1.02  maxDD $-112 of $1000
+IWM base 1x: -0.025%/day Sharpe -0.74  maxDD $-745 of $1000
+DIA base 1x: -0.003%/day Sharpe -0.12  maxDD $-170 of $1000

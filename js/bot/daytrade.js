@@ -30,6 +30,8 @@ const MIN_PLAY = 2;
 const MAX_GAP = 0.02;
 const GAP_MS = 12 * 60_000;
 const BAR_MS = 5 * 60_000;
+// Last day the recipe was tuned on. Everything after is out of sample.
+const FROZEN = '2026-10-16';
 
 let last = null;
 export function getLastDay() { return last; }
@@ -662,16 +664,38 @@ function byMonth(days) {
   return Object.values(out);
 }
 
+/** Cut today's bars until the 16:00 close so the ledger only seals finished days. */
+export function closedSeries(series, now = Date.now()) {
+  const today = nyDate(now);
+  if (nyMins(now) >= 16 * 60) return series;
+  let n = series.ts.length;
+  while (n > 0 && nyDate(series.ts[n - 1]) >= today) n--;
+  if (n === series.ts.length) return series;
+  const cut = (obj) => Object.fromEntries(Object.entries(obj).map(([k, v]) => [k, v.slice(0, n)]));
+  return { candles: cut(series.candles), quote: cut(series.quote), returns: cut(series.returns), ts: series.ts.slice(0, n) };
+}
+
 /** Small file the next session can read. No price paths. */
 export function bookLedger(book) {
   const days = book?.days || [];
   const mid = Math.floor(days.length / 2);
   const lastDay = days[days.length - 1]?.key || null;
+  const oosDays = days.filter((d) => d.key > FROZEN);
+  const oosTrades = liveBookRows(book).filter((t) => t.date > FROZEN);
   return {
     saved: new Date().toISOString(),
+    frozen: FROZEN,
     waiting: lastDay
-      ? `Leave the recipe alone. The next unused mornings are the days after ${lastDay}.`
+      ? `Recipe frozen since ${FROZEN}. ${oosDays.length} unused mornings so far, through ${lastDay}. Leave it alone.`
       : 'Run the book once so we have a sealed window.',
+    oos: {
+      days: oosDays.length,
+      trades: oosTrades.length,
+      pnl: sumPnl(oosDays),
+      flats: oosTrades.filter((t) => t.exit_reason === 'flat' || t.exit_reason === 'halt').length,
+      stops: oosTrades.filter((t) => t.exit_reason === 'stop').length,
+      targets: oosTrades.filter((t) => t.exit_reason === 'target').length,
+    },
     recipe: {
       cash: BOOK_CASH,
       minPrice: MIN_PRICE,

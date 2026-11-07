@@ -1,0 +1,67 @@
+ran base
+ran B5 intraday with the trend
+ran B6 volume confirmation
+ran B7 first check 10:30
+ran C8 skip 5% seed0
+ran C8 skip 5% seed1
+ran C8 skip 5% seed2
+ran C8 skip 5% seed3
+ran C8 skip 5% seed4
+growth %/day per period (synthetic 3x both sleeves, 1 bp/side + SEC); * = beats base in that period
+                                          UNSEEN 1999-2010    UNSEEN 2011-17     BUILD 2018-26    FULL 1999-2026   maxDD full   Sharpe full
+base (QQQ > SMA200)                                 0.057             0.064             0.129             0.081      -51.6%     0.81
+A1a vol throttle med/vol20                          0.058*            0.057             0.131*            0.080      -51.4%     0.83
+A1b halve when vol60 top decile                     0.057*            0.064             0.117             0.078      -51.1%     0.79
+A2a +/-1% deadband                                  0.061*            0.066*            0.128             0.083*     -51.6%     0.83
+A2b 3xATR trailing exit                             0.048             0.076*            0.123             0.079      -56.1%     0.82
+A2c SMA50 > SMA100                                  0.053             0.064*            0.112             0.074      -67.2%     0.73
+A3 breadth >= 50%                                   0.065*            0.076*            0.107             0.081      -51.6%     0.83
+A4 no trend if 20d range < 6%                       0.060*            0.074*            0.115             0.081*     -51.6%     0.85
+B5 intraday with the trend                          0.041             0.041             0.086             0.055      -59.8%     0.63
+B6 volume confirmation                              0.058*            0.071*            0.125             0.082*     -40.9%     0.84
+B7 first check 10:30                                0.069*            0.056             0.124             0.083*     -41.0%     0.83
+
+missed-fill stress (5% of entries dropped, whole day skipped), 5 seeds:
+C8 seed 0                                           0.060*            0.065*            0.127             0.082*     -50.4%     0.82
+C8 seed 1                                           0.050             0.067*            0.132*            0.080      -54.8%     0.81
+C8 seed 2                                           0.041             0.063             0.123             0.073      -57.4%     0.75
+C8 seed 3                                           0.061*            0.068*            0.122             0.082*     -49.6%     0.82
+C8 seed 4                                           0.048             0.061             0.135*            0.078      -53.2%     0.80
+
+leverage map (information, not candidates):
+trend leverage 1.0x                                 0.057*            0.044             0.086             0.062      -47.6%     0.79
+trend leverage 2.0x                                 0.058*            0.054             0.109             0.073      -49.4%     0.82
+intraday leverage 2x                                0.043             0.055             0.110             0.067      -41.5%     0.77
+intraday only (no trend sleeve)                     0.056             0.056             0.075             0.062      -49.4%     0.73
+trend 3x only (no intraday)                        -0.010             0.055             0.115             0.046      -77.7%     0.49
+
+White reality check over 10 variants (full period): p = 0.971
+  A1a vol throttle med/vol20               wins all 3 periods: no    single bootstrap p = 0.571
+  A1b halve when vol60 top decile          wins all 3 periods: no    single bootstrap p = 0.924
+  A2a +/-1% deadband                       wins all 3 periods: no    single bootstrap p = 0.274
+  A2b 3xATR trailing exit                  wins all 3 periods: no    single bootstrap p = 0.596
+  A2c SMA50 > SMA100                       wins all 3 periods: no    single bootstrap p = 0.728
+  A3 breadth >= 50%                        wins all 3 periods: no    single bootstrap p = 0.511
+  A4 no trend if 20d range < 6%            wins all 3 periods: no    single bootstrap p = 0.476
+  B5 intraday with the trend               wins all 3 periods: no    single bootstrap p = 0.988
+  B6 volume confirmation                   wins all 3 periods: no    single bootstrap p = 0.448
+  B7 first check 10:30                     wins all 3 periods: no    single bootstrap p = 0.423
+
+per-year desk return, base vs each variant:
+                                           99    0    1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16   17   18   19   20   21   22   23   24   25   26
+base (QQQ > SMA200)                        -7  -32   78  110   71    3  -22   -9   28  -13   44    1   -4   23   46   34    1  -15   54   69   38   58   43   -1   68   49   19   -9
+A1a vol throttle med/vol20                 -7  -31   78  110   71    3  -23  -10   24  -10   44    6   -2   23   44   29   -4  -15   49   80   34   58   40   11   67   42   15   -9
+A1b halve when vol60 top decile            -7  -31   78  110   71    3  -22   -9   28  -13   44    1   -4   23   46   34    1  -15   54   69   36   28   43    4   68   49   12   -9
+A2a +/-1% deadband                         -7  -32   82  107   76    3  -22   -6   28   -9   38    3   -3   28   46   37    1  -19   54   59   33   55   43   16   68   49   12   -9
+A2b 3xATR trailing exit                    -7  -32  106  113   71   -3  -25  -18   13   -0   16    0   16   66   36   22   -9  -12   46   93   25   82   34   23   42   26    4   -7
+A2c SMA50 > SMA100                          1  -56   82   63   89   10  -16  -10   21    1   68    1    9   25   41   24   -8  -10   54   82   38   16   43   -4   57   48   11   -3
+A3 breadth >= 50%                          -7  -32   78  116   82    3  -25   -9   14   12   49    2   19    3   46   39   12  -12   54   86   33   22   43   18   21   49    9   -9
+A4 no trend if 20d range < 6%              -7  -32   78  110   46   17   -9  -23   40    3   17   11   32   36   16   54    6   -5   11   69   24   24   39    7   88   34    8    1
+B5 intraday with the trend                 -0  -23   53   68   60  -14  -17  -17   22  -11   41    7  -21   11   45   26   -2  -13   50   27   19   42   48  -22   50   40   24   -9
+B6 volume confirmation                     -9  -16   93   48   71   13  -23   -6   36   -7   26    2   -4   28   40   27    6   -5   55   69   30   56   32    4   67   54   17   -8
+B7 first check 10:30                      -14  -25   63  124   63   14  -18    8   29   -1   34    1  -18   16   42   31    8   -7   50   80   33   53   36   -9   81   44   22  -11
+trend leverage 1.0x                       -11  -23  107  126   35    5  -16  -10   17    5   14   -0   10   21   18   22    3  -10   22   71   20   23   18   21   28   23    6   -3
+trend leverage 2.0x                        -9  -27   92  118   53    4  -19  -10   23   -4   28    1    3   22   32   28    2  -13   37   71   29   41   31    9   47   36   13   -6
+intraday leverage 2x                       -3  -25   40   61   63    1  -18   -5   24  -16   44    2   -9   16   44   29    0  -12   51   42   34   55   41   -9   63   44   19   -9
+intraday only (no trend sleeve)           -15  -22  131  125   36    5  -20  -12   18   29   -1   -9   27   35   10   30    9  -12   13  104    9    6   10   33   15   19   -1   -1
+trend 3x only (no intraday)                14  -34  -38  -21   93   -9  -20    3   27  -44   95    1  -36    3   87   33   -7  -16  103   -8   51   90   72  -45  120   71   37  -18

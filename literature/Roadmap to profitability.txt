@@ -1,0 +1,296 @@
+Chapter 1: Roadmap to profitability
+0:000 secondsToday, whether you're literally starting from zero or you're trading and you're trying to go full-time or improve, I'm going to take everything that I've learned over 9 years of day trading. So,
+0:099 secondsme documenting growing trading accounts over the past 5 years on YouTube and after years now being able to have days like these and all doing so focusing on
+0:1717 secondsrisk management and consistency and show you my clear road map to become consistently profitable at trading in 2026. So, first I'm going to show you
+0:2424 secondsthe very first steps that I would take if I'm just starting off. And if you're looking to just generally improve, making sure that you have this set up as a standard to learn. Then I'm going to
+0:3232 secondsshow you how I retrained my mindset that in my opinion instantaneously puts you ahead of 90% of other traders just by knowing this one thing. How exactly I go about reading charts on a daily basis.
+0:4343 secondsHow I use this information with trading math and statistics that will completely change the way you think about trading.
+0:4848 secondsThen I'm going to talk about the basics of my strategy and the potential it gives me each day when I use it in my trading sessions. How I use all this to be able to journal and back test and
+0:5757 secondsprove that my strategy works. And last but not least, how to get access to capital to be able to start with a small amount of money and still be able to reach actual profit goals. If you're
+1:051 minute, 5 secondslooking for an easy BS feelgood video, this is the wrong place. What I'm going to give to you is a raw truth of exactly how I would get started if I could do it over again after 9 years of experience.
+1:141 minute, 14 secondsSo, if you're serious about trading in 2026, lock in and I promise this is going to be worth it at the end. All right, so let's dive in. So, let's first start off with the resources that we
+Chapter 2: Essential trading tools
+1:221 minute, 22 secondsneed. Okay, I've been doing this for a long time. I also surround myself around a ton of verified traders and I promise you all of them have started with this foundation. So, I recommend you guys use
+1:301 minute, 30 secondsthese and then you're able to follow along with the video and you'll also have a resource to be able to use moving into the future as you're practicing this and implementing this. So, the
+1:371 minute, 37 secondsfirst thing is going to be this mind map of everything that I've put together that's critical to understand as a framework to learn trading. So, the education hub is the first thing. The
+1:451 minute, 45 secondssecond thing is going to be a trade journal. This is a notion trade journal, which I'll also give you full access, and we'll go over here in a second. But, this is going to allow us to journal our
+1:541 minute, 54 secondstrades and be able to look at what we're actually doing in testing to be able to see if our strategy is working and how to actually execute it. So, the third thing is going to be Trading View. This
+2:022 minutes, 2 secondsis where we're going to do all of our analysis, charting, and actually finding these opportunities. And then the fourth thing is going to be brokers, exchange
+2:102 minutes, 10 secondsfirms to get access to capital, which we're going to talk about at the end of the video. Okay, that's something that should happen after all of the fundamentals are worked out. And once
+2:172 minutes, 17 secondswe're ready to actually get into that conversation, but that's one of the biggest things to note when you're beginning. It's very, very exciting and you want to be able to put money into
+2:242 minutes, 24 secondsthe market and start executing on trades, but then you start focusing on the wrong things. It's not what you should be focusing on right away. I learned that the hard way. focusing on
+2:322 minutes, 32 secondsthe fundamentals, learning how trading works at its core, then getting into that as the final step once you are ready is a much safer way to do it and it would have saved me a lot of money.
+2:402 minutes, 40 secondsSo, take my word for it. We're going to get into that a little bit later. All these resources are going to be in the description. Just follow me on Instagram, DM me the word tools, and I'm going to send you an entire spreadsheet
+2:492 minutes, 49 secondswith all of this and way more so you can sort of have a home base of all the resources to be able to implement this.
+2:532 minutes, 53 secondsOkay, so as we're going into our chart, in order to set up a basic chart for you to be able to follow along, you're going to need to know a few things. You can go over to products here and click on super
+3:013 minutes, 1 secondcharts and that's going to open up a chart here. You can set this to candles and trading view is going to give you a watch list of just the basic stocks and
+3:093 minutes, 9 secondsbasic things to watch. If you want to add anything, you can click on this plus here and just search up, say you want Bitcoin or say you want the S&P 500 and
+3:173 minutes, 17 secondsyou can add these pairs that you want to look at and then be able to evaluate them. And over here is going to be our toolbar. And as you start to find and accumulate things that you like and use
+3:253 minutes, 25 secondsall the time, you can click on this little star down here and that's going to give you this sort of floating toolbar where you can always source the things that you want to use on a routine
+3:333 minutes, 33 secondsbasis. All right, so now that we have all the resources out of the way, the next most important thing is to understand how and why the market actually moves. So I'm going to open up
+Chapter 3: Market mechanics and moves
+3:403 minutes, 40 secondsmy trading view chart here and I'm just going to explain the basics of why things move. So what we're seeing when we're looking at markets, it's a visual representation of mass human psychology.
+3:503 minutes, 50 secondsSo between algorithms, individual traders, institutions, we're watching prices of different instruments, whether it's gold, silver, S&P 500, so the stock
+3:583 minutes, 58 secondsmarket or cryptocurrencies, any individual pair. In this instance, we're looking at gold futures. We're seeing free price discovery happen for a
+4:064 minutes, 6 secondsmultitude of reasons, okay? Because the market is effectively moving to seek efficiency in equilibrium, liquidity, and resistance, to fulfill supply and
+4:144 minutes, 14 secondsdemand imbalances, and we're seeing it move because of human and algorithmic behavior. So, in terms of supply and demand, aggressive buyers absorb all of
+4:234 minutes, 23 secondsthe available offers to buy and sell in the market, forcing price to move higher or lower to find new sellers. Okay? In terms of supply and demand, aggressive
+4:314 minutes, 31 secondsbuyers are absorbing all of the available orders, forcing price to move higher to find new sellers. And then when supply is outweighing demand,
+4:394 minutes, 39 secondsthere's aggressive sellers to absorb all of the bids, forcing price to move lower to new buyers. So, in this situation, we have the price of gold moving up. That
+4:464 minutes, 46 secondsmeans that the demand is outweighing the current supply until we reach here in which case there is too much demand and not enough supply and the price
+4:544 minutes, 54 secondscontinuing to move down to try to seek equilibrium. And once again, this is a combination of human efforts, algorithmic efforts, trying to seek efficiency. And that's basically what
+5:025 minutes, 2 secondswe're evaluating anytime we're looking at a chart. And in this process of seeking equilibrium, price is always going to be moving back and forth
+5:095 minutes, 9 secondsbetween areas of liquidity. So liquidity is large concentrations of resting orders. So stop losses, limit orders,
+5:165 minutes, 16 secondsbasically people trying to take actions in the market where it can be seen on the chart is representing significant buying or selling interest. Okay, this
+5:235 minutes, 23 secondsis important because big players in the market, places like institutions that are actually moving the market need liquidity in order to execute their buy
+5:315 minutes, 31 secondsand sell orders cleanly. And this is going to be really really important to evaluate when we're looking at charts a little bit later. So we're constantly seeing price move back and forth between
+5:395 minutes, 39 secondsliquidity pools trying to once again achieve that equilibrium. Okay. So, if I pull up my Trading View chart, there's unique ways that we can look at this data to be able to predict areas where
+5:485 minutes, 48 secondssupply might outweigh demand or demand might outweigh supply or where price is going to want to move into certain areas to seek resting liquidity or sweep through liquidity to be able to reverse.
+5:595 minutes, 59 secondsAnd what this is going to do is allow us eventually once we get good at evaluating this and we systematize it is to be able to find areas in the market,
+6:066 minutes, 6 secondsbe able to position ourselves into that before moves up. And this is where we can start making money. basically the fundamentals of how we make money as a trader. The way this information is
+Chapter 4: Fundamentals of trading
+6:146 minutes, 14 secondsrepresented, we can look at this data in all sorts of different ways. Right? So, there's two main components to understand of when we're actually looking at a chart. I can switch this to
+6:226 minutes, 22 secondsa line graph where we're just seeing the price of, in this example, gold moving up and down as a line or we can click on something called candles here on trading
+6:306 minutes, 30 secondsview, which is going to effectively show us a different way of interpreting this data, which is going to become more useful as we get into the video. The way we're reading this is effectively as
+6:396 minutes, 39 secondsfollows. So, green candles or up candles, the bottom of this box is showing us the open price. The top of the box is showing us the close price.
+6:466 minutes, 46 secondsAnd then we're seeing the highs and lows from these wicks that go through this candle. So, if a candle's green, it means it had a net positive change over time with the highs and lows. And then,
+6:556 minutes, 55 secondsconversely, the red candles, it's still showing us the open and the close. Now, being a down candle is showing us a net change over time and still showing us
+7:027 minutes, 2 secondsthe high and low over that period. Once again, this is going to show us information that becomes useful as we start day trading. All right. So, now that we understand why the market moves
+7:117 minutes, 11 secondsand sort of what we're looking at, the next thing to understand is a very, very simple perspective of what we're trying to do as traders. When you just look up patterns online or you start looking up
+7:197 minutes, 19 secondsother videos, it's really easy to get lost on what we're actually trying to achieve as traders. And boiling it down to its simplest form is going to allow
+7:277 minutes, 27 secondsyou to build a healthy foundation. So, the definition of trading literally comes down to three things. The first thing is identifying probable outcomes.
+7:357 minutes, 35 secondsSo where markets are likely to move up or down and why using probability and risk control to be able to position ourselves in high probability areas and
+7:437 minutes, 43 secondsthen using something called expectancy and statistics to be able to evaluate this process, fine-tune it to be able to get an edge and then execute that edge
+7:517 minutes, 51 secondsto be able to make profit over time. I'm going to explain in full detail what all this stuff means to you. If it seems overwhelming, it is. But I'm telling you, if you want to get good at trading,
+7:597 minutes, 59 secondsit's not just going to be this really easy thing because this is not an easy game. It's simple, but not easy. So bear with me. Okay. So like I said, identify
+Chapter 5: Trading math and expectancy
+8:068 minutes, 6 secondsprobable outcomes, use probability in risk, and then evaluate expectancy in stats. We're going to get into how to find high probability errors here in a
+8:148 minutes, 14 secondssecond, but this is really important to understand using controlled risk. So in trading, we're using something called risk factors. So anytime you place a
+8:228 minutes, 22 secondstrade, whether you realize it or not, you're putting risk on the table. So if say for example the market is moving here and we have reason to believe based
+8:298 minutes, 29 secondsoff of identifying probable outcomes that price is more likely to move here before coming down here we theoretically can position ourselves to risk negative
+8:388 minutes, 38 seconds-1 units of risk for the chance to have positive3 units of risk as the outcome.
+8:448 minutes, 44 secondsSo if we're risking $100 on the trade, this is our $100 in red for $300 of profit. And the two things that we're looking to evaluate with identifying probable outcomes is winning percentage.
+8:548 minutes, 54 secondsSo the amount of time that this actually happens and the average size of our wins and losses and I'm going to show you exactly how we're going to calculate
+9:029 minutes, 2 secondsthat. All right. So I'm going to dive into other examples and as we start looking at more onchart examples this is going to make more sense. But it's important to understand how this is
+9:099 minutes, 9 secondsactually done and why it's important here as a foundation. Okay. I'm going to show you how it works and then I'm going to show you an easy way to do it on Trading View. Okay. So basically let's
+9:179 minutes, 17 secondssay for example here and I'll pull up my calculator. We want to buy something at 153.52.
+9:239 minutes, 23 secondsWe want our one unit of risk. So we believe that price is more likely to come here before coming here. And if it comes down to here, that is going to be our one unit of risk or our stop loss.
+9:339 minutes, 33 secondsI'm now going to take my entry price minus my stop-loss price, which is going to give me three. And then say, for example, I want to risk $100 on that.
+9:419 minutes, 41 secondsI'm going to put $100 divided by 3, which is going to give me 33. And that's going to give me the exact amount I need to buy at this exact price with my stop loss here in order to risk exactly $100.
+9:529 minutes, 52 secondsSo I can show you again as an example here. Okay. So let's say for example we want to position ourselves here where we're buying here our stop loss here, right? And we're looking to make three
+10:0010 minutestimes what we're risking. If I go into this tool right here, say I'm in my long position, meaning that I want the price to go up, and I double click into this
+10:0810 minutes, 8 secondstool, I can now set all of my different metrics. Say we wanted to risk that $100. Click on dollars here. Hit okay.
+10:1410 minutes, 14 secondsYou can see it's giving me an exact amount of 1.5 contracts that I need to buy at this point in order to risk exactly $100. So understanding the math
+10:2210 minutes, 22 secondsis important, but that's an easy way to do it on Trading View. The reason that it's so important to keep your risk uniform regardless of how you're trading is because of this exact reason, and
+10:3110 minutes, 31 secondsit's something called expectancy. Now, we're going to get more into this a little bit later as we get into our journaling section, but basically, as we're finding opportunities in the
+10:3810 minutes, 38 secondsmarket and executing these trades, like I said, we want to take into consideration making sure our risk is uniform and then evaluating winning percentage in our average win and loss size. Okay, so let's take this example.
+10:4910 minutes, 49 secondsWe take 10 total trades, seven total losses and three total wins. You can see each one of our losses is negative -1 units of risk. So we're not using money
+10:5810 minutes, 58 secondsin this term. We're just using these risk factors. Then we can attach money to it later. It makes it a lot easier psychologically to understand what you're actually doing trading what the
+11:0611 minutes, 6 secondsobjective is. So we have a sum of -7. We have an average size loss of -1 with a losing percent of 70. 7 out of 10. 70%
+11:1311 minutes, 13 secondslosing rate. On our win side we have 1 2 3 total wins. 5.2 two R made on one win, 2.5 on one, and then 3.1 on the other,
+11:2111 minutes, 21 secondswhich is giving us a total R sum or positive risk factors of 10.8, average of 3.6. So the average across these, so
+11:2811 minutes, 28 secondsthe total divided by 3 is going to give us 3.6. And basically what this is showing me is that even though we were wrong 70% of the time, so we lost 70% of
+11:3611 minutes, 36 secondsthe time, our total sum of risk factors was 10.8 minus the seven that we lost, which is giving us a net positive R over
+11:4411 minutes, 44 seconds10 trades of 3.8. So now that we have that 3.8 value, if we go back to our one unit of risk being $100, we're
+11:5111 minutes, 51 secondsmultiplying that by our total R from our probable outcome process to be able to yield $380 of profit. As we have our
+11:5911 minutes, 59 secondsstrategy more well defined and we understand access to capital, we can take this same process say with 500 as our R* 3.8 over say a few days, which
+12:0912 minutes, 9 secondscan lead into this over a few days. And that's how we work towards scaling to our goals in trading. It's about risk management, consistency, but now we're
+12:1612 minutes, 16 secondsstarting to scratch the surface of how we're going to let this play out with the math. It's a game of data probabilities, something called the central limit theorem. I know this is
+12:2412 minutes, 24 secondsprobably overwhelming, but I'm going to get to it very incrementally as we go through this video, and you're going to understand more and more as we go. And in order to be profitable, effectively,
+12:3212 minutes, 32 secondsall we need is to know our average riskreward. Right? So, if we go back to this example, we can average out the amount. And I'm going to show you how to do this with the trade journal so you
+12:4012 minutes, 40 secondscan do it on your own data. We can see our average R and we just need to get our average R and our average winning percentage across this line here into
+12:4812 minutes, 48 secondsthe green area. And that's effectively all we're trying to do as traders is break onto this side which is going to be called our edge. Okay, so now let's
+Chapter 6: Chart analysis techniques
+12:5612 minutes, 56 secondsget into the next stage of actually looking at our charts and being able to read and evaluate that data. So we're going to start off simple and then we're going to go more advanced. So we're going to start off with core mechanics.
+13:0513 minutes, 5 secondsThen we're going to get into what's called smart money concepts where it gets a little bit more advanced as to how we're reading charts to find high probability outcomes and to be able to
+13:1313 minutes, 13 secondsbuild a strategy to give ourselves a statistical edge over time. So we're first going to get into support and resistance, market structure, trends and
+13:2113 minutes, 21 secondsthen something called multi-timeframe analysis and getting into chart frequencies as well. Okay, so the first thing that we want to understand is what
+13:2813 minutes, 28 secondstrends and ranges are. So a trend is basically when markets are generally moving in one direction. And this would be an uptrend. And a downtrend is when
+13:3613 minutes, 36 secondsthe market is generally moving in a downwards direction. And there's key identifiers for that. In order to have an uptrend, we need a higher high, higher low, higher high, higher low, and
+13:4513 minutes, 45 secondsthen a break above this secondary higher high. That's going to give us a confirmation of an uptrend. And the same is true for the downside. If you have a lower low, lower high, lower low, lower
+13:5413 minutes, 54 secondshigh, break underneath that level, that's confirming that we have a downtrend. But basically, it's just when the market is moving in either an up or
+14:0114 minutes, 1 seconda down direction. Okay? And in this process of the market moving to seek equilibrium, fulfill supply and demand imbalances, we can actually use
+14:0914 minutes, 9 secondssomething called trend lines to visually look at supply and demand imbalances and potential areas where price could respond. Okay? And we can see this is
+14:1714 minutes, 17 secondssomething called a range where we have a high here, low here, high here, low here, high here, low here. This is price ranging between areas. And what I can do
+14:2614 minutes, 26 secondsis use a trend tool here to start drawing along these low points. Low here, low here to be able to see a visual of where price tends to be
+14:3414 minutes, 34 secondsbouncing off on a repeated basis. Where there's a surplus in supply, demand is fulfilled here. There's more demand than supply. Supply outweighs demand for
+14:4214 minutes, 42 secondsprice to fall, contact again, and so on until price actually breaks through those key levels. And you can see has responses on the opposite side before
+14:5114 minutes, 51 secondsmoving in the opposite direction. So we can start to actually look at visual representations of this. Additionally, if I use something called a parallel
+14:5814 minutes, 58 secondschannel tool, right? I can click from the tops of these ranges to these lowest of these ranges, match it up to the low of the range. Okay, you can see even if
+15:0715 minutes, 7 secondswe just have one, two, three points of contact. I can draw with this tool from the highs and actually be able to predict with a pretty high degree of
+15:1515 minutes, 15 secondscertainty where price is likely to have a response off of for a potential area where the demand is going to outweigh the supply and then have the price
+15:2215 minutes, 22 secondscontinue in that direction. So that's how support and resistance works. Now let's get into something called market structure. All right, so market structure is going to include two basic
+15:3015 minutes, 30 secondsthings which is going to be something called a change of character and something called a break structure. Now let's say we have this as our uptrend that we're focusing on. So price is
+15:3915 minutes, 39 secondsgenerally moving up in this area. In order for us to be able to identify this cleanly as an uptrend, we need our high,
+15:4715 minutes, 47 secondshigher low, higher high, higher low. And if we look closely, each time we have a high and then a low, what we're waiting for is for a candle to officially close
+15:5515 minutes, 55 secondsover the high produced over here, which you can see happened right here, which is going to give us something called a break of structure. When it's closing
+16:0216 minutes, 2 secondsabove that previous area, confirming that it's moving higher. All right. So, we need two of these breakup structures to have a confirmed uptrend, which you can see right here. We have a high
+16:1016 minutes, 10 secondsproduced our low candle closed above here. Second break of structure, uptrend is confirmed. Okay. The next thing that we're focusing on is where trends are
+16:1816 minutes, 18 secondsgoing to potentially end with something called a change of character. Now, a low here, a new high here. Okay. Now, we actually have a candle close below this
+16:2716 minutes, 27 secondsswing point and a failure to break a high. If price were to continue and break once again over this level and create a new break of structure, this
+16:3516 minutes, 35 secondswould be just another swing point. But the fact that we're having a failure here and then a candle close lower than this point, this is producing something
+16:4216 minutes, 42 secondscalled a change of character, which we can use to basically signal when a trend is moved in one direction and when we could anticipate it flipping in the opposite direction. We also want to take
+16:5116 minutes, 51 secondsnote of the difference between a trend and a range. Price that is moving back and forth in this sort of general area is called a range. And then when we're
+16:5916 minutes, 59 secondsactually evaluating whether it's moving generally up or generally down and evaluating that supply and demand imbalance, that's going to be our trend.
+17:0617 minutes, 6 secondsYou can see we had our change of character over here. New trend to the downside. This is the range inside of the opposite trend. Okay. Another thing to note because we have all these black
+17:1317 minutes, 13 secondscandles are down candles and these white candles are up candles. We know price opened here, closed here, had a low and a high here. This is on a 5minut time
+17:2217 minutes, 22 secondsframe. So it's representing 5 minutes worth of price movement. So, just to show you how this works, if I put a box around just this candle, and then I
+17:2917 minutes, 29 secondsclick down to a one minute time frame, you can see now we're looking at one minute candles, which is showing us 1 minute of price data. You can see inside
+17:3617 minutes, 36 secondswe're getting 1 2 3 4 five candles inside of this square because we're looking at time frames. We can go all the way up to, for example, a 1 hour
+17:4517 minutes, 45 secondswhere each candle is showing us 1 hour worth of price movement. Okay, once again, I can draw an indicator over that. Go down to something like a 5m minute time frame. And now you can see
+17:5317 minutes, 53 secondswe have 5 10 15 20 25 30 35 40 4550 5560 in 1 hour. We're getting all of those fiveminute candles to give us the same
+18:0118 minutes, 1 secondamount of data but just from a different perspective. This is going to allow us to do something called multi-time frame analysis which will allow us to sort of get the overall picture of what's
+18:1018 minutes, 10 secondshappening. So if we take this trend example here, we can start looking at all of the different candle information, other important levels. Say something like this and like this where price once
+18:1818 minutes, 18 secondsagain breaks down through it on a 1 hour has a response up here, which if we then drop down to a 5minut time frame, we can start looking for more accurate points
+18:2718 minutes, 27 secondsto enter into the market to play into bigger changes in direction and find trade opportunities that way. Basically, the roots of multi-time frame analysis.
+18:3518 minutes, 35 secondsI have a great video on that. that I'm going to put at the end of this so you can learn a bit more about how I do my multi-time frame analysis. So now let's take it a step further and go into our
+Chapter 7: Smart money concepts
+18:4318 minutes, 43 secondssmart money concepts. Okay, we already covered break of structure. One of the key things that I want to share with you is something called a fair value gap, which is going to help us evaluate areas
+18:5118 minutes, 51 secondsof imbalance and where price is going to try to seek equilibrium and continue moving away and give us reaction zone.
+18:5718 minutes, 57 secondsSo basically I can boil this down into one major concept for you to get started with. Okay, so there's two kinds of fair value gaps. A bullish fair value gap and a bearish fair value gap. And basically
+19:0619 minutes, 6 secondswhat we're looking for is any period on a chart where we have a sequence of 1 2 3 candles moving in a direction where the high wick of the first candle and
+19:1519 minutes, 15 secondsthe low wick of the third candle do not overlap and leave a space behind. Okay?
+19:1919 minutes, 19 secondsWhich you can see happen for example right here. Notice how I made this green. This is a bullish fair value gap.
+19:2419 minutes, 24 secondsOkay? And the same is true in the opposite direction. So if we have one two three candles moving in the down direction, we have our wick here and our third wick here. That's creating a
+19:3319 minutes, 33 secondsbearish fair value gap. You can also see another one here. This isn't going to work every single time. What this is showing us is areas where there is
+19:4019 minutes, 40 secondslikely an excess of orders where the market will want to push through, seek equilibrium by coming back into the midpoint of this area before continuing
+19:4819 minutes, 48 secondsto move away from it. You can see in this first example, we came up into it, ended up moving through it, but once we went in the bullish direction, price moved up through this, came back to
+19:5619 minutes, 56 secondsretest the midpoint, and then continue to make its way up. Similarly, in this example, right as the market opened, you can see we have another fair value gap
+20:0420 minutes, 4 secondswhere price came back, attempted to break through it, came and touched the midpoint of this area before then coming and moving up away from this after
+20:1220 minutes, 12 secondsfilling the inefficiency and continuing to move higher. Okay, good example of this is if we go back over to our uptrend on gold, we can see a few
+20:2020 minutes, 20 secondsexamples of this happening. We have these lows, these lows with price breaking underneath it. Okay, you'll notice we also have this interior trend level. You can see after we got our
+20:2820 minutes, 28 secondschange of character level here, we had a pretty significant fair value gap leading into that change of character, that change in the trend level where
+20:3520 minutes, 35 secondsprice came up to test the midpoint of it before having a complete reversal to the downside. You can also see that there was another one here. Price came back,
+20:4320 minutes, 43 secondstested it, continued moving down, tested into this one, continued moving down.
+20:4620 minutes, 46 secondsOnce breaking out of this other trend, came up, tested into that, rejected off of it, also rejected off of this one, came up, tested the underside of that trend. Notice how it rejected off this one, and then continued moving down.
+20:5620 minutes, 56 secondsOkay. So, understanding market structure, trends, and fair value gaps is going to allow you to start reading these charts on a basic level a lot smarter so we can start to understand
+21:0421 minutes, 4 secondswhere we might have high probability areas to enter trades. If you're interested in getting into more technical analysis, I'm also going to put another video at the end of this
+21:1321 minutes, 13 secondsvideo where I go way deeper into these concepts, okay? So, make sure you stay to the end if you want to lock in more on that. Now, let's move into probably the most important section, which is
+Chapter 8: Trader mindset and psychology
+21:2121 minutes, 21 secondsgoing to be trader mindset. Now, a lot of times this is overlooked and seems to be kind of like a BS thing to focus on.
+21:2721 minutes, 27 secondsI promise you this is the make or break things that will keep you stuck or excel you to the next level. You can know all the technicals, all of everything.
+21:3421 minutes, 34 secondsWithout this one key thing, you're going to be completely lost. This is really, really important. So, I'm going to take you through an entire journey. This is going to put you in front of 90% of
+21:4221 minutes, 42 secondspeople in the way they think about trading. Starting off with thinking in probabilities. So, it's extremely important to frame yourself around trading with this in mind. Okay. Most
+21:5121 minutes, 51 secondstraders get trapped in the emotional cycle of judging their strategy based on a handful of examples, recent trades, and are constantly switching and trying
+22:0022 minutesto find a holy grail system that always works, that is never wrong. I promise you that is not what you're looking for in the short term. Trading results are
+22:0822 minutes, 8 secondsbasically purely chance. The markets are random. You can't control outcomes. All you can do is control your own behavior going into that. And most people don't
+22:1522 minutes, 15 secondsthink of it in this way or even understand this. Okay? So you're going to have a even random distribution of outcomes. And if you're focusing any
+22:2222 minutes, 22 secondseffort at all or any mind to the individual outcome of any given trade, you're already thinking about it entirely wrong. And that probably means that you don't know you have a
+22:3122 minutes, 31 secondsprofitable strategy overall. Okay? This comes down to something called a bell curve distribution. Okay? Over time, you are going to see your trading performance result in a predictable
+22:4022 minutes, 40 secondsshape. We're going to have our number of trades on the x-axis. On the y-axis, we have our profit and losses, all giving us somewhat random outcomes. And over a
+22:4922 minutes, 49 secondslarge sample, we're going to see where your average ends up putting you. And the only number that is going to matter, your expectancy, is going to be where
+22:5822 minutes, 58 secondsthe exact center of your trading strategy ends up being over a large enough amount of trades. So, what I'm trying to get at is basically people
+23:0623 minutes, 6 secondswill come in, trade five trades, maybe the strategy stops working, and then they're like, "Okay, that doesn't work anymore. Like, I'm starting to lose. I got to switch things up." When I started
+23:1323 minutes, 13 secondsbecoming profitable, I framed my trading around trying to focus on executing what I know I need to do that have already run through testing and observed to have
+23:2123 minutes, 21 secondsa positive expectancy, meaning I'm expected to make a profit whether I take a trade and lose or win. And trying to get enough pieces of data of me taking
+23:2823 minutes, 28 secondsthese trades to see where my average ends up playing out and whether this is a positive or negative value because that basically is going to show us whether we're statistically profitable
+23:3723 minutes, 37 secondsover time. I'm not trying to win every single trade. That's not the goal. The goal is trying to shift the center of my bell curve average slightly into the
+23:4523 minutes, 45 secondspositive. And that's literally your edge in trading, nothing else. Okay, this plays into something in statistics called the central limit theorem. Now, it doesn't have to be that complicated.
+23:5423 minutes, 54 secondsI'll spare you the details, but basically this is telling us that the performance is only revealed with a large enough sample size to reach
+24:0224 minutes, 2 secondssomething called statistical significance. Okay? And basically all this is saying is that we need to have enough examples of you actually executing this trade to be able to see
+24:1024 minutes, 10 secondsan accurate representation of what happens over time to be able to judge whether or not the strategy works or not. So if we have five trades where
+24:1824 minutes, 18 secondswe're all over the place, this is random noise. This isn't going to give us any indication. I can find one trade example of something working really well that
+24:2524 minutes, 25 secondsbarely happens or it's a one-time thing where I try to execute it and even though it worked that one time isn't actually profitable. Or I could take five losing trades in a row on a
+24:3524 minutes, 35 secondsstrategy that does work where we test it over say a 100 data points or 500 data points which is then eventually going to start appearing on this bell curve distribution giving us our average data.
+24:4524 minutes, 45 secondsSo our average winning percentage and average profit which is going to show us whether or not this strategy works.
+24:5024 minutes, 50 secondsOkay. And with this trade journal that I'll share with you once again you follow me on Instagram DM me the word tools you can download this. These are example trades where I can actually
+24:5824 minutes, 58 secondsfilter and be able to see my exact winning percentage and losing percentage, the average size of my wins, average size of my losses, and that's
+25:0525 minutes, 5 secondsgoing to effectively allow us to calculate something called expectancy, which is basically the mathematical definition of your trading strategies
+25:1325 minutes, 13 secondsedge. So whether people realize this or not, every time you execute a trade within your rule set, even if you win or lose that individual trade, you have a
+25:2225 minutes, 22 secondsmathematical probability of how much money you are to make every time you execute that trade. If it's positive, that means that your strategy works over
+25:3025 minutes, 30 secondstime. And if it's negative, that means it loses over time. Okay? So we can calculate our expectancy based off of our winning percentage and average win size. So we can actually do this with
+25:3825 minutes, 38 secondsour previous example. So our winning percentage was 30%, our average win size was 3.8. 8 which gives us 1.14. We had a
+25:4625 minutes, 46 seconds70% loss rate * -1 which would give us 1.14 minus 1.7 and a positive expectancy
+25:5325 minutes, 53 secondsof44. This is giving it to us in terms of r. So if we were risking $100 per trade, that would mean that every time we execute a trade, whether it's a win
+26:0226 minutes, 2 secondsor a loss with that much data behind it, we're expected to make $44 in profit. So that would mean theoretically in order
+26:1126 minutes, 11 secondsto hit $1,000 in profit, we would have to execute 23 trades. So then it becomes a matter of just following your strategy and you're not guessing on whether or
+26:1926 minutes, 19 secondsnot your model works. Even if you get seven trades in a row that don't work, you know, you've tested it over enough time and you've seen enough variables to
+26:2626 minutes, 26 secondsstill continue to execute that strategy to allow your edge to play out over time based on your expectancy. Positive expectancy means your entire
+26:3426 minutes, 34 secondsdistribution is shifted in favor just by a little bit into the positive. And if you're in the negative, under zero, discipline is not going to save you,
+26:4126 minutes, 41 secondsright? Your strategy is going to lose your money over time. Okay? And this is ultimately the shift from an amateur mindset to a professional trading mindset. All right? You're going to pass
+26:4926 minutes, 49 seconds90% of people just by understanding this. Okay? So, that was lesson number one. Lesson number two on mindset is something that I like to call the spin cycle. Okay? This is the number one
+26:5726 minutes, 57 secondsthing that will hold beginner traders back. And it's something to be aware of so that you can know to counteract it as you're going through the process or if you're struggling as a trader to be able
+27:0527 minutes, 5 secondsto think about this and see if you're actually there. So, we all know about beginner's luck. Basically, the phenomenon with beginner's luck is you don't actually know any of the risk
+27:1427 minutes, 14 secondsimplications or psychological barriers that cause people to lose when they're trying to do something, which can actually allow you to operate with lower
+27:2127 minutes, 21 secondsinhibition or lower mental turmoil while you're doing things and give you an edge over time. However, as soon as you start to learn the downsides once you
+27:3027 minutes, 30 secondsinevitably experience them, all of that this is easy. I'm operating with no fear or risk goes away and you immediately lose that beginner's luck. The same
+27:3827 minutes, 38 secondsthing can happen with trading. So often times people go through this process as a trader. Okay, say we want to buy in here and we just tell ourselves we're just going to hold until this goes up.
+27:4727 minutes, 47 secondsWe're holding, we're holding, price starts going up and then starts going against us. And we're like, okay, well, we don't want to lose money, so we're just going to hold this until it continues moving in our direction and
+27:5527 minutes, 55 secondsthen we'll sell it. price starts to move in our direction, then we're like, "Okay, cool. Close position $200. This is easy. All we have to do is hold this trade until it goes into profit and then
+28:0428 minutes, 4 secondsI'll never lose." So, say we do it again. Price starts moving in our direction. Things are good. And then price starts moving against us and we're like, "Okay." And then you think, "All right, well, all I have to do is
+28:1228 minutes, 12 secondscontinue to hold this until it comes back and I don't ever have to lose." Price continues to move down and down further against you until you lose so much that you're forced to take the
+28:2128 minutes, 21 secondsposition off the table. And then the next logical solution for any person is how can I prevent myself from ever taking a loss and how can I seek more
+28:2928 minutes, 29 secondsinformation and learn more to never have this feeling happen again. And this is the number one thing. And what this is going to do is lead you into something called paralysis analysis. All right?
+28:3828 minutes, 38 secondsWhere you're overanalyzing and you're trying to prevent yourself from ever experiencing a loss seeking more information when realistically you're looking at trading in the wrong frame.
+28:4828 minutes, 48 secondsOkay? At the beginning you were able to make profit because you weren't worried about this happening. So you could execute trades, hold them, and make profit. Once you felt the fear of losing
+28:5628 minutes, 56 secondsso much money, you want to prevent that from ever happening by learning more information. Simple trading strategies are effective if they're executed in a
+29:0429 minutes, 4 secondsway that is considering expectancy, averages, winning percentage, following a rigid system. So that's the second lesson. The third lesson is something
+29:1129 minutes, 11 secondscalled the glass equity ceiling. So if you're new, you might not know about this. If you have been trading for a while, you'll understand this. Have you ever had an account or maybe you're
+29:1929 minutes, 19 secondstrying to get a payout and once you start getting closer to the number you know you have to hit, it seems like you can never fully break through that
+29:2729 minutes, 27 secondslevel. Okay, there's no importance to this level other than the importance that you're putting on it, which is then in effect changing your behavior and
+29:3429 minutes, 34 secondsmaking you act differently than how you're behaving to approach that level.
+29:3829 minutes, 38 secondsSo trading up to your account balance threshold is easy cuz you're not worried about it. Once you get there, you start worrying about preserving the money or you're changing your habits to try to
+29:4729 minutes, 47 secondsnot lose. then you end up self-sabotaging. Okay, what I do and what I do with the private students that I mentor is basically teach them how to journal their own information and then
+29:5529 minutes, 55 secondswe can look at as we start to approach those key areas statistically what changed in those areas so you can take specific note of how to not do that
+30:0430 minutes, 4 secondswhich in effect is going to break you out of that glass ceiling and erase those boundaries for you and allow you to continue. But in order to do that you have to be cognizant of that being a
+30:1230 minutes, 12 secondsthing and also be able to actually journal and see your information, see your patterns. Okay, another way is using a trade journal like Tradezella where I can actually get detailed
+30:2130 minutes, 21 secondsreports of how each one of my trading days is actually going and I can start to see behaviorally what I'm doing differently at different times and take
+30:2830 minutes, 28 secondsnote of it that way. This gives you a little bit different of a view of how you're performing each day. But basically, you need to understand that losing is simply opportunity cost. You
+30:3730 minutes, 37 secondsneed a large enough amount of data doing what you're doing to see if it works over time, to not care about the individual outcome of each trade, which
+30:4430 minutes, 44 secondsthen subsequently allows you to not be emotional about your trading. These are truly the mindset pillars that are hyper important to actually succeed at
+30:5230 minutes, 52 secondstrading. That's basically the entire framework of knowing the mindset and the psychological traps to not fall into going through beginner's luck, analysis,
+31:0031 minutesthe spin cycle, and breaking through that equity glass ceiling. Okay, so now let's get into the fun part of taking all of this and putting it onto a chart in an example and looking at how this
+Chapter 9: Real-world execution
+31:0831 minutes, 8 secondsties into actually executing trades, bringing it into a journal, testing it, and then being able to look at actually deploying this with capital on
+31:1631 minutes, 16 secondsexchanges, prop firms, etc. Okay, so I'm going to show you how all of this can tie together in a few examples of how I use these things to approach the market, how I journal the information so that
+31:2431 minutes, 24 secondsyou can kind of start to build your observation, test it out, then how we can use this process to figure out what's right as far as access to capital to scale our trading further. Okay, so
+31:3331 minutes, 33 secondsI'm going to do an example on futures first, then crypto. So this was a trade example that happened actually today. So for example, when I'm trading live with
+31:4031 minutes, 40 secondsmy team, I'm trading on a 1 minute time frame. All right, and you can see first off, we have our uptrend right here. What I'm waiting for is about 9:30 a.m.
+31:4831 minutes, 48 secondsEastern for the stock market to open. All right. So, we see our uptrend here.
+31:5231 minutes, 52 secondsWe already got a response off of that area, but the market isn't open yet.
+31:5531 minutes, 55 secondsOkay. And you'll also see we have a trend here. As I play this forward, this creates a change of character, and a fair value gap. So, part of the
+32:0332 minutes, 3 secondsobservation rules that I could be looking for is trend break, change of character, fair value gap. Okay. And on our team, we use a series of way more complicated things to get our statistical edge a little bit further.
+32:1332 minutes, 13 secondsBut as a simple metric, right, we have our trend level broken. We have our change of character here. We have our fair value gap. Okay. So theoretically,
+32:2032 minutes, 20 secondssay I notice that if I put my stop loss underneath the candle that gives me the fair value gap and target four times what I'm risking, right? I can then go
+32:2832 minutes, 28 secondsin, double click on my order, say I want to risk $100, that would give me 5.4 as my quantity. So if you want to practice this on trading view, you can just click
+32:3632 minutes, 36 secondson this trading panel here and click on paper trading and say I want to target the exact middle of this fair value gap in futures. Since I have 5.4, we need to
+32:4532 minutes, 45 secondswork in full contract sizes. So that's just going to be rounded down to five. I can click on my limit order, submit that order. Then I can just hit shift and
+32:5332 minutes, 53 secondsforward on my keys. And then I have my one to four achieved. Close out my position. And then basically I can go over into my journal, click on the date,
+33:0033 minutestype in MNQ1, click on the strategy that you create, time frame, put in your profit, which was 385, which is also 3.85R.
+33:0933 minutes, 9 secondsAnd now I have all of my data input on this trading journal. Okay.
+33:1233 minutes, 12 secondsAdditionally, the way that I built this out for you guys is basically before the market opens, you can create a checklist for yourself. This is an example. So as you're building these observations, you
+33:2033 minutes, 20 secondscan basically build this out and follow along. And then during each setup, right, you can make sure that you're following all of your rules by checking these off. And then when you click next
+33:2833 minutes, 28 secondssetup, you can literally just highlight all of these, delete them, and start over. Okay? So, for example, this trade I used 5.4 regular contracts, which
+33:3633 minutes, 36 secondsbecause I'm trading micro contracts, I can actually use 50 contracts, in which case here I'm only using 5.4. So,
+33:4333 minutes, 43 secondstheoretically, say I wanted to risk 250, that would require 13 contracts, in which case I have 50 to work with. If you're able to execute this and know
+33:5133 minutes, 51 secondsthat there's an edge consistently over time and we wanted to run this trade for example of 250 as our R, we could use our 13 units, be able to take our 4R off
+33:5933 minutes, 59 secondsthe table and focusing on risk management and consistency with prop firms once you reach your profit target while following all of the rules. This allows you to basically prove your
+34:0834 minutes, 8 secondsstrategy, use the firm's capital, then be able to take these payouts for yourself. Or in this package, for example, with 500 as the R, I can input
+34:1534 minutes, 15 seconds27 units. Effectively, once getting to my profit target, this could be my potential on a 1 to4 trade setup like this. Or for example, when I'm trading
+34:2334 minutes, 23 secondscryptocurrency, I can evaluate before 930 happens that we have an up or down trend potentially forming. Say once again, I'm looking for trend break,
+34:3134 minutes, 31 secondschange of character, fair value gap. Can double click into this. Say for example I want to risk 500. It'll give me my exact amount of units 2632.
+34:4334 minutes, 43 secondsOkay. And sniping these individual areas and using these piece of analysis in this example would give me a 1 to6.33 riskreward. For this example using a
+34:5234 minutes, 52 secondscryptocurrency exchange where I can input my entry my quantity. This trade could give me a 3.9 riskreward. And the beautiful part about this I can increase
+34:5934 minutes, 59 secondsthe capability of my size. where say the actual cost is 256 and have the cost to me only be 5,300 with the upside on any
+35:0835 minutes, 8 secondsindividual trade could be something like this or starting small to risk say $100.
+35:1235 minutes, 12 secondsSo the barrier to entry can be a lot smaller and this sort of allows you to get access to capital to make these trades count. And there's also prop firm solutions on the crypto side as well.
+35:2135 minutes, 21 secondsAnd a good way to sort of figure out where to start and where I sort of go about things is basically to journal out about 30 to 50 theoretical trades. Once
+35:2835 minutes, 28 secondsagain, you can just go over to Trading View, click on this replay feature, and then click on here. You can either go to a random section, or you can go to a
+35:3635 minutes, 36 secondsspecific area, and then just like I did here, you can basically have all of your rules, say where you would have taken trades on and off, and you can just
+35:4335 minutes, 43 secondsinput them into here and take down any extra data that you want by clicking add property. And you can say indicator, you can add whatever. And basically, you're
+35:5035 minutes, 50 secondsgoing to do a few things. You have your wins, you have your break evens, and your losses. So, what I want to do is first off click on unchecked break even, which is going to remove break evens
+35:5935 minutes, 59 secondstemporarily from the equation, which is going to give us only our wins and our losses. Okay. The next thing that I want to do is figure out of my winning trades
+36:0636 minutes, 6 secondseither a how much money I was able to make over just the wins. And then B, if I go down to more options and click on average, I can figure out the average
+36:1436 minutes, 14 secondsamount that I'm making per trade. Here, this is going to give me my average profit. And you're going to see here, this is going to give me my average risk factor. So, I can use this to calculate
+36:2236 minutes, 22 secondsmy expectancy. So basically I know I have 2.73R on average. This smaller trade kind of threw things off but still nonetheless 2.73. If I uncheck my
+36:3036 minutes, 30 secondswinners, I have my winning and losing percentage. I can click on here, click on loss, check that one. I have my average size loss now. And I can
+36:3836 minutes, 38 secondsbasically plug it into this equation to see how much RM expected to make during each trade. Okay. And then decide if you're trying to use a crypto exchange,
+36:4636 minutes, 46 secondsaccess to capital via prop firms for futures, and be able to practice and scale this process over time. Okay. We have traders on our team using crypto
+36:5336 minutes, 53 secondsfutures across the board. You can see Ned Narb using everything that we do together, focusing on consistency and risk management. And I just find it really cool to be able to develop a
+37:0137 minutes, 1 secondglobal team of traders that is able to navigate through this and be able to execute on this business model. Okay, just like for Sharon, one of my main goals is to basically showcase this
+37:0937 minutes, 9 secondsbusiness model, how it's worked for me, and be able to share the foundation for others. If you're interested in being mentored by me and our team, there's details in the description. If you want
+37:1737 minutes, 17 secondsaccess to the mind map, the trade journal, and a ton of other resources, go in the description, follow me on Instagram, DM me the word tools, and I'll send it right over to you. Other
+37:2537 minutes, 25 secondsresources in the description. If you want to stay uptod date, make sure you subscribe, hit the like button. Also, let me know in the comments what you want me to make a video about next. You
+37:3237 minutes, 32 secondscan check out the other two videos that I promised here. Good luck in 2026.
+
+Sync to video time

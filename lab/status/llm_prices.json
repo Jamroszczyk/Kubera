@@ -1,0 +1,7 @@
+{
+  "model": "gpt-5.4-mini-2",
+  "deployment": "Global Standard (owner, 2026-10-30)",
+  "usd_per_mtok": {"input": 0.75, "cached_input": 0.075, "output": 4.5},
+  "budget_usd": 5000,
+  "source": "Azure Retail Prices API, meters '5.4 mini Inp/cd Inp/Opt Gl 1M Tokens', eastus, 2026-10-30"
+}

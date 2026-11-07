@@ -1,0 +1,36 @@
+<!doctype html><html><head><meta charset=utf-8><meta http-equiv=refresh content=10>
+<meta name=viewport content="width=device-width,initial-scale=1"><title>Midas lab jobs</title><style>
+:root{--bg:#f6f5f2;--card:#fff;--fg:#1d1d1b;--mut:#6b6b66;--acc:#2f6fdf;--ok:#1f8a4c;--bad:#c0392b;--line:#e3e1dc}
+@media (prefers-color-scheme:dark){:root{--bg:#151514;--card:#1f1f1d;--fg:#ecebe6;--mut:#9a9a94;--acc:#6b9cf0;--ok:#4cc27d;--bad:#ef6a5a;--line:#33332f}}
+body{background:var(--bg);color:var(--fg);font:15px/1.45 system-ui,sans-serif;margin:0;padding:16px}
+main{max-width:860px;margin:auto} h1{font-size:20px} h2{font-size:16px;margin-top:28px}
+.job,.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0}
+.row{display:flex;justify-content:space-between;gap:8px} .bar{height:10px;background:var(--line);border-radius:5px;margin:8px 0;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--acc)} .note,.meta{color:var(--mut);font-size:13px}
+.st{font-size:13px;color:var(--mut)} .st.done{color:var(--ok)} .st.error,.st.stalled,.warn{color:var(--bad)}
+table{width:100%;border-collapse:collapse;font-size:14px} td,th{text-align:right;padding:4px 6px;border-bottom:1px solid var(--line)}
+td:first-child,th:first-child{text-align:left} .big{font-size:26px;font-weight:600}
+</style></head><body><main><h1>Midas lab jobs</h1>
+<div class=meta>Page refreshes every 10 s · 31 Oct 2026 02:39:20</div>
+<h2>LLM budget</h2><div class=box><div class=row><span class=big>$87.34</span><span>of $5,000 (1.75%)</span></div>
+<div class=bar><i style="width:1.75%;background:var(--ok)"></i></div>
+<div class=note>Prices per 1M tokens: input $0.75, cached input $0.075, output $4.5 (Azure Retail Prices API, meters &#x27;5.4 mini Inp/cd Inp/Opt Gl 1M Tokens&#x27;, eastus, 2026-10-30). Metered calls only (earlier rounds before 2026-10-30 were not metered).</div>
+<table><tr><th>job</th><th>calls</th><th>input</th><th>cached</th><th>output</th><th>cost</th></tr><tr><td>c34-news</td><td>2,827</td><td>5.34M</td><td>0.00M</td><td>0.65M</td><td>$6.92</td></tr><tr><td>s-stock-news</td><td>20,767</td><td>26.32M</td><td>0.01M</td><td>13.49M</td><td>$80.42</td></tr>
+<tr><th>total</th><th>23,594</th><th>31.66M</th><th>0.01M</th><th>14.13M</th><th>$87.34</th></tr></table></div>
+<h2>Jobs</h2><div class=job><div class=row><b>s-stock-news</b><span class="st done">done</span></div>
+<div class=bar><i style="width:100.0%"></i></div>
+<div class=row><span>819,740 / 819,780 headlines (100.0%)</span><span></span></div>
+<div class=note>1 failed calls · $80.42 spent</div>
+<div class=meta>started 31 Oct 02:39 · updated 0 s ago</div></div><div class=job><div class=row><b>s-prices</b><span class="st done">done</span></div>
+<div class=bar><i style="width:100.0%"></i></div>
+<div class=row><span>4,439 / 4,439 tickers (100.0%)</span><span></span></div>
+<div class=note>4439 tickers</div>
+<div class=meta>started 31 Oct 00:30 · updated 7414 s ago</div></div><div class=job><div class=row><b>c34-news-scoring</b><span class="st done">done</span></div>
+<div class=bar><i style="width:100.0%"></i></div>
+<div class=row><span>2,827 / 2,827 mornings (100.0%)</span><span></span></div>
+<div class=note>0 errors · $6.92 spent</div>
+<div class=meta>started 30 Oct 21:11 · updated 8769 s ago</div></div><div class=job><div class=row><b>news-download</b><span class="st done">done</span></div>
+<div class=bar><i style="width:100.0%"></i></div>
+<div class=row><span>3,086 / 3,086 weekdays (100.0%)</span><span></span></div>
+<div class=note>1,377,884 headlines · 29,138 requests (150/min) · 0 retries</div>
+<div class=meta>started 30 Oct 20:45 · updated 9586 s ago</div></div></main></body></html>

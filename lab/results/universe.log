@@ -1,0 +1,117 @@
+chunk 0 17406
+chunk 1 18213
+chunk 2 19720
+chunk 3 16829
+chunk 4 14773
+chunk 5 19352
+chunk 6 18551
+chunk 7 15170
+chunk 8 18655
+chunk 9 16201
+chunk 10 17156
+chunk 11 17910
+chunk 12 18091
+chunk 13 18566
+chunk 14 17493
+chunk 15 19056
+chunk 16 17585
+chunk 17 18320
+chunk 18 18625
+chunk 19 17902
+chunk 20 16754
+chunk 21 17196
+chunk 22 17567
+chunk 23 17912
+chunk 24 17661
+chunk 25 16434
+chunk 26 14316
+chunk 27 19122
+chunk 28 17395
+chunk 29 15680
+chunk 30 17202
+chunk 31 18694
+chunk 32 17712
+chunk 33 14535
+chunk 34 18515
+chunk 35 18122
+chunk 36 15537
+chunk 37 18309
+chunk 38 18359
+chunk 39 17931
+chunk 40 18893
+chunk 41 18111
+chunk 42 16316
+chunk 43 17351
+chunk 44 17299
+chunk 45 17462
+chunk 46 19347
+chunk 47 17812
+chunk 48 18128
+chunk 49 17248
+A. intraday noise-area on real leveraged ETF pairs (%/day growth, Sharpe), selection | holdout
+  QQQ>TQQQ/SQQQ      sel   0.090  1.09  | hold   0.045  0.68   maxDD -16.8%
+  SPY>UPRO/SPXU      sel   0.028  0.48  | hold  -0.013 -0.17   maxDD -30.1%
+  IWM>TNA/TZA        sel  -0.078 -0.76  | hold  -0.082 -0.88   maxDD -87.2%
+  DIA>UDOW/SDOW      sel  -0.021 -0.19  | hold  -0.043 -0.75   maxDD -53.9%
+  SOXX>SOXL/SOXS     sel   0.008  0.20  | hold   0.096  0.90   maxDD -36.4%
+  XLK>TECL/TECS      sel  -0.000  0.11  | hold   0.013  0.26   maxDD -51.3%
+  XLF>FAS/FAZ        sel  -0.079 -0.98  | hold  -0.060 -0.80   maxDD -80.6%
+  XBI>LABU/LABD      sel  -0.083 -0.41  | hold  -0.161 -1.42   maxDD -93.6%
+  GDX>NUGT/DUST      sel   0.030  0.38  | hold   0.007  0.18   maxDD -69.4%
+  GDXJ>JNUG/JDST     sel   0.084  0.75  | hold   0.029  0.44   maxDD -51.4%
+  TLT>TMF/TMV        sel  -0.019 -0.27  | hold  -0.065 -1.33   maxDD -60.4%
+  FXI>YINN/YANG      sel  -0.003  0.03  | hold  -0.008 -0.05   maxDD -45.0%
+  EEM>EDC/EDZ        sel  -0.018 -0.34  | hold   0.004  0.23   maxDD -31.0%
+  IYR>DRN/DRV        sel   0.010  0.34  | hold   0.013  0.32   maxDD -23.3%
+  XLE>ERX/ERY        sel  -0.022 -0.13  | hold  -0.045 -0.81   maxDD -64.7%
+  XOP>GUSH/DRIP      sel   0.001  0.17  | hold  -0.103 -1.41   maxDD -74.6%
+  USO>UCO/SCO        sel  -0.031 -0.23  | hold  -0.152 -2.52   maxDD -87.3%
+  SLV>AGQ/ZSL        sel   0.012  0.32  | hold  -0.034 -0.44   maxDD -38.5%
+  SPY>SSO/SDS        sel   0.008  0.23  | hold  -0.020 -0.50   maxDD -23.0%
+  QQQ>QLD/QID        sel   0.040  0.73  | hold   0.006  0.19   maxDD -17.5%
+  correlation of daily P&L with QQQ>TQQQ/SQQQ: SPY +0.64, IWM +0.28, DIA +0.41, SOXX +0.43, XLK +0.75, XLF +0.24, XBI +0.23, GDX +0.08, GDXJ +0.08, TLT +0.00, FXI +0.22, EEM +0.29, IYR +0.08, XLE +0.10, XOP +0.10, USO +0.04, SLV +0.02, SPY +0.63, QQQ +1.00
+  picked on selection half (Sharpe >= 0.5, growth > 0): ['QQQ>TQQQ/SQQQ', 'GDXJ>JNUG/JDST']
+  QQQ only                     sel   0.090  1.09 | hold   0.045  0.68  maxDD -16.8%
+  equal split, picked          sel   0.095  1.18 | hold   0.041  0.73  maxDD -27.4%
+  equal split, all pairs       sel   0.004  0.14 | hold  -0.026 -0.81  maxDD -31.0%
+  quarterly top-3 rotation     sel   0.087  0.97 | hold   0.032  0.61  maxDD -38.7%
+
+B. broad screen, long+short 1x: 491 names; Sharpe rank persistence sel->hold (Spearman) +0.34
+   share with Sharpe > 0: sel 13%, hold 16%; median Sharpe sel -0.81, hold -0.92
+   QQQ: sel Sharpe 0.93 (rank 11 of 491), hold 0.36
+   top 10 picked on selection half -> holdout Sharpe: SQQQ 1.35->0.63, TQQQ 1.25->1.04, JNUG 1.23->0.73, AMD 1.15->0.35, MSCI 1.14->0.26, QLD 1.14->0.05, TSLA 1.06->0.11, QID 1.02->-0.14, MELI 0.96->-1.71, CMG 0.95->0.17
+   holdout, equal-weight top-10 portfolio: 0.028%/day Sharpe 0.67  vs QQQ 1x 0.007%/day Sharpe 0.36
+
+B. broad screen, long only 1x (cash-account tradeable): 491 names; Sharpe rank persistence sel->hold (Spearman) +0.30
+   share with Sharpe > 0: sel 17%, hold 22%; median Sharpe sel -0.53, hold -0.70
+   QQQ: sel Sharpe 0.79 (rank 13 of 491), hold 0.08
+   top 10 picked on selection half -> holdout Sharpe: CMG 1.64->0.00, MSCI 1.46->0.03, TSLA 1.33->-0.06, AMD 1.21->0.35, TQQQ 1.09->0.54, NEE 0.87->-1.51, QLD 0.86->-0.37, MELI 0.84->-1.07, JNUG 0.83->0.01, SQQQ 0.79->0.51
+   holdout, equal-weight top-10 portfolio: 0.006%/day Sharpe 0.32  vs QQQ 1x 0.001%/day Sharpe 0.08
+
+C. stocks in play (top-5 relative 30-min volume, 1x long+short): sel -0.022%/day Sharpe -0.36 | hold -0.004 Sharpe -0.04
+
+C. stocks in play (top-5 relative 30-min volume, 1x long only): sel 0.007%/day Sharpe 0.22 | hold -0.008 Sharpe -0.29
+
+D. trend sleeve (synthetic 3x while above SMA200), %/day growth: 1999-2010 | 2011-17 | 2018-26  (n/a = no data)
+  DIA     -0.031 |   0.046 |   0.003   maxDD -85.9%
+  EEM      0.066 |  -0.067 |  -0.041   maxDD -95.3%
+  FXI      0.012 |  -0.051 |  -0.077   maxDD -99.5%
+  GDX     -0.047 |  -0.183 |  -0.055   maxDD -100.0%
+  GDXJ     0.022 |  -0.092 |  -0.075   maxDD -99.7%
+  IWM     -0.012 |   0.029 |  -0.016   maxDD -80.0%
+  IYR      0.034 |  -0.016 |  -0.052   maxDD -85.9%
+  QQQ     -0.040 |   0.063 |   0.109   maxDD -94.2%
+  SLV      0.028 |  -0.093 |   0.080   maxDD -98.5%
+  SOXX     0.000 |   0.090 |   0.056   maxDD -79.4%
+  SPY     -0.012 |   0.049 |   0.035   maxDD -65.8%
+  TLT     -0.028 |  -0.006 |  -0.051   maxDD -87.9%
+  USO      0.019 |  -0.149 |  -0.044   maxDD -99.8%
+  XBI     -0.031 |   0.086 |  -0.069   maxDD -94.4%
+  XLE      0.008 |  -0.017 |  -0.030   maxDD -91.9%
+  XLF     -0.033 |  -0.016 |   0.013   maxDD -89.4%
+  XLK     -0.006 |   0.068 |   0.097   maxDD -89.5%
+  XOP     -0.025 |  -0.042 |  -0.080   maxDD -99.4%
+  QQQ only (today)                    -0.040 |   0.063 |   0.109   maxDD -94.2%  Sharpe 0.41
+  equal split, those above SMA200     -0.035 |   0.004 |   0.028   maxDD -96.1%  Sharpe 0.24
+  equal 1/N fixed (cash if below)      0.020 |   0.017 |   0.047   maxDD -46.3%  Sharpe 0.39
+  monthly rotation, best 6-month       0.020 |  -0.109 |  -0.156   maxDD -100.0%  Sharpe 0.29

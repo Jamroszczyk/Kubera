@@ -1,0 +1,38 @@
+C1: LLM-scored earnings releases of Nasdaq-100 heavyweights (2003-2026, SEC 8-K Item 2.02 Ex 99.1).
+Pre-registered:
+1. reading check: tone / stock_next_day vs the company's own next-open gap (quality and memorization, not an edge);
+2. day D = first session whose 09:30 open comes after the filing's acceptance time; S_D = sum of scores known by then;
+   corr(S_D, QQQ open->close on D); intraday-sleeve filter on the corrected desk (r3.py):
+   C1a skip shorts when sum(tone) > 0 and longs when < 0;  C1b the same with sum(stock_next_day).
+3. leakage: the model's year guess; results split by guessed / not guessed, and after 2025-06 (near the cutoff).
+releases 1339, 2004-09-21..2026-03-13; year guessed exactly 81%, within 1 year 96%
+
+1. reading check: correlation with the company's own next-open gap (and its open->close)
+  all                            n=1339  tone            corr gap +0.214  hit 0.56  corr own open->close -0.039
+  all                            n=1339  stock_next_day  corr gap +0.175  hit 0.56  corr own open->close -0.011
+  year guessed (+-1)             n=1281  tone            corr gap +0.213  hit 0.56  corr own open->close -0.042
+  year guessed (+-1)             n=1281  stock_next_day  corr gap +0.176  hit 0.56  corr own open->close -0.019
+  not guessed                    n=  58  tone            corr gap +0.234  hit 0.49  corr own open->close +0.107
+  not guessed                    n=  58  stock_next_day  corr gap +0.132  hit 0.51  corr own open->close +0.264
+  2025-07+ (near/after cutoff)   n=  51  tone            corr gap +0.193  hit 0.41  corr own open->close -0.037
+  2025-07+ (near/after cutoff)   n=  51  stock_next_day  corr gap +0.224  hit 0.43  corr own open->close -0.071
+
+2. index level: 1040 sessions with releases
+  2003-10  tone  n= 277  corr QQQ open->close -0.059  signed QQQ o->c -0.193%/day (t -2.16)  [info: corr overnight gap +0.047]
+  2003-10  dir   n= 277  corr QQQ open->close -0.044  signed QQQ o->c -0.153%/day (t -1.70)  [info: corr overnight gap +0.048]
+  2011-17  tone  n= 348  corr QQQ open->close -0.035  signed QQQ o->c -0.024%/day (t -0.53)  [info: corr overnight gap +0.132]
+  2011-17  dir   n= 348  corr QQQ open->close +0.014  signed QQQ o->c -0.025%/day (t -0.56)  [info: corr overnight gap +0.118]
+  2018-26  tone  n= 415  corr QQQ open->close -0.084  signed QQQ o->c -0.097%/day (t -1.51)  [info: corr overnight gap +0.057]
+  2018-26  dir   n= 415  corr QQQ open->close -0.046  signed QQQ o->c -0.098%/day (t -1.55)  [info: corr overnight gap +0.034]
+  ALL      tone  n=1040  corr QQQ open->close -0.065  signed QQQ o->c -0.099%/day (t -2.59)  [info: corr overnight gap +0.074]
+  ALL      dir   n=1040  corr QQQ open->close -0.030  signed QQQ o->c -0.089%/day (t -2.34)  [info: corr overnight gap +0.061]
+
+3. desk with the intraday filter (1999-2010 column: filter only active from 2003)
+                                              1999-2010    2011-17    2018-26       FULL   maxDD  Sharpe
+base (corrected desk)                            0.046      0.078      0.138      0.082   -69.9%   0.80
+C1a filter by sum(tone)                          0.041      0.072      0.119      0.073   -69.9%   0.73
+C1b filter by sum(stock_next_day)                0.042      0.072      0.119      0.073   -69.9%   0.73
+
+White reality check over 2 variants (full period): p = 0.994
+  C1a filter by sum(tone)                      wins all 3 periods: no   single p = 0.989
+  C1b filter by sum(stock_next_day)            wins all 3 periods: no   single p = 0.992

@@ -1,0 +1,5 @@
+[Unit]
+Description=Midas network watchdog
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/midas-netwatch.sh

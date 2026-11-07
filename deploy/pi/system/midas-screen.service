@@ -1,0 +1,16 @@
+[Unit]
+Description=Midas status screen (3.5in SPI LCD)
+After=midas.service
+
+[Service]
+User=midas
+WorkingDirectory=/home/midas/midas
+# detach the text console from the LCD so it doesn't draw over the status page; give it back on stop
+ExecStartPre=+/bin/sh -c 'for v in /sys/class/vtconsole/vtcon*; do grep -q "frame buffer" $v/name && echo 0 > $v/bind; done; true'
+ExecStart=/usr/bin/node screen/screen.mjs
+ExecStopPost=+/bin/sh -c 'for v in /sys/class/vtconsole/vtcon*; do grep -q "frame buffer" $v/name && echo 1 > $v/bind; done; true'
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

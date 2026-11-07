@@ -1,0 +1,56 @@
+C3/C4 follow-up (2026-10-31, exploratory): does the morning news score relate to QQQ over the following days?
+Score known at 09:25 on day d. Horizons: overnight gap into d (already happened), d open->close, then from d's close
+the next k = 1, 2, 3, 5, 10, 20 trading days. Newey-West t (overlapping windows). Also |move| (volatility) and the three
+periods 2015-18 / 2019-22 / 2023-26. Many horizons x scores are tested, so a single |t| ~ 2 is expected by chance;
+only effects that are large and appear in all three periods count.
+mornings 2827
+
+score = mood       corr    t(NW)   | corr 2015-18 2019-22 2023-26 | |move| corr t
+  overnight into d (seen)      +0.346  +15.6   |      +0.323  +0.357  +0.371 | -0.112  -4.4
+  d open->close                -0.034   -1.5   |      -0.032  -0.005  -0.071 | -0.119  -5.4
+  next  1 days after d close   +0.019   +0.9   |      +0.041  +0.023  -0.004 | -0.146  -6.8
+  next  2 days after d close   +0.009   +0.4   |      +0.033  +0.034  -0.046 | -0.136  -6.1
+  next  3 days after d close   +0.004   +0.2   |      +0.010  +0.040  -0.051 | -0.111  -4.6
+  next  5 days after d close   -0.026   -1.0   |      -0.038  +0.013  -0.071 | -0.140  -5.6
+  next 10 days after d close   +0.014   +0.4   |      -0.008  +0.059  -0.030 | -0.194  -6.2
+  next 20 days after d close   +0.013   +0.3   |      +0.005  +0.085  -0.087 | -0.168  -4.6
+
+score = tone_macro       corr    t(NW)   | corr 2015-18 2019-22 2023-26 | |move| corr t
+  overnight into d (seen)      +0.323  +14.7   |      +0.292  +0.349  +0.321 | -0.094  -3.8
+  d open->close                -0.040   -1.9   |      -0.041  -0.024  -0.060 | -0.116  -5.5
+  next  1 days after d close   +0.029   +1.4   |      +0.019  +0.047  +0.011 | -0.149  -6.8
+  next  2 days after d close   +0.013   +0.6   |      -0.016  +0.051  -0.016 | -0.140  -6.3
+  next  3 days after d close   +0.011   +0.5   |      -0.035  +0.063  -0.027 | -0.114  -4.7
+  next  5 days after d close   -0.019   -0.7   |      -0.060  +0.029  -0.054 | -0.142  -5.5
+  next 10 days after d close   +0.014   +0.4   |      -0.019  +0.054  -0.015 | -0.194  -6.1
+  next 20 days after d close   +0.020   +0.5   |      -0.018  +0.093  -0.062 | -0.140  -3.9
+
+score = tone_tech       corr    t(NW)   | corr 2015-18 2019-22 2023-26 | |move| corr t
+  overnight into d (seen)      +0.263  +13.0   |      +0.244  +0.260  +0.312 | -0.094  -4.4
+  d open->close                -0.018   -0.9   |      -0.016  +0.015  -0.062 | -0.086  -4.1
+  next  1 days after d close   +0.004   +0.2   |      +0.045  -0.008  -0.017 | -0.101  -5.1
+  next  2 days after d close   +0.003   +0.1   |      +0.058  +0.006  -0.060 | -0.091  -4.4
+  next  3 days after d close   -0.004   -0.2   |      +0.038  +0.004  -0.059 | -0.074  -3.3
+  next  5 days after d close   -0.025   -1.1   |      -0.010  -0.007  -0.067 | -0.097  -4.4
+  next 10 days after d close   +0.009   +0.4   |      +0.002  +0.046  -0.035 | -0.137  -5.2
+  next 20 days after d close   +0.004   +0.1   |      +0.020  +0.052  -0.086 | -0.143  -4.6
+
+score = importance       corr    t(NW)   | corr 2015-18 2019-22 2023-26 | |move| corr t
+  overnight into d (seen)      -0.039   -1.9   |      -0.069  -0.076  +0.042 | +0.241 +11.9
+  d open->close                -0.000   -0.0   |      -0.003  -0.021  +0.015 | +0.150  +7.8
+  next  1 days after d close   -0.007   -0.4   |      -0.012  -0.027  +0.010 | +0.134  +6.2
+  next  2 days after d close   +0.010   +0.5   |      -0.011  +0.012  +0.004 | +0.091  +4.4
+  next  3 days after d close   +0.005   +0.2   |      -0.021  +0.010  -0.009 | +0.079  +3.5
+  next  5 days after d close   +0.002   +0.1   |      -0.022  +0.011  -0.030 | +0.080  +3.2
+  next 10 days after d close   -0.001   -0.0   |      -0.002  -0.023  -0.025 | +0.132  +4.1
+  next 20 days after d close   +0.039   +0.9   |      +0.032  -0.007  +0.049 | +0.165  +3.9
+
+extreme mornings: mean QQQ return % after (mood <= -3 vs >= +3 vs the rest)
+  overnight into d (seen)      bad -0.49 (n=469)  rest +0.09  good +0.62 (n=246)
+  d open->close                bad +0.10 (n=469)  rest +0.02  good -0.00 (n=246)
+  next  1 days after d close   bad +0.00 (n=469)  rest +0.08  good +0.14 (n=246)
+  next  2 days after d close   bad +0.10 (n=468)  rest +0.13  good +0.24 (n=246)
+  next  3 days after d close   bad +0.12 (n=467)  rest +0.22  good +0.31 (n=246)
+  next  5 days after d close   bad +0.40 (n=466)  rest +0.36  good +0.09 (n=245)
+  next 10 days after d close   bad +0.54 (n=465)  rest +0.73  good +0.66 (n=244)
+  next 20 days after d close   bad +1.43 (n=461)  rest +1.37  good +1.67 (n=244)

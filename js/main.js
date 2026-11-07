@@ -10,6 +10,7 @@ import { renderActivity } from './views/activity.js';
 import { renderSettings } from './views/settings.js';
 import { renderAnalytics } from './views/analytics.js';
 import { renderBot } from './views/bot.js';
+import { renderDesk } from './views/desk.js';
 import { forexOpen } from './assets.js';
 import { runProxyAnalysis, getLastProxy } from './analytics/proxy.js';
 import { getLastDay, runDayTrader } from './bot/daytrade.js';
@@ -107,6 +108,7 @@ const routes = {
   trade: renderTrade,
   analytics: renderAnalytics,
   bot: renderBot,
+  desk: renderDesk,
   activity: renderActivity,
   settings: renderSettings,
 };
@@ -133,6 +135,7 @@ function render() {
     ? `${params.symbol} · Midas`
     : name === 'analytics' ? 'Analytics · Midas'
     : name === 'bot' ? 'Bot · Midas'
+    : name === 'desk' ? 'Q desk · Midas'
     : 'Midas';
   try {
     cleanup = fn(view, { store, market, navigate, params, openDeposit, applyTheme }) || null;

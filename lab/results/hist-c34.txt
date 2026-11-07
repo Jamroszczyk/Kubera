@@ -1,0 +1,61 @@
+C3/C4: overnight news read by gpt-5.4-mini at 09:25 (lab/text/news_score.py), Alpaca/Benzinga headlines 2015-2026.
+Pre-registered 2026-10-30, before the full scoring (pilot of 5 mornings only):
+periods 2015-18 / 2019-22 / 2023-26 (minute data ends 2026-03); pass = beat the corrected desk in all 3 AND
+White's reality check p < 0.10 over the variants below. gap = QQQ open / previous close - 1 (known before the first
+check at 10:00). mood = tone_macro + tone_tech.
+C4 (why does QQQ gap?  news-driven gaps should continue, no-news gaps reverse):
+  C4a  importance <= 1: no intraday trade
+  C4b  importance <= 1: only trades against the gap (gap up -> no long, gap down -> no short)
+  C4c  importance >= 2: only trades in the gap's direction
+C3 (news mood):
+  C3a  follow the mood: mood > 0 -> no short, mood < 0 -> no long
+  C3b  fade the mood (C1 found QQQ moved against earnings tone intraday): mood > 0 -> no long, mood < 0 -> no short
+  C3c  trend veto: trend sleeve on and mood <= -2 -> sell the trend lot at the open, rebuy at the close
+       (open->close of that day in cash, 2 extra sides of cost)
+Descriptive: reading checks (tone vs gap and vs open->close), gap continuation by importance/cause, memorization
+(year guess) and the post-cutoff slice (2025-07+).
+mornings scored 2827 of 2827; year guessed exactly 95%, within 1 99%
+importance {1: 114, 2: 1646, 3: 1067}  cause {'macro': 1368, 'none': 6, 'earnings': 448, 'company': 1005}
+
+1. reading checks: corr with the overnight gap (information the model saw) and open->close (the trade)
+  all                            n=2827 tone_macro corr gap +0.323  corr open->close -0.040
+  all                            n=2827 tone_tech  corr gap +0.263  corr open->close -0.018
+  all                            n=2827 mood       corr gap +0.346  corr open->close -0.034
+  2025-07+ (near/after cutoff)   n= 189 tone_macro corr gap +0.369  corr open->close -0.036
+  2025-07+ (near/after cutoff)   n= 189 tone_tech  corr gap +0.290  corr open->close -0.145
+  2025-07+ (near/after cutoff)   n= 189 mood       corr gap +0.376  corr open->close -0.104
+
+2. gap continuation (sign(gap) x open->close, %/day) and base intraday sleeve by class
+  importance 1         n= 114  continuation +0.037 (t +0.48)  base intraday +0.124%/day
+  importance 2         n=1646  continuation +0.001 (t +0.04)  base intraday +0.089%/day
+  importance 3         n=1067  continuation -0.015 (t -0.37)  base intraday +0.055%/day
+  cause      company   n=1005  continuation +0.054 (t +1.94)  base intraday +0.079%/day
+  cause      earnings  n= 448  continuation -0.033 (t -0.64)  base intraday +0.101%/day
+  cause      macro     n=1368  continuation -0.038 (t -1.15)  base intraday +0.070%/day
+  cause      none      n=   6  continuation +0.315 (t +1.02)  base intraday -0.069%/day
+
+3. desk 2015-01..2026-03 (veto days 980)
+                                                2015-18    2019-22    2023-26       FULL   maxDD  Sharpe
+base (corrected desk)                            0.094      0.125      0.122      0.113   -35.5%   1.18
+C4a no-news days: no trade                       0.093      0.122      0.122      0.112   -35.4%   1.16
+C4b no-news days: fade the gap only              0.091      0.122      0.122      0.111   -36.7%   1.16
+C4c news days: with the gap only                 0.101*     0.131*     0.131*     0.120*  -32.7%   1.27
+C3a follow the mood                              0.072      0.069      0.134*     0.089   -36.2%   0.98
+C3b fade the mood                                0.062      0.127*     0.084      0.091   -34.9%   1.03
+C3c trend veto on mood <= -2                     0.101*     0.114      0.074      0.098   -34.6%   1.08
+                                               15   16   17   18   19   20   21   22   23   24   25   26
+base (corrected desk)                           3  -14   59   81   42   62   50    2   67   50   19   -9
+C4a no-news days: no trade                      3  -13   55   83   42   59   48    3   67   50   19   -9
+C4b no-news days: fade the gap only             2  -14   59   78   42   59   48    3   67   50   19   -9
+C4c news days: with the gap only               13   -7   61   61   46   81   56   -9   73   53   21   -9
+C3a follow the mood                            -3  -11   49   61   43   37   43  -29   73   44   32   -9
+C3b fade the mood                               5  -15   54   36   29   75   53    4   50   38    6  -10
+C3c trend veto on mood <= -2                    7  -14   61   85   38   44   46    8   38   66   -0  -21
+
+White reality check over 6 variants (full period): p = 0.724
+  C4a no-news days: no trade                   wins all 3 periods: no   single p = 0.733
+  C4b no-news days: fade the gap only          wins all 3 periods: no   single p = 0.885
+  C4c news days: with the gap only             wins all 3 periods: YES  single p = 0.224
+  C3a follow the mood                          wins all 3 periods: no   single p = 0.986
+  C3b fade the mood                            wins all 3 periods: no   single p = 0.963
+  C3c trend veto on mood <= -2                 wins all 3 periods: no   single p = 0.884
